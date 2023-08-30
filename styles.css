@@ -48,6 +48,10 @@ selector {
       body {
         font-family: var(--font-family);
       }   
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
       section {
         min-height: 65vh;
       }
