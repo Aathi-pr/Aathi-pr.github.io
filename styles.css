@@ -152,6 +152,9 @@ selector {
                 transform: translateX(0%);
         
         }
+        .center {
+                display: flex;
+                justify-content: center;
         footer {
                 background: #111;
                 height: auto;
