@@ -21,6 +21,11 @@ function startTypingAnimation() {
 
       window.addEventListener('load', startTypingAnimation);
 
+      const greetingText = document.querySelector('.greeting-text');
+      greetingText.addEventListener('click', () => {
+          greetingText.textContent = "Hi there, world!";
+      });
+      
 const navSlide = () => {
         const burger = document.querySelector('.burger');
         const nav = document.querySelector('.navigation');

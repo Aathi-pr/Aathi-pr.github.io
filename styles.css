@@ -71,6 +71,7 @@ selector {
         nav h1 {
                 cursor: pointer;
                 color: var(--bg-color);
+                
         }
       
         nav a {
@@ -154,15 +155,44 @@ selector {
                 transform: translateX(0%);
         
         }
-        .head {
-                display: flex;
-                justify-content: center;
-                margin-top: 20%;
-                
+        .greeting-container {
+            position: relative;
+            text-align: center; /* Adjust horizontal alignment as needed */
+            margin: 200px auto;
         }
+        
+        .greeting-text {
+            font-size: 36px; /* Adjust font size as needed */
+            font-weight: bold;
+            color: #fff; /* Initial text color */
+            animation: text-animation 5s ease-in-out infinite;
+        }
+        
+        @keyframes text-animation {
+            0% {
+                color: #fff; /* Initial color */
+            }
+            25% {
+                color: #00ffff; /* First animation color */
+            }
+            50% {
+                color: #ff00ff; /* Second animation color */
+            }
+            75% {
+                color: #00ff00; /* Third animation color */
+            }
+            100% {
+                color: #fff; /* Back to initial color */
+            }
+        }
+                
         .container {
                 display: flex;
                 justify-content: center;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
         }
         footer {
                 background: #111;
@@ -247,10 +277,7 @@ selector {
         .toggle .line3 {
                 transform: rotate(45deg) translate(-5px,-5px);
         }
-        .head {
-                display: flex;
-                justify-content: center;
-        }
+        
         .center {
                 display: flex;
                 justify-content: center;
@@ -283,7 +310,7 @@ selector {
                 justify-content: center;
                 gap: 2.5rem;
                 max-width: 68.75rem;
-                argin: auto;
+                margin: auto;
         }
         .hero img {
                 height: 37.5rem;
