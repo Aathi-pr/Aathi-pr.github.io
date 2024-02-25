@@ -157,32 +157,32 @@ selector {
         }
         .greeting-container {
             position: relative;
-            text-align: center; /* Adjust horizontal alignment as needed */
+            text-align: center; 
             margin: 200px auto;
         }
         
         .greeting-text {
-            font-size: 36px; /* Adjust font size as needed */
+            font-size: 36px; 
             font-weight: bold;
-            color: #fff; /* Initial text color */
+            color: #fff; 
             animation: text-animation 5s ease-in-out infinite;
         }
         
         @keyframes text-animation {
             0% {
-                color: #fff; /* Initial color */
+                color: #fff; 
             }
             25% {
-                color: #00ffff; /* First animation color */
+                color: #00ffff; 
             }
             50% {
-                color: #ff00ff; /* Second animation color */
+                color: #ff00ff; 
             }
             75% {
-                color: #00ff00; /* Third animation color */
+                color: #00ff00; 
             }
             100% {
-                color: #fff; /* Back to initial color */
+                color: #fff; 
             }
         }
                 
