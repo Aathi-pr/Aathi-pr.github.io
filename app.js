@@ -25,6 +25,7 @@ function startTypingAnimation() {
       greetingText.addEventListener('click', () => {
           greetingText.textContent = "Hi there, world!";
       });
+
       
 const navSlide = () => {
         const burger = document.querySelector('.burger');

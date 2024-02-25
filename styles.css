@@ -11,7 +11,7 @@ selector {
         --bolder-font: 900;
         --bg-color: #fcfcfc;
         --primary-color: #4756df;
-        --secondary-color: #675f5f;
+        --secondary-color: #000000;
         --primary-shadow: #8b8eaf;
         --secondary-shadow: #a17a69;
         --bottom-margin: 0.5rem;
@@ -91,6 +91,7 @@ selector {
         nav ul li {
                 font-weight: var(--bold-font);
         }
+        
         .navigation {
                 display: flex;
                 justify-content: space-around;
