@@ -11,7 +11,7 @@ selector {
         --bolder-font: 900;
         --bg-color: #fcfcfc;
         --primary-color: #4756df;
-        --secondary-color: #000000;
+        --secondary-color: #675f5f;
         --primary-shadow: #8b8eaf;
         --secondary-shadow: #a17a69;
         --bottom-margin: 0.5rem;
@@ -170,20 +170,39 @@ selector {
         
         @keyframes text-animation {
             0% {
-                color: #fff; 
+                color: #5282ed; 
             }
-            25% {
-                color: #00ffff; 
+            10% {
+                color: #767bde; 
+            }
+            20% {
+                color: #9874cd; 
+            }
+            30% {
+                color: #af6eaf; 
+            }
+            40% {
+                color: #da6570; 
             }
             50% {
-                color: #ff00ff; 
+                color: #bc6c9c; 
             }
-            75% {
-                color: #00ff00; 
+            60% {
+                color: #c7698c; 
+            }
+            70% {
+                color: #d46678; 
+            }
+            80% {
+                color: #d46678; 
+            }
+            90% {
+                color: #d96470; 
             }
             100% {
-                color: #fff; 
+                color: #5282ed; 
             }
+
         }
                 
         .container {
