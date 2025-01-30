@@ -9,7 +9,7 @@ document.querySelectorAll("nav ul li a").forEach((anchor) => {
 });
 
 var mouseclick = new Audio();
-mouseclick.src = "1687569402mixkit-fast-double-click-on-mouse-275.wav";
+mouseclick.src = "assets/1687569402mixkit-fast-double-click-on-mouse-275.wav";
 
 window.addEventListener("click", function () {
   const audio = document.getElementById("bg-audio");
