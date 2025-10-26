@@ -1,207 +1,629 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adithyan PR | Portfolio</title>
-    <link
-      rel="icon"
-      type="img/png"
-      href="img/20740e4975b3d599-sticker.png"
-      height="40px"
-      width="40px"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preload" href="path/to/pacifico.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adithyan - Creative Developer</title>
+    <meta name="description" content="Freelance creative developer specializing in modern web experiences with Flutter, Firebase, and GSAP animations.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  </head>
-  <body>
-  <div>
-      <div id="loading" class="loading-animation">
-      </div>
-      <div id="main-content" style="display: none;">
-    <div id="progressBar"></div>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    
+    <!-- Splitting.js for text animations -->
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    
+    <!-- DevIcons for Technology Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    </head>
 
-<div id="cookieConsent" onmousedown="mouseclick.play()">
-  Kurach cookies eduthotte!..
-      <button id="acceptCookies" class="submit-btn"><img src="data:image/png;base64,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" width="40px" height="40px"></button>
-</div>
-<audio id="bg-audio" loop>
-  <source src="assets/Ólafur Arnalds - saman.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-    <header>
-      <div class="container">
-        <h1> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEJ0lEQVR4nO2ZvW8bdRzGf1Q09r357MT3YikTZSgIwdAWCZA6MYBQ/oIKykCHDlUZujcUlQ2pVMAYJFQQUgckhKCxHb/cxU7sOunZvoiKdkCZUFGGVlS0gd/vQXcXv9upae4SG/mRnsny3ef5+vHd92xCJppoosAEW3sVdf0EGUfB0lTY2kPXlqaScRPq2jxsHag71ubJOAm/Ph+Crf+OuubAAzX1HoqzHBkXwU6cacHvuKp+QMZBAHkGNXWjCV5THXjAUm87r5FRF6r6221Tb8ADluL4LTLqQk1L9YW/pQDr8UUyyoKlvQRLZX3hvQDAuvIKGVXBUr/qqkwXfByozCyQkb1xWcpfPVNvh19zAkw/QiWeIKMmWMrH/SvTBr8243wCji+RURKKsxys+B994RvgLXjg5vQWLE04uOu8reioxY/B0uZgKWdhKdcGVqYd3IP3XJ6+hlLsLMrROazKx1BSdF/uE6grR7Chn4SdOIW6fgE1/Qpq6nVUtQKq6iaq6vbuV5kB8A1wDx4ox4CSZ7YadU1Xotu0KG/SFblAi5HrtBi5goJ0AcuRUyiIJ2HKz+0Ov5H4yF3AWktY9zrQfWMatjKd4H3g2UrDMlhxx4WI5+WGJcAQLw4OYOunUddZE757Heg39eEr0wHeCy+3wHvgJTBTAjUkBlN67wkV0t9FXdvumXoAlWH94Bvg3fCm9A8M8cxw34Oa+iaq2oNRqAxzJy8+RF56Zyj4Zoh1/QSqyr2DrAzz4LdgiG/8J/hWnZQjsOJ3DqIyzIHPi78hKx59KvhmCOf6vB6/5U9l5KEqwzx4G1ludk/wzRC2ImItntyPyjAXXsghFZN9ge94zq3MfBdkZZghOvDfo0i44NaIysynQVSGOfCG+DlADgUC3xGkHLvqZ2WYO3nxauDgzQCl2Cd+VYbtmOaFy/sXoBxb8qMyzHHeM83x6f2BBzmEUvT+XivTghfAcgJoln+Ai/vR/9XpF/dcmXwnPHOc5YGc+ELwAVbk9/2oTBM858G7ATL86cAD0FX5Sz8q44ELTXiW4UGXwl8EH6AYrfhVGbYD7pkDTYdvBgqPLAnTovx44NQ7dhlhC4ZwDlnhHM0JW/0qwxrwS5xrusQ9ds4RXICC9PoT19+8RGle/BoFofmnBkw5RrP8ZzQj/N0JzzXhWdpxGEiFXwsuQFH+cNf11xAzMISXB74/Kx6lGe6nXviw51QYSE6dDywAXZa+7QtuSpsw+d2fVduDpLk5mubudsM7pouhb4ILUJDudj6nin/SvDT/NL1FhRxGeuo8TYfve/AhsGQINDl1JxB4t8dmhDnw1JAoNcUF5Pk9/8aJn/kETU0t0GSIugFuhBh+JDF/qNtPtKgJ1BBvU1PKYTly3PfjJ589Tm9M5eji4V/wA+H9Pv5EE/1f9S9M4cKBWKiMUAAAAABJRU5ErkJggg==" width="40px" height="40px"> Adithyan PR</h1>
-        <p>Web and Android Developer</p>
-      </div>
-    </header>
-    <nav id="popup-navbar" class="hidden">
-                <h1 class="nav-h1"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEJ0lEQVR4nO2ZvW8bdRzGf1Q09r357MT3YikTZSgIwdAWCZA6MYBQ/oIKykCHDlUZujcUlQ2pVMAYJFQQUgckhKCxHb/cxU7sOunZvoiKdkCZUFGGVlS0gd/vQXcXv9upae4SG/mRnsny3ef5+vHd92xCJppoosAEW3sVdf0EGUfB0lTY2kPXlqaScRPq2jxsHag71ubJOAm/Ph+Crf+OuubAAzX1HoqzHBkXwU6cacHvuKp+QMZBAHkGNXWjCV5THXjAUm87r5FRF6r6221Tb8ADluL4LTLqQk1L9YW/pQDr8UUyyoKlvQRLZX3hvQDAuvIKGVXBUr/qqkwXfByozCyQkb1xWcpfPVNvh19zAkw/QiWeIKMmWMrH/SvTBr8243wCji+RURKKsxys+B994RvgLXjg5vQWLE04uOu8reioxY/B0uZgKWdhKdcGVqYd3IP3XJ6+hlLsLMrROazKx1BSdF/uE6grR7Chn4SdOIW6fgE1/Qpq6nVUtQKq6iaq6vbuV5kB8A1wDx4ox4CSZ7YadU1Xotu0KG/SFblAi5HrtBi5goJ0AcuRUyiIJ2HKz+0Ov5H4yF3AWktY9zrQfWMatjKd4H3g2UrDMlhxx4WI5+WGJcAQLw4OYOunUddZE757Heg39eEr0wHeCy+3wHvgJTBTAjUkBlN67wkV0t9FXdvumXoAlWH94Bvg3fCm9A8M8cxw34Oa+iaq2oNRqAxzJy8+RF56Zyj4Zoh1/QSqyr2DrAzz4LdgiG/8J/hWnZQjsOJ3DqIyzIHPi78hKx59KvhmCOf6vB6/5U9l5KEqwzx4G1ludk/wzRC2ImItntyPyjAXXsghFZN9ge94zq3MfBdkZZghOvDfo0i44NaIysynQVSGOfCG+DlADgUC3xGkHLvqZ2WYO3nxauDgzQCl2Cd+VYbtmOaFy/sXoBxb8qMyzHHeM83x6f2BBzmEUvT+XivTghfAcgJoln+Ai/vR/9XpF/dcmXwnPHOc5YGc+ELwAVbk9/2oTBM858G7ATL86cAD0FX5Sz8q44ELTXiW4UGXwl8EH6AYrfhVGbYD7pkDTYdvBgqPLAnTovx44NQ7dhlhC4ZwDlnhHM0JW/0qwxrwS5xrusQ9ds4RXICC9PoT19+8RGle/BoFofmnBkw5RrP8ZzQj/N0JzzXhWdpxGEiFXwsuQFH+cNf11xAzMISXB74/Kx6lGe6nXviw51QYSE6dDywAXZa+7QtuSpsw+d2fVduDpLk5mubudsM7pouhb4ILUJDudj6nin/SvDT/NL1FhRxGeuo8TYfve/AhsGQINDl1JxB4t8dmhDnw1JAoNcUF5Pk9/8aJn/kETU0t0GSIugFuhBh+JDF/qNtPtKgJ1BBvU1PKYTly3PfjJ589Tm9M5eji4V/wA+H9Pv5EE/1f9S9M4cKBWKiMUAAAAABJRU5ErkJggg==" width="40px" height="40px"> Adithyan PR</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <main>
-      <section id="about" class="section">
-        <div class="container-about">
-          <h2>About Me</h2>
-          <img src="assets/portfolio-image.png" class="image-3d" id="parallax-image" oncontextmenu="return false" loading="lazy"/>
-          <p>
-            I am a developer passionate about creating simple, elegant solutions
-            to complex problems. I focus on delivering high-quality, clean, and
-            modern projects that meet user needs.Check this out! <a class="resume" href="resume.html">Resume</a>
-          </p>
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css">
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+
+    <!-- Full Screen Navigation - MOBILE/TABLET ONLY -->
+<!-- Fullscreen Navigation -->
+<div class="fullscreen-nav">
+    <!-- Header with Logo and Close -->
+    <div class="nav-header">
+        <div class="nav-logo">Adithyan</div>
+        <button class="nav-close">CLOSE</button>
+    </div>
+    
+    <!-- Navigation Links -->
+    <ul class="fullscreen-nav-links">
+        <li class="fullscreen-nav-item">
+            <a href="#home" class="fullscreen-nav-link">
+                <span class="nav-number">01</span>
+                <div class="nav-icon-wrapper">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                Home
+            </a>
+        </li>
+        <li class="fullscreen-nav-item">
+            <a href="#projects" class="fullscreen-nav-link">
+                <span class="nav-number">02</span>
+                <div class="nav-icon-wrapper">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                    </svg>
+                </div>
+                Projects
+            </a>
+        </li>
+        <li class="fullscreen-nav-item">
+            <a href="#about" class="fullscreen-nav-link">
+                <span class="nav-number">03</span>
+                <div class="nav-icon-wrapper">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </div>
+                About
+            </a>
+        </li>
+        <li class="fullscreen-nav-item">
+            <a href="#skills" class="fullscreen-nav-link">
+                <span class="nav-number">04</span>
+                <div class="nav-icon-wrapper">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                Skills
+            </a>
+        </li>
+        <li class="fullscreen-nav-item">
+            <a href="#experience" class="fullscreen-nav-link">
+                <span class="nav-number">05</span>
+                <div class="nav-icon-wrapper">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </div>
+                Experience
+            </a>
+        </li>
+        <li class="fullscreen-nav-item">
+            <a href="#contact" class="fullscreen-nav-link">
+                <span class="nav-number">06</span>
+                <div class="nav-icon-wrapper">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+                Contact
+            </a>
+        </li>
+    </ul>
+    
+    <!-- Footer -->
+    <div class="nav-footer">
+        <span class="nav-footer-item">Available for Work</span>
+        <span class="nav-footer-item">Based in India</span>
+        <div class="nav-social">
+            <a href="https://github.com/Aathi-pr" class="nav-social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" class="nav-social-icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
         </div>
-      </section>
+    </div>
+</div>
 
-      <section id="projects" class="section block">
-        <div class="container-projects">
-          <h2>Projects</h2>
-          <div class="project-grid">
-            <div class="project-card">
-                <img class="project-img block" src="assets/home.png" alt="project-image" width="300vw" height="450vh">
-                <img class="project-img block" src="assets/map-page.png" alt="project-image" width="300vw" height="450vh">
-              <h3>TukTukGo</h3>
-              <p>TukTukGo - 'An auto booking platform for web.'</p>
-              <a
-                href="https://github.com/Aathi-pr/Mini-project"
-                class="project-link"
-                >View Project</a
-              >
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <div class="logo">Adithyan</div>
+            
+            <!-- Desktop Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <div class="theme-switcher" data-theme="light">
+    <!-- Sun Icon (Light Mode) -->
+    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    
+    <!-- Moon Icon (Dark Mode) -->
+    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+</div>
+
+                <!-- Menu toggle for mobile/tablet -->
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Desktop Only Elements -->
+        <div class="availability-badge desktop-only">
+            <span class="status-dot"></span>
+            Available for Freelance
+        </div>
+
+        <div class="social-icons left">
+            <a href="https://github.com/Aathi-pr" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+
+        <div class="social-icons right">
+            <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <!-- Mobile Only Elements -->
+        <div class="availability-badge mobile-only">
+            <span class="status-dot"></span>
+            Available for Freelance
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-name" data-splitting>
+                <h1>ADITHYAN</h1>
+                <h1>PR</h1>
+            </div>
+            
+            <div class="decorative-line"></div>
+            
+            <p class="hero-tagline">
+                Flutter Developer × Frontend Specialist × Animation Enthusiast
+            </p>
+
+            <div class="skill-badges">
+                <span class="badge"><i class="devicon-flutter-plain"></i> Flutter</span>
+                <span class="badge"><i class="devicon-firebase-plain"></i> Firebase</span>
+                <span class="badge">GSAP</span>
+                <span class="badge"><i class="devicon-javascript-plain"></i> JavaScript</span>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Let's Talk</a>
             </div>
         </div>
-      </section>
 
-      <section id="contact" class="section block">
-        <div class="container">
-          <h2>Contact Me!..</h2>
-          <div class="contact-form">
-            <form
-              action="https://formspree.io/f/xpzgdbpo"
-              method="POST"
-              enctype="multipart/form-data"
-            >
-              <div class="form-control">
-                <label for="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="sender-name"
-                  placeholder="Enter Your Name"
-                  class="input-field"
-                  required
-                />
-              </div>
-              <div class="form-control">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="sender-email"
-                  placeholder="Enter Your Email"
-                  class="input-field"
-                  required
-                />
-              </div>
-              <div class="form-control">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  cols="60"
-                  rows="10"
-                  placeholder="Enter Your Message"
-                  name="message"
-                  class="input-field"
-                  required
-                ></textarea>
-              </div>
-              <input
-                type="submit"
-                value="Notify"
-                id="submit-btn"
-                class="submit-btn"
-                onmousedown="mouseclick.play()"
-              />
-            </form>
-          </div>
+        <!-- Mobile Statistics -->
+        <div class="statistics mobile-only">
+            <div class="stat">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Years</span>
+            </div>
         </div>
-      </section>
-    </main>
- <!-- <div id="lightings">
-    	<article id="one">
-            <article id="two">
-                <article id="three">
-                    <article id="four">
-                        <article id="five">
 
-                        </article>
-                    </article>
-                </article>
-            </article>
-    	</article>
- </div> -->
+        <!-- Mobile Social Icons -->
+        <div class="social-icons mobile-only">
+            <a href="https://github.com/Aathi-pr" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
 
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Scroll</span>
+        </div>
+    </section>
+
+    <!-- Projects Section - BRUTALIST -->
+<section class="projects-section" id="projects">
+    <h2 class="projects-section-title">Featured Projects</h2>
+    
+    <div class="projects-horizontal-wrapper">
+        <div class="projects-scroll-container">
+            <div class="projects-scroll">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/wedding.png" alt="Wedding RSVP" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Wedding RSVP Website</h3>
+                        <p class="project-desc">Ultra-minimal wedding RSVP platform with immersive GSAP scroll animations.</p>
+                        <div class="project-actions">
+                            <a href="assets/w/index.html" class="project-btn">
+                                View Project
+                                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#" class="github-btn">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/event.png" alt="Event Management" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Event Management Platform</h3>
+                        <p class="project-desc">Comprehensive event management with horizontal scrolling services.</p>
+                        <div class="project-actions">
+                            <a href="assets/event-website/index.html" class="project-btn">
+                                View Project
+                                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#" class="github-btn">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/code.png" alt="Portfolio" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Code Collab</h3>
+                        <p class="project-desc">collaborative Code Editor - Made for web</p>
+                        <div class="project-actions">
+                            <a href="https://codecollab.pythonanywhere.com" class="project-btn">
+                                View Project
+                                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#" class="github-btn">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-content">
+                <div class="about-photo-wrapper">
+                    <div class="about-photo-frame">
+                        <div class="about-photo"><img src="assets/portfolio-image.png"></div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        I'm Adithyan PR, a creative frontend developer with a passion for crafting minimal design websites with complex GSAP animations. I specialize in building modern web experiences that blend elegant aesthetics with seamless, buttery-smooth interactions at 60fps.
+                    </p>
+
+                    <p class="about-paragraph">
+                        Beyond web development, I build Flutter mobile applications with Firebase integration, bringing the same attention to detail and user experience to every platform. I'm constantly exploring Awwwards for design inspiration and experimenting with new animation techniques.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="skills-container">
+            <div class="skills-intro">
+                <span class="skills-tagline">Technical Arsenal</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="skills-description">
+                    Crafting digital experiences with modern tools and frameworks
+                </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="skills-grid">
+                <!-- Frontend -->
+                <div class="skill-item" data-category="frontend">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-html5-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">HTML</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="95"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="frontend">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-css3-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">CSS</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="95"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="frontend">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-javascript-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="90"></div>
+                    </div>
+                </div>
+
+                <!-- Mobile Development -->
+                <div class="skill-item" data-category="mobile">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-flutter-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Flutter</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="85"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="mobile">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-dart-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Dart</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="85"></div>
+                    </div>
+                </div>
+
+                <!-- Backend & Database -->
+                <div class="skill-item" data-category="backend">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-firebase-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Firebase</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="80"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="backend">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-python-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Python</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="75"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="backend">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-django-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Django</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="70"></div>
+                    </div>
+                </div>
+
+                <!-- Tools & Version Control -->
+                <div class="skill-item" data-category="tools">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-git-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Git</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="85"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="tools">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-github-original skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">GitHub</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="85"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-category="tools">
+                    <div class="skill-icon-wrapper">
+                        <i class="devicon-neovim-plain skill-icon"></i>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">Neovim</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="80"></div>
+                    </div>
+                </div>
+
+                <!-- Animation Libraries -->
+                <div class="skill-item" data-category="animation" data-highlight="true">
+                    <div class="skill-icon-wrapper">
+                        <svg class="skill-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                        </svg>
+                        <div class="skill-glow"></div>
+                    </div>
+                    <span class="skill-name">GSAP</span>
+                    <div class="skill-proficiency">
+                        <div class="skill-bar" data-level="90"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Categories Legend -->
+            <div class="skills-legend">
+                <div class="legend-item">
+                    <span class="legend-dot" data-category="frontend"></span>
+                    <span class="legend-label">Frontend</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" data-category="mobile"></span>
+                    <span class="legend-label">Mobile</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" data-category="backend"></span>
+                    <span class="legend-label">Backend</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" data-category="tools"></span>
+                    <span class="legend-label">Tools</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot" data-category="animation"></span>
+                    <span class="legend-label">Animation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Collaborate Section -->
+    <section class="collaborate-section">
+        <div class="collaborate-pin-wrapper">
+            <div class="collaborate-scroll">
+                <div class="collaborate-text">
+                    LET'S COLLABORATE.....
+                    <div class="collaborate-text-fill">LET'S COLLABORATE.....</div>
+                </div>
+                <div class="collaborate-text">
+                    LET'S COLLABORATE.....
+                    <div class="collaborate-text-fill">LET'S COLLABORATE.....</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Contact</h2>
+            
+            <form class="contact-form" action="https://formspree.io/f/xpzgdbpo"
+              method="POST"
+              enctype="multipart/form-data">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" name="sender-name" id="name" class="form-input" placeholder="Your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="sender-email" id="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" name="subject" id="subject" class="form-input" placeholder="Project inquiry" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-      <div class="container-footer">
-        <p>&copy; 2024 Adithyan PR</p>
-        <ul class="social-links">
-          <li>
-            <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/">
-              <img
-                class="linkedin"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABt0lEQVR4nO3ZPYsTURTG8V92xULBdTtX7X3BBbWx8CuoiH4MbX0JioLfwg+glYqgnaCNwoq7dpZiYyFaarHBxJELVxiGTDIuQs7gfeCB3MmZk/OfOfdOkktRUVFT69jEGFUQj7GBozrofYCCqxa/mVf8MiY5+Gw+thur2YdxBi8XBDCaB7ArB/7K40G+bZcwxAN8XnArdQKocvHHA7RNtVOA9PpynwH24FZtvI1rOIA1XM89GRZgFQ9r41R8UzcjA6w3Jmy68k0digzwrHHyWt8AqoZvTIkf9glglHv+YL7yw+iTuAro8X8LMGmJH/xlzBfcwynsx16cxG18jQ7wJBfdpn14FBFgCU9z7Dwt4XE0gBSzortW8C0SwE50JyLAhfxT9Qfe4dyM2NPRAM635L04Y0KHAthsybvRIe/CAQYzvnJs9wWgbVmcFICGyh2YotJCyiRWVqGqLKPKg6zfT+IqiMcFQPA7sFzbYorokQ7aClBo1eLXXQBO4G2wbdafeYfySBeAoqJ/rLTVehV3cR/P8SL7FT7gY82f8H1KH6dj6b16bDo35fiTL+VOn5H+2LqCY/Oq+w2SbqBLIpZomQAAAABJRU5ErkJggg=="
-                height="30px"
-                width="30px"
-              />
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Aathi-pr">
-              <img
-                class="github"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFl0lEQVR4nO2abWiWZRTHf0u3Z2Wlj62pmNkLlSsZBAkVLYioLco0kMKsyMqCUb6sN3oljBBNCmwt+lBB0ofqU2amERZY2XovlmtLI20KoYWEq+msJw79Lzjc3vf9vM8K/3DDdl/nOte5Xs45/3PdDxzB/xdZYDbwJPAW8B3wK7Bfj/3dqzaTmQWM41+CDDAP2AAcBHJFPtZnvXSYrhHH0UAHsNMZNQRsBB7RzjRpl2qBOv19ttoeBd5Tn9DfdC0B6kdqElcAW50BnwK3AWNL0GVH63bgc6fve6CNKsJWqssNaINfXkH9ZvyXTn9nNY7bBOAzDTAI3AWMqvQg/KNzEfC7xvoEaKyU8lO03TlFnelUH81AnztqZkNZOFFhNKxOAyOH8cCHGtt8cmI5PhGO00fAGEYexwIfu6BSks90ueNkqxNwKrAb+AX4Clipo1AqzgeeBXqAvcAPkZ1vcMfMAkDRITY4dtQnXo9JbH8CLwOTgFbgKWAT0A/s09OvdzbxS4GTgTUJibIzMmazCwCmv+BkF/KERaco9qrteuBaYHUksRX7/AY8r0R5p3PwKBa7toKSZofLE9EQW+sMsAkHTAXe1c5sBh4AWoAz5Ftj9PfFwMPyvb+0uz68TnaTi2K0jnJOk0pFxtGOuGRXA/whI46JGcgMKRRTpc9jksb+Oc+RH8jn+PNchEhCcDzjUpVGi4uScahxdMaOdiI2SMi4UxJek8wNVB73FBCd7pDMuiSBrGj1UB4CuFKKnqPyeEO6706Ryaq+GU6yc7aUGBVPQqMc0Zz6gvLtTrRhIBJMonhfcjPTVtrqiSQ8KJlXqB42aoybUmQek8yKuMa1arQSNAmBslxC9XCjxjBfTMI1knkzrrE/TzQaLR86WOWydJrs2JIic45kjNAegj1qPCGhc4PaTa6aOEnj/JgiE2wxzncI9qvR6us4ZNRu0eIoqodzNc7XKTLBFouwiRP5Ftil6xv/hB3LiQFXC3M0hjGIbcCOiB3bNcnEiQRDLxRVyLo4fZz+D2zVytFqYbXGeELFVDbyTHEMYHeasy8W6XsReEd0pV/8Z8id32oUWme5MfbpZPTJBmMdLygFdKQ5+1rHc5YDC8T9zwPO1C7ZznwguZcq7CumO1SDz7jVnyYb2nR1tNyVwHZCEhPisjwDNmm1cjoGZkC5mKIFzKkWyqdzWVpCnJWHeXpcJKoS6MQtqq+LhfnAQ25htqpyzIfNaRRlnJLdAW1rwFJFkE2qr335+YWLZGbMq2KwVsqerluYOvGmifKBq0SD3lYoD/2NMBZyUzJeNlrf45OE1seUuCEI5KTgZtc2SjVMd4ll7rDoeDGUZ1E+Go+KFRP6xr1rcccop10zrhPFaQoQofBKe3ZorFJuEXukY26hpa4/f9dFDLHkOd+VuxmVufO1aybztI5XiP+Tddt+QKWyJb5icbV0/1QI31vi7rOMKIYSM2TTHhmStuKPp+hfIJmdMXV/GmrdredCCkC9u+v1ldqtrp5vVXEzqHeDCgghiiXxtbAoWyRrO1go7lWfvmLYd5s7QpaMUOTZpfdduliuianl08rUgPa0eiIGMxwXLPpTRqc6bnPU/jK38kmPsdd8aJasLUw+NMgGk19FCcjoBj6nfBFyy3Rl9AHV7tGJFHIL6EuCNGRdruoup6BrdP7SrQSXhDCRQpFPvlH+mFMua6zkh57tzmeKNawY+RnKNWESZX/o8Z/ewuqYj9wXE5kqMZE64H7nh92V/PQWkHEBIOSZK13kKmciNdLV696vqva391Z31MKE2suYSHtkAv0V/lqcinpVkgMxUWup6EeTjmS9ngl6N0eZP9rPaMfCw/ULiIzI37oSf8IxrN+mzD1cE4jDWBHNFcrYvbrQCD+q2SNqskYyM9PqiSPgP46/AXoFNkxBLvgnAAAAAElFTkSuQmCC"
-                height="30px"
-                width="30px"
-              />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/_4dithyan_pr/">
-              <img
-                class="instagram"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADK0lEQVR4nO2ZO09UQRTHfwUqRB67lksrgrEQBTsfsZOYqHwCQlS+gApS+2iNhFKDX0AxsZLFZ6f2Itio2AoKCBWuOcn/JhMDu3Mfu3NN9p9McrP3nHPn7Jz3QBNN5AK9wAQwDywAG0Alo2WyTGYZGAcO1UOBQeBFhpv2XfPAQBYK7AGmgT8S/AN4AFzQ6ewnO5gsk3kReKhvVfTtKaAlqeAi8FLCfgO3gE4ah07gNrDpnE4hyUlEpvRdphUKR4Ev2ssbYG8c5mkxfgNKhEcJWNae7vsyDcouzZyOkR8cl5lt67kmIpMyn8gb7mhvFqKroteJTo107Ajn5ZNmRkM7vO8CVrTHnmqCJkRk4S8Elp0cYv65E2b0/kY1QWURWSzPqyLDej9XTdCiiNKUB5Z/RoGnwCeVHht6ntU7o9kJQ1LGlDhXw/xN3q5YE1FHAgXagEngp0fpsQrcBFoTfKdDMmyvuyL6UJI4/8Hhfw5cccoYW336bc6he58wT1Vq7TOJIiWZQnTcJz14TjlmnCTpVrJWpM05iVcxayHzk9fifRfTzCpZKzIp+oUkBZ2UiU7GQn8QRYqOY/uY02444wSAYghFRh3HTosof42EUGRWtJdJj6uS9TiEIpFtW4hNiz6fJFcvRdZF2056tEvW+v+uSKdk/fKkb5pWNWe3siMtxkI6+6hPOe2J+ZDht6gkZvSnSY6zTkIshC5RFmNkZRfGs+TT8dVbkVaV4hUVgHGUOQC8zUvR+G8Zv6TaycecPuepjI9Q0r8a8ZcViQ4rz7Trecxx7Ogk6tJYraVodVtViq96trp2dbCvXq3uYgbDh4LC6BP1KetaC/ptJGHvEmv4EHoc5INhn/ZhPPCAzgePtMdreR6Z1oL3yBQnqtglS95wN05XOqBrhU3f8X2DMAhs6Vqh35dpSprb+LKb8Oh25sL34jC2OCZmY/4ThEM/8NVJtLEvRQuOMpu6ZDFnaxS65BNbTruQOP+06M5uW8JWdD9xSQODLNrcCCarT3lixolO2zKnxNfTLo4AzzxKj6xXuV4Bp0d9w5xTfmS1aZP1UaH1OnCwHgo00QTx8Bf0wax6bwlEYQAAAABJRU5ErkJggg=="
-                height="30px"
-                width="30px"
-              />
-            </a>
-          </li>
-          <li><a href="resume.html" style="color: white; text-decoration: none;">Resume</a></li>
-        </ul>
-      </div>
-      <div id="wrap">
-      <div id="lightings">
-         	<article id="one">
-                 <article id="two">
-                     <article id="three">
-                         <article id="four">
-                             <article id="five">
-
-                             </article>
-                         </article>
-                     </article>
-                 </article>
-         	</article>
-      </div>
-      </div>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Adithyan</h3>
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.875rem; color: var(--text-gray); margin-top: 1rem;">
+                    Creative developer crafting minimal digital experiences with complex animations.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/Aathi-pr" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/adithyanpr/" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 Adithyan Narayanan. All rights reserved.</p>
+        </div>
     </footer>
-    <script src="js/script.js"></script>
-  </body>
+    <!-- custom script -->
+    <script src="js/script.min.js"></script>
+    </body>
 </html>
