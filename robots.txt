@@ -1,11 +1,14 @@
-
 # robots.txt for aathi-pr.github.io
-
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /*.json$
 
 # Sitemap location
 Sitemap: https://aathi-pr.github.io/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
 
 # Allow all major search engines
 User-agent: Googlebot
@@ -17,5 +20,11 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
-# Crawl delay (optional, in seconds)
-Crawl-delay: 1
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
