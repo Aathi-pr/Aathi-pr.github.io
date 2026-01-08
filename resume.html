@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Adithyan PR</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Resume of Adithyan PR - Flutter Developer specializing in responsive, user-friendly mobile applications.">
+    <meta name="keywords" content="flutter developer resume, mobile app developer, dart developer, firebase developer">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           DESIGN SYSTEM
+        ========================================== */
+        :root {
+            --black: #0d0d0d;
+            --white: #fefefe;
+            --stone: #8a8a8a;
+            --paper: #f5f5f5;
+            --sand: #e8e4df;
+            --earth: #c9a47e;
+            --font-latin: 'Inter', sans-serif;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-latin);
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ==========================================
+           NAVIGATION
+        ========================================== */
+        .resume-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(13, 13, 13, 0.05);
+            z-index: 100;
+        }
+        
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.875rem;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-back:hover {
+            opacity: 0.6;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-action {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--sand);
+            background: transparent;
+            color: var(--black);
+            text-decoration: none;
+            font-family: var(--font-latin);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-action:hover {
+            border-color: var(--black);
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        
+        .btn-primary:hover {
+            background: var(--earth);
+            border-color: var(--earth);
+        }
+        
+        /* ==========================================
+           RESUME CONTAINER
+        ========================================== */
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 5vw 4rem;
+        }
+        
+        /* ==========================================
+           HEADER
+        ========================================== */
+        .resume-header {
+            text-align: center;
+            padding: var(--space-lg) 0;
+            border-bottom: 1px solid var(--sand);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .resume-name {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .resume-title {
+            font-size: 1.25rem;
+            color: var(--stone);
+            font-weight: 300;
+            margin-bottom: var(--space-md);
+        }
+        
+        .resume-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--stone);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--stone);
+            transition: color 0.3s;
+        }
+        
+        .contact-item:hover {
+            color: var(--black);
+        }
+        
+        /* ==========================================
+           SECTIONS
+        ========================================== */
+        .resume-section {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: var(--space-md);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--sand);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+        
+        /* Summary */
+        .resume-summary {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--stone);
+        }
+        
+        /* Experience */
+        .experience-item,
+        .education-item {
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid rgba(13, 13, 13, 0.05);
+        }
+        
+        .experience-item:last-child,
+        .education-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        
+        .item-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-company,
+        .item-school {
+            font-size: 1rem;
+            color: var(--stone);
+        }
+        
+        .item-date {
+            font-size: 0.875rem;
+            color: var(--stone);
+            white-space: nowrap;
+        }
+        
+        .item-description {
+            margin-bottom: 0.75rem;
+            color: var(--stone);
+        }
+        
+        .item-achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .item-achievements li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: var(--stone);
+        }
+        
+        .item-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--earth);
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .skill-category {
+            padding: var(--space-md);
+            border: 1px solid var(--sand);
+            transition: all 0.3s;
+        }
+        
+        .skill-category:hover {
+            border-color: var(--earth);
+            transform: translateY(-5px);
+        }
+        
+        .skill-category-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            padding: 0.4rem 0.8rem;
+            background: var(--paper);
+            font-size: 0.75rem;
+            color: var(--stone);
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .skill-tag:hover {
+            border-color: var(--earth);
+            color: var(--black);
+        }
+        
+        /* Projects */
+        .project-item {
+            margin-bottom: var(--space-md);
+            padding: var(--space-md);
+            border: 1px solid var(--sand);
+            transition: all 0.3s;
+        }
+        
+        .project-item:hover {
+            border-color: var(--earth);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .project-meta {
+            font-size: 0.75rem;
+            color: var(--stone);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .project-tech {
+            font-size: 0.875rem;
+            color: var(--stone);
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-description {
+            color: var(--stone);
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            font-size: 0.875rem;
+            color: var(--earth);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* ==========================================
+           CERTIFICATIONS - MODERN MINIMAL
+        ========================================== */
+        
+        .cert-list-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .cert-card-modern {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border: 1px solid var(--sand);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .cert-card-modern:hover {
+            border-color: var(--black);
+            transform: translateX(8px);
+        }
+        
+        .cert-header-modern {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            flex: 1;
+        }
+        
+        .cert-icon-modern {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--stone);
+            transition: all 0.3s;
+        }
+        
+        .cert-card-modern:hover .cert-icon-modern {
+            border-color: var(--earth);
+            color: var(--earth);
+        }
+        
+        .cert-meta-modern {
+            flex: 1;
+        }
+        
+        .cert-name-modern {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+        
+        .cert-issuer-modern {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--stone);
+        }
+        
+        .cert-org {
+            font-weight: 400;
+        }
+        
+        .cert-separator {
+            color: var(--sand);
+        }
+        
+        .cert-year {
+            font-weight: 300;
+        }
+        
+        .cert-actions-modern {
+            flex-shrink: 0;
+        }
+        
+        .cert-link {
+            font-size: 0.875rem;
+            color: var(--stone);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+        }
+        
+        .cert-link:hover {
+            color: var(--black);
+            border-color: var(--sand);
+        }
+        
+        /* ==========================================
+           PRINT STYLES
+        ========================================== */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .resume-nav,
+            .nav-actions,
+            .cert-actions-modern {
+                display: none !important;
+            }
+            
+            .resume-container {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .resume-section {
+                page-break-inside: avoid;
+            }
+            
+            .experience-item,
+            .education-item,
+            .project-item,
+            .cert-card-modern {
+                page-break-inside: avoid;
+            }
+            
+            a {
+                color: var(--black);
+                text-decoration: none;
+            }
+            
+            .skill-category:hover,
+            .project-item:hover,
+            .cert-card-modern:hover {
+                transform: none;
+            }
+        }
+        
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+        @media (max-width: 768px) {
+            .resume-nav {
+                padding: 1rem 5vw;
+            }
+            
+            .resume-name {
+                font-size: 2rem;
+            }
+            
+            .resume-title {
+                font-size: 1rem;
+            }
+            
+            .resume-contact {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .item-header,
+            .project-header {
+                flex-direction: column;
+            }
+            
+            .item-date {
+                margin-top: 0.25rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn-action {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            /* Certifications Mobile */
+            .cert-card-modern {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.25rem;
+            }
+            
+            .cert-card-modern:hover {
+                transform: translateX(0);
+                transform: translateY(-3px);
+            }
+            
+            .cert-header-modern {
+                width: 100%;
+            }
+            
+            .cert-actions-modern {
+                width: 100%;
+            }
+            
+            .cert-link {
+                width: 100%;
+                justify-content: center;
+                border: 1px solid var(--sand);
+            }
+        }
+        
+        /* ==========================================
+           ANIMATIONS
+        ========================================== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .resume-header,
+        .resume-section {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .resume-section:nth-child(2) { animation-delay: 0.1s; }
+        .resume-section:nth-child(3) { animation-delay: 0.2s; }
+        .resume-section:nth-child(4) { animation-delay: 0.3s; }
+        .resume-section:nth-child(5) { animation-delay: 0.4s; }
+        .resume-section:nth-child(6) { animation-delay: 0.5s; }
+        .resume-section:nth-child(7) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="resume-nav">
+        <a href="index.html" class="nav-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"/>
+                <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Back to Portfolio
+        </a>
+        
+        <div class="nav-actions">
+            <a href="assets/adithyan-pr-resume.pdf" class="btn-action btn-primary" download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+    </nav>
+
+    <!-- Resume Content -->
+    <div class="resume-container">
+        
+        <!-- Header -->
+        <header class="resume-header">
+            <h1 class="resume-name">ADITHYAN PR</h1>
+            <p class="resume-title">Flutter Developer</p>
+            
+            <div class="resume-contact">
+                <a href="mailto:adithyanpr0001@gmail.com" class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    adithyanpr0001@gmail.com
+                </a>
+                <a href="tel:+919037057940" class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    9037057940
+                </a>
+                <span class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Adoor, Kerala
+                </span>
+                <a href="https://adithyan-pr.web.app" class="contact-item" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    adithyan-pr.web.app
+                </a>
+                <a href="https://linkedin.com/in/adithyan-p-r-84328a238" class="contact-item" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                    LinkedIn Profile
+                </a>
+            </div>
+        </header>
+
+        <!-- Career Objective -->
+        <section class="resume-section">
+            <h2 class="section-title">Career Objective</h2>
+            <p class="resume-summary">
+                Detail-oriented Flutter developer passionate about building responsive, user-friendly mobile applications. Seeking opportunities to apply my skills in Dart, Flutter, and Firebase to create innovative solutions, with a commitment to continuous learning and growth in mobile development.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="resume-section">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Tools & Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Django</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firestore</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Web Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section class="resume-section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">Flutter Developer Intern</h3>
+                        <p class="item-company">Inmakes Infotech, Kochi, Kerala</p>
+                    </div>
+                    <span class="item-date">March 2025 — June 2025</span>
+                </div>
+                <ul class="item-achievements">
+                    <li>Working on mobile application development using Flutter framework, Dart and Firebase and REST API's</li>
+                    <li>Implementing responsive UI designs and Firebase integrations</li>
+                    <li>Collaborating with team on feature development and bug fixing</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="resume-section">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Juber - Ride Booking Application</h3>
+                        <p class="project-meta">Inmakes Infotech</p>
+                    </div>
+                </div>
+                <p class="project-tech">Flutter, Dart, Firebase</p>
+                <p class="project-description">
+                    Developed a full-featured ride-booking app using Flutter and Firebase. Implemented user authentication, real-time location tracking, and payment integration. Created responsive UI with Material Design principles.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-meta">Personal Project</p>
+                    </div>
+                </div>
+                <p class="project-tech">Flutter, Dart, Firebase</p>
+                <p class="project-description">
+                    Built and deployed a personal portfolio site using Flutter Web. Implemented responsive design and animations.
+                </p>
+                <div class="project-links">
+                    <a href="https://adithyan-f5f6e.web.app" class="project-link" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        Live Site
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <h3 class="project-title">TukTukGO - Auto Booking Platform</h3>
+                        <p class="project-meta">Academic Project</p>
+                    </div>
+                </div>
+                <p class="project-tech">Python Django, HTML, CSS, JavaScript, MySQL</p>
+                <p class="project-description">
+                    Created backend using Django and frontend with responsive design. Implemented database schema with MySQL.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-section">
+            <h2 class="section-title">Education</h2>
+
+                <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">Master of Computer Applications (MCA)</h3>
+                        <p class="item-school">SCMS Group Of Institutions</p>
+                    </div>
+                    <span class="item-date">2025 — Present</span>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">Bachelor of Computer Applications (BCA)</h3>
+                        <p class="item-school">KVVS College of Science and Technology</p>
+                    </div>
+                    <span class="item-date">2022 — 2025</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="resume-section">
+            <h2 class="section-title">Certifications & Credentials</h2>
+            
+            <div class="cert-list-modern">
+                
+                <!-- Certification 1 -->
+                <div class="cert-card-modern">
+                    <div class="cert-header-modern">
+                        <div class="cert-icon-modern">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="cert-meta-modern">
+                            <h3 class="cert-name-modern">Build Real World AI Applications with Gemini and Imagen</h3>
+                            <div class="cert-issuer-modern">
+                                <span class="cert-org">Google Cloud</span>
+                                <span class="cert-separator">•</span>
+                                <span class="cert-year">2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-actions-modern">
+                        <a href="https://www.credly.com/badges/38a00b04-5863-4682-a41a-236e7aa83005/public_url" class="cert-link" target="_blank" rel="noopener">View Certificate →</a>
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div class="cert-card-modern">
+                    <div class="cert-header-modern">
+                        <div class="cert-icon-modern">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="cert-meta-modern">
+                            <h3 class="cert-name-modern">Develop GenAI Apps with Gemini and Streamlit</h3>
+                            <div class="cert-issuer-modern">
+                                <span class="cert-org">Google Cloud</span>
+                                <span class="cert-separator">•</span>
+                                <span class="cert-year">2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-actions-modern">
+                        <a href="https://www.credly.com/badges/f3eede2a-585d-4e5d-8ba4-9715fd760e84/public_url" class="cert-link" target="_blank" rel="noopener">View Certificate →</a>
+                    </div>
+                </div>
+
+                <!-- Certification 3 -->
+                <div class="cert-card-modern">
+                    <div class="cert-header-modern">
+                        <div class="cert-icon-modern">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="cert-meta-modern">
+                            <h3 class="cert-name-modern">Prompt Design in Vertex AI</h3>
+                            <div class="cert-issuer-modern">
+                                <span class="cert-org">Google Cloud</span>
+                                <span class="cert-separator">•</span>
+                                <span class="cert-year">2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-actions-modern">
+                        <a href="https://www.credly.com/badges/007c480b-2349-49e3-8fe1-17bf72c6a898/public_url" class="cert-link" target="_blank" rel="noopener">View Certificate →</a>
+                    </div>
+                </div>
+
+                 <!-- Certification 4 -->
+                <div class="cert-card-modern">
+                    <div class="cert-header-modern">
+                        <div class="cert-icon-modern">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="cert-meta-modern">
+                            <h3 class="cert-name-modern">Explore Generative AI with the Vertex AI Gemini API Skill Badge</h3>
+                            <div class="cert-issuer-modern">
+                                <span class="cert-org">Google Cloud</span>
+                                <span class="cert-separator">•</span>
+                                <span class="cert-year">2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-actions-modern">
+                        <a href="https://www.credly.com/badges/1f18f0f2-279d-499a-8078-14aa32c48bc7/public_url" class="cert-link" target="_blank" rel="noopener">View Certificate →</a>
+                    </div>
+                </div>
+
+                <!-- Certification 5 -->
+                <div class="cert-card-modern">
+                    <div class="cert-header-modern">
+                        <div class="cert-icon-modern">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="cert-meta-modern">
+                            <h3 class="cert-name-modern">Inspect Rich Documents with Gemini Multimodality and Multimodal RAG</h3>
+                            <div class="cert-issuer-modern">
+                                <span class="cert-org">Google Cloud</span>
+                                <span class="cert-separator">•</span>
+                                <span class="cert-year">2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cert-actions-modern">
+                        <a href="https://www.credly.com/badges/b540e134-2f38-4649-a384-643546c350fb/public_url" class="cert-link" target="_blank" rel="noopener">View Certificate →</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Simple print functionality
+        console.log('Resume page loaded - Adithyan PR');
+        
+        // Track print events
+        window.onbeforeprint = function() {
+            console.log('Printing resume...');
+        };
+        
+        window.onafterprint = function() {
+            console.log('Print completed');
+        };
+        
+        // Smooth scroll to top on load
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+    </script>
+
+</body>
+</html>

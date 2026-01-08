@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon — Adithyan</title>
+    
+    <meta name="description" content="Something exciting is coming soon. Stay tuned for updates.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@200;300;400&family=Noto+Sans+Malayalam:wght@200;300;400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #0d0d0d;
+            --white: #fefefe;
+            --stone: #8a8a8a;
+            --paper: #f5f5f5;
+            --sand: #e8e4df;
+            --earth: #c9a47e;
+            --font-latin: 'AdithyanFont', serif;
+            --font-latin-para: 'Inter', sans-serif;
+            --font-hindi: 'Noto Sans Devanagari', sans-serif;
+            --font-malayalam: 'Noto Sans Malayalam', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-latin);
+            background: var(--white);
+            color: var(--black);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Noise Texture */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 1;
+            background-image: url("image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Floating Shapes Background */
+        .shape {
+            position: absolute;
+            opacity: 0.05;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid var(--stone);
+            border-radius: 50%;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            border: 1px dashed var(--stone);
+            border-radius: 48% 52% 55% 45% / 53% 47% 53% 47%;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 3s;
+            animation-duration: 25s;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 1px;
+            background: var(--stone);
+            top: 40%;
+            right: 20%;
+            animation-delay: 5s;
+            animation-duration: 18s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(20px, 20px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-10px, 30px) rotate(-3deg);
+            }
+            75% {
+                transform: translate(15px, -20px) rotate(4deg);
+            }
+        }
+        
+        /* Main Container */
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Logo */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.3s forwards;
+        }
+        
+        .logo-multi {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--stone);
+            margin-top: 0.5rem;
+        }
+        
+        .logo-hi {
+            font-family: var(--font-hindi);
+        }
+        
+        .logo-ml {
+            font-family: var(--font-malayalam);
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--sand);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--stone);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.6s forwards;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--earth);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+        
+        /* Main Heading */
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 200;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.8s forwards;
+        }
+        
+        /* Subtitle */
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--stone);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1s 1s forwards;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 1.2s forwards;
+        }
+        
+        .progress-label {
+            font-size: 0.875rem;
+            color: var(--stone);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 2px;
+            background: var(--sand);
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--black);
+            width: 0;
+            animation: progress 3s ease-out 1.5s forwards;
+        }
+        
+        @keyframes progress {
+            to { width: 65%; }
+        }
+        
+        /* Email Notification Form */
+        .notify-form {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s 1.4s forwards;
+        }
+        
+        .email-input {
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--sand);
+            background: transparent;
+            font-family: var(--font-latin);
+            font-size: 1rem;
+            color: var(--black);
+            min-width: 300px;
+            transition: all 0.3s;
+            outline: none;
+        }
+        
+        .email-input:focus {
+            border-color: var(--black);
+            background: var(--paper);
+        }
+        
+        .email-input::placeholder {
+            color: var(--stone);
+            opacity: 0.5;
+        }
+        
+        .notify-btn {
+            padding: 1rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            border: 1px solid var(--black);
+            font-family: var(--font-latin);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+        }
+        
+        .notify-btn:hover {
+            background: var(--earth);
+            border-color: var(--earth);
+        }
+        
+        .notify-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: 1rem;
+            background: var(--paper);
+            border: 1px solid var(--earth);
+            color: var(--black);
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        /* Error Message */
+        .error-message {
+            display: none;
+            padding: 1rem;
+            background: #fff5f5;
+            border: 1px solid #ff6b6b;
+            color: #c92a2a;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .error-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 1.6s forwards;
+        }
+        
+        .social-link {
+            color: var(--stone);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            letter-spacing: 0.05em;
+        }
+        
+        .social-link:hover {
+            color: var(--black);
+        }
+        
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--stone);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeIn 0.8s 1.8s forwards;
+        }
+        
+        .back-link:hover {
+            color: var(--black);
+            transform: translateX(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .email-input {
+                min-width: 100%;
+            }
+            
+            .notify-form {
+                flex-direction: column;
+            }
+            
+            .notify-btn {
+                width: 100%;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .shape-1,
+            .shape-2,
+            .shape-3 {
+                opacity: 0.02;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Noise Texture -->
+    <div class="noise"></div>
+    
+    <!-- Floating Shapes -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Logo -->
+        <div class="logo">
+            <div>Adithyan</div>
+            <div class="logo-multi">
+                <span class="logo-hi">अदित्यन</span>
+                <span>·</span>
+                <span class="logo-ml">അദിത്യൻ</span>
+            </div>
+        </div>
+        
+        <!-- Status Badge -->
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>In Progress</span>
+        </div>
+        
+        <!-- Main Content -->
+        <h1>Coming Soon</h1>
+        
+        <p class="subtitle">
+            We're crafting something special. This section is currently under development and will be live soon. Stay tuned for updates.
+        </p>
+        
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-label">Development Progress</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+        
+        <!-- Email Notification Form with Formspree -->
+        <form class="notify-form" id="notifyForm" action="https://formspree.io/f/xpzgdbpo" method="POST">
+            <input 
+                type="email" 
+                name="email"
+                class="email-input" 
+                placeholder="your@email.com" 
+                required
+                id="emailInput"
+            />
+            <input type="hidden" name="_subject" value="New Coming Soon Notification Request">
+            <input type="hidden" name="_next" value="#success">
+            <input type="hidden" name="_captcha" value="false">
+            <button type="submit" class="notify-btn" id="notifyBtn">
+                Notify Me
+            </button>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            ✓ Thank you! We'll notify you when this is ready.
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            ✗ Something went wrong. Please try again.
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://github.com/Aathi-pr" class="social-link" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/adithyanpr" class="social-link" target="_blank">LinkedIn</a>
+        </div>
+        
+        <!-- Back to Home -->
+        <a href="/" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"/>
+                <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Back to Home
+        </a>
+        
+    </div>
+    
+    <!-- JavaScript with Formspree Integration -->
+    <script>
+        // ==========================================
+        // FORMSPREE INTEGRATION
+        // ==========================================
+        
+        const form = document.getElementById('notifyForm');
+        const emailInput = document.getElementById('emailInput');
+        const notifyBtn = document.getElementById('notifyBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = emailInput.value;
+            const formData = new FormData(form);
+            
+            // Disable button and show loading state
+            notifyBtn.textContent = 'Submitting...';
+            notifyBtn.disabled = true;
+            
+            // Hide any existing messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            try {
+                // Submit to Formspree
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success!
+                    successMessage.classList.add('show');
+                    emailInput.value = '';
+                    notifyBtn.textContent = 'Submitted ✓';
+                    
+                    // Track with Google Analytics (if available)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'notify_signup', {
+                            'event_category': 'Coming Soon',
+                            'event_label': 'Email Notification'
+                        });
+                    }
+                    
+                    // Reset button after 4 seconds
+                    setTimeout(() => {
+                        notifyBtn.textContent = 'Notify Me';
+                        notifyBtn.disabled = false;
+                        successMessage.classList.remove('show');
+                    }, 4000);
+                    
+                } else {
+                    // Error response from Formspree
+                    const data = await response.json();
+                    console.error('Formspree error:', data);
+                    throw new Error(data.error || 'Form submission failed');
+                }
+                
+            } catch (error) {
+                // Show error message
+                console.error('Error:', error);
+                errorMessage.textContent = '✗ ' + (error.message || 'Something went wrong. Please try again.');
+                errorMessage.classList.add('show');
+                notifyBtn.textContent = 'Try Again';
+                notifyBtn.disabled = false;
+                
+                // Hide error after 5 seconds
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                    notifyBtn.textContent = 'Notify Me';
+                }, 5000);
+            }
+        });
+        
+        // Animate progress bar on load
+        window.addEventListener('load', () => {
+            console.log('Coming Soon page loaded with Formspree integration');
+        });
+    </script>
+    
+</body>
+</html>

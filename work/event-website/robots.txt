@@ -1,0 +1,33 @@
+# robots.txt for event management website
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow specific pages
+Allow: /index.html
+Allow: /wedding.html
+Allow: /events.html
+Allow: /exhibitions.html
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Sitemap location
+Sitemap: https://www.yourwebsite.com/sitemap.xml
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay for all bots
+Crawl-delay: 1

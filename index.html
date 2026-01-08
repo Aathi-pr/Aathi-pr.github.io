@@ -1,1053 +1,835 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adithyan - Creative Developer</title>
-    <meta
-      name="description"
-      content="Freelance creative developer specializing in modern web experiences with Flutter, Firebase, and GSAP animations."
-    />
-
-    <!-- ===== SEO OPTIMIZATIONS START ===== -->
-
-    <!-- Enhanced Meta Tags -->
-    <meta
-      name="keywords"
-      content="Flutter developer, Frontend developer, GSAP animations, Firebase integration, Web developer India, Creative developer, Portfolio website, JavaScript developer, Mobile app developer, Wedding website developer"
-    />
-    <meta name="author" content="Adithyan PR" />
-    <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="bingbot" content="index, follow" />
-    <link rel="canonical" href="https://aathi-pr.github.io/" />
-
-    <!-- Open Graph / Facebook Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://aathi-pr.github.io/" />
-    <meta
-      property="og:title"
-      content="Adithyan PR - Creative Flutter & Frontend Developer"
-    />
-    <meta
-      property="og:description"
-      content="Freelance creative developer specializing in ultra-minimal web experiences with complex GSAP animations, Flutter mobile apps, and Firebase integration."
-    />
-    <meta
-      property="og:image"
-      content="https://aathi-pr.github.io/assets/portfolio-image.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Adithyan PR - Creative Developer Portfolio"
-    />
-    <meta property="og:site_name" content="Adithyan PR Portfolio" />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://aathi-pr.github.io/" />
-    <meta
-      name="twitter:title"
-      content="Adithyan PR - Creative Flutter & Frontend Developer"
-    />
-    <meta
-      name="twitter:description"
-      content="Freelance creative developer specializing in ultra-minimal web experiences with complex GSAP animations, Flutter mobile apps, and Firebase integration."
-    />
-    <meta
-      name="twitter:image"
-      content="https://aathi-pr.github.io/assets/portfolio-image.png"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Adithyan PR - Creative Developer Portfolio"
-    />
-
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Adithyan PR" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-
-    <!-- Favicon Links -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Structured Data - JSON-LD Schema Markup for Person/Professional -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org/",
-        "@type": "Person",
-        "name": "Adithyan PR",
-        "url": "https://aathi-pr.github.io",
-        "image": "https://aathi-pr.github.io/assets/portfolio-image.png",
-        "jobTitle": "Creative Frontend Developer",
-        "description": "Freelance creative developer specializing in modern web experiences with Flutter, Firebase, and GSAP animations",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Freelance"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN",
-          "addressRegion": "India"
-        },
-        "sameAs": [
-          "https://github.com/Aathi-pr",
-          "https://www.linkedin.com/in/adithyan-p-r-84328a238/"
-        ],
-        "knowsAbout": [
-          "Flutter Development",
-          "Frontend Development",
-          "GSAP Animations",
-          "Firebase",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "Dart",
-          "Web Development",
-          "Mobile App Development"
-        ],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Frontend Developer",
-          "occupationLocation": {
-            "@type": "Country",
-            "name": "India"
-          },
-          "skills": "Flutter, Firebase, GSAP, JavaScript, HTML, CSS, Git, Python, Django"
-        }
-      }
-    </script>
-
-    <!-- Structured Data - JSON-LD Schema Markup for Portfolio Website -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Adithyan PR Portfolio",
-        "url": "https://aathi-pr.github.io",
-        "description": "Creative developer portfolio showcasing modern web experiences and Flutter applications",
-        "author": {
-          "@type": "Person",
-          "name": "Adithyan PR"
-        },
-        "inLanguage": "en-US"
-      }
-    </script>
-
-    <!-- Structured Data - JSON-LD Schema Markup for Portfolio Projects -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-              "@type": "CreativeWork",
-              "name": "Wedding RSVP Website",
-              "description": "Ultra-minimal wedding RSVP platform with immersive GSAP scroll animations",
-              "author": {
-                "@type": "Person",
-                "name": "Adithyan PR"
-              },
-              "image": "https://aathi-pr.github.io/assets/wedding.png"
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-              "@type": "CreativeWork",
-              "name": "Event Management Platform",
-              "description": "Comprehensive event management with horizontal scrolling services",
-              "author": {
-                "@type": "Person",
-                "name": "Adithyan PR"
-              },
-              "image": "https://aathi-pr.github.io/assets/event.png"
-            }
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-              "@type": "CreativeWork",
-              "name": "Code Collab",
-              "description": "Collaborative Code Editor - Made for web",
-              "author": {
-                "@type": "Person",
-                "name": "Adithyan PR"
-              },
-              "url": "https://codecollab.pythonanywhere.com",
-              "image": "https://aathi-pr.github.io/assets/code.png"
-            }
-          }
-        ]
-      }
-    </script>
-
-    <!-- Structured Data - Breadcrumb Navigation -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://aathi-pr.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Projects",
-            "item": "https://aathi-pr.github.io/#projects"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "About",
-            "item": "https://aathi-pr.github.io/#about"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Skills",
-            "item": "https://aathi-pr.github.io/#skills"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "name": "Contact",
-            "item": "https://aathi-pr.github.io/#contact"
-          }
-        ]
-      }
-    </script>
-
-    <!-- Performance Optimization: DNS Prefetch & Preconnect -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="//unpkg.com" />
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="preconnect" href="https://unpkg.com" crossorigin />
-
-    <!-- Sitemap Reference -->
-    <link
-      rel="sitemap"
-      type="application/xml"
-      title="Sitemap"
-      href="/sitemap.xml"
-    />
-
-    <!-- ===== SEO OPTIMIZATIONS END ===== -->
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adithyan — Full-Stack Developer & Designer</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Adithyan - Full-Stack Developer & Designer creating minimal, high-performance web experiences in Kerala, India. Specialized in HTML, CSS & JS, Flutter, Django.">
+    <meta name="keywords" content="full-stack developer, web designer, UI/UX, Kerala, React, Next.js, Django, Python">
+    <meta name="author" content="Adithyan">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Adithyan - Portfolio 2025">
+    <meta property="og:description" content="Full-Stack Developer & Designer crafting minimal web experiences">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adithyan-pr.web.app">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Adithyan - Portfolio 2025">
+    <meta name="twitter:description" content="Full-Stack Developer & Designer">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/portfolio-image.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0d0d">
+    
     <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@200;300;400;500&family=Noto+Sans+Malayalam:wght@200;300;400;500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Locomotive Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+</head>
+<body>
 
-    <!-- FontAwesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <!-- Skip to Content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!-- Organic Texture -->
+    <canvas id="noise-canvas" aria-hidden="true"></canvas>
 
-    <!-- Splitting.js for text animations -->
-    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/splitting@1.0.6/dist/splitting.css"
-    />
+    <!-- Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-circle" aria-hidden="true"></div>
 
-    <!-- DevIcons for Technology Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-    />
-
-    <!-- custom css -->
-    <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
-    <meta
-      name="google-site-verification"
-      content="XsbM0eIbyjSHmfBCmoKKqrKdeH72j5X0tqcSOZKRUHU"
-    />
-  </head>
-
-  <!-- Rest of your HTML remains exactly the same -->
-  <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
-
-    <!-- Grid Overlay -->
-    <div class="grid-overlay"></div>
-
-    <!-- Full Screen Navigation - MOBILE/TABLET ONLY -->
-    <!-- Fullscreen Navigation -->
-    <div class="fullscreen-nav">
-      <!-- Header with Logo and Close -->
-      <div class="nav-header">
-        <div class="nav-logo">Adithyan</div>
-        <button class="nav-close">CLOSE</button>
-      </div>
-
-      <!-- Navigation Links -->
-      <ul class="fullscreen-nav-links">
-        <li class="fullscreen-nav-item">
-          <a href="#home" class="fullscreen-nav-link">
-            <span class="nav-number">01</span>
-            <div class="nav-icon-wrapper">
-              <svg
-                class="nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
+    <!-- Loader -->
+    <div class="loader" role="status" aria-label="Loading">
+        <div class="loader-inner">
+            <div class="loader-letters">
+                <span class="letter letter-en">AN.</span>
             </div>
-            Home
-          </a>
-        </li>
-        <li class="fullscreen-nav-item">
-          <a href="#projects" class="fullscreen-nav-link">
-            <span class="nav-number">02</span>
-            <div class="nav-icon-wrapper">
-              <svg
-                class="nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="9" y1="3" x2="9" y2="21"></line>
-              </svg>
+            <div class="loader-progress">
+                <div class="progress-bar"></div>
             </div>
-            Projects
-          </a>
-        </li>
-        <li class="fullscreen-nav-item">
-          <a href="#about" class="fullscreen-nav-link">
-            <span class="nav-number">03</span>
-            <div class="nav-icon-wrapper">
-              <svg
-                class="nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-            </div>
-            About
-          </a>
-        </li>
-        <li class="fullscreen-nav-item">
-          <a href="#skills" class="fullscreen-nav-link">
-            <span class="nav-number">04</span>
-            <div class="nav-icon-wrapper">
-              <svg
-                class="nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-            </div>
-            Skills
-          </a>
-        </li>
-        <li class="fullscreen-nav-item">
-          <a href="#experience" class="fullscreen-nav-link">
-            <span class="nav-number">05</span>
-            <div class="nav-icon-wrapper">
-              <svg
-                class="nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
-            </div>
-            Experience
-          </a>
-        </li>
-        <li class="fullscreen-nav-item">
-          <a href="#contact" class="fullscreen-nav-link">
-            <span class="nav-number">06</span>
-            <div class="nav-icon-wrapper">
-              <svg
-                class="nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                ></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </div>
-            Contact
-          </a>
-        </li>
-      </ul>
+            <div class="loader-count">0</div>
+        </div>
     </div>
 
     <!-- Navigation -->
-    <div class="nav-container">
-      <nav>
-        <div class="logo">Adithyan</div>
-
-        <!-- Desktop Navigation Links -->
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-
-        <div class="nav-actions">
-          <div class="theme-switcher" data-theme="light">
-            <!-- Sun Icon (Light Mode) -->
-            <svg
-              class="theme-icon sun"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+<nav class="main-nav" role="navigation">
+    <!-- Left: Logo -->
+    <a href="/" class="nav-logo">
+        <span class="logo-mark">AN</span>
+        <span class="logo-divider"></span>
+        <span class="logo-status">
+            <span class="status-dot-nav"></span>
+            <span class="status-label">Available</span>
+        </span>
+    </a>
+    
+    <!-- Right: Controls -->
+    <div class="nav-controls">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-minimal" aria-label="Toggle theme" title="Toggle dark mode">
+            <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
             </svg>
-
-            <!-- Moon Icon (Dark Mode) -->
-            <svg
-              class="theme-icon moon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
-          </div>
-
-          <!-- Menu toggle for mobile/tablet -->
-          <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </nav>
+        </button>
+        
+        <!-- Menu Toggle -->
+        <button class="menu-toggle-minimal" aria-label="Toggle menu" aria-expanded="false">
+            <span class="menu-icon">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </span>
+            <span class="menu-label">Menu</span>
+        </button>
     </div>
+</nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <!-- Desktop Only Elements -->
-      <div class="availability-badge desktop-only">
-        <span class="status-dot"></span>
-        Available for Freelance
-      </div>
-
-      <div class="social-icons left">
-        <a
-          href="https://github.com/Aathi-pr"
-          class="social-icon"
-          target="_blank"
-          ><i class="fab fa-github"></i
-        ></a>
-      </div>
-
-      <div class="social-icons right">
-        <a
-          href="https://www.linkedin.com/in/adithyan-p-r-84328a238/"
-          class="social-icon"
-          target="_blank"
-          ><i class="fab fa-linkedin"></i
-        ></a>
-      </div>
-
-      <!-- Mobile Only Elements -->
-      <div class="availability-badge mobile-only">
-        <span class="status-dot"></span>
-        Available for Freelance
-      </div>
-
-      <div class="hero-content">
-        <div class="hero-name" data-splitting>
-          <h1>ADITHYAN</h1>
-          <h1>PR</h1>
+<!-- Fullscreen Menu -->
+<div class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="menu-overlay"></div>
+    
+    <div class="menu-container">
+        <!-- Menu Header -->
+        <div class="menu-header">
+            <span class="menu-title">Navigation</span>
+            <button class="menu-close" aria-label="Close menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
         </div>
-
-        <div class="decorative-line"></div>
-
-        <p class="hero-tagline">
-          Flutter Developer × Frontend Specialist × Animation Enthusiast
-        </p>
-
-        <div class="skill-badges">
-          <span class="badge"
-            ><i class="devicon-flutter-plain"></i> Flutter</span
-          >
-          <span class="badge"
-            ><i class="devicon-firebase-plain"></i> Firebase</span
-          >
-          <span class="badge">GSAP</span>
-          <span class="badge"
-            ><i class="devicon-javascript-plain"></i> JavaScript</span
-          >
-        </div>
-
-        <div class="cta-buttons">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-secondary">Let's Talk</a>
-        </div>
-      </div>
-
-      <!-- Mobile Statistics -->
-      <div class="statistics mobile-only">
-        <div class="stat">
-          <span class="stat-number">3+</span>
-          <span class="stat-label">Years</span>
-        </div>
-      </div>
-
-      <!-- Mobile Social Icons -->
-      <div class="social-icons mobile-only">
-        <a
-          href="https://github.com/Aathi-pr"
-          class="social-icon"
-          target="_blank"
-          ><i class="fab fa-github"></i
-        ></a>
-        <a
-          href="https://www.linkedin.com/in/adithyan-p-r-84328a238/"
-          class="social-icon"
-          target="_blank"
-          ><i class="fab fa-linkedin"></i
-        ></a>
-      </div>
-
-      <div class="scroll-indicator">
-        <div class="scroll-line"></div>
-        <span class="scroll-text">Scroll</span>
-      </div>
-    </section>
-
-    <!-- Projects Section - BRUTALIST -->
-    <section class="projects-section" id="projects">
-      <h2 class="projects-section-title">Featured Projects</h2>
-
-      <div class="projects-horizontal-wrapper">
-        <div class="projects-scroll-container">
-          <div class="projects-scroll">
-            <!-- Project 1 -->
-            <div class="project-card">
-              <div class="project-image">
-                <img
-                  src="assets/wedding.png"
-                  alt="Wedding RSVP"
-                  class="project-img"
-                />
-              </div>
-              <div class="project-info">
-                <h3 class="project-title">Wedding RSVP Website</h3>
-                <p class="project-desc">
-                  Ultra-minimal wedding RSVP platform with immersive GSAP scroll
-                  animations.
-                </p>
-                <div class="project-actions">
-                  <a href="assets/w/index.html" class="project-btn">
-                    View Project
-                    <svg
-                      class="arrow-icon"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </a>
-                  <a href="#" class="github-btn">
-                    <i class="fab fa-github"></i>
-                  </a>
+        
+        <!-- Menu Links -->
+        <nav class="menu-nav">
+            <a href="#hero" class="menu-item" data-number="01">
+                <span class="menu-item-number">01</span>
+                <span class="menu-item-text">Home</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="about.html" class="menu-item" data-number="02">
+                <span class="menu-item-number">02</span>
+                <span class="menu-item-text">About</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="#works" class="menu-item" data-number="03">
+                <span class="menu-item-number">03</span>
+                <span class="menu-item-text">Works</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="coming-soon.html" class="menu-item" data-number="04">
+                <span class="menu-item-number">04</span>
+                <span class="menu-item-text">Blog</span>
+                <span class="menu-item-badge">Soon</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="#contact" class="menu-item" data-number="05">
+                <span class="menu-item-number">05</span>
+                <span class="menu-item-text">Contact</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+        </nav>
+        
+        <!-- Menu Footer -->
+        <div class="menu-footer-new">
+            <div class="menu-info">
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Location</span>
+                    <span class="menu-info-value">Kerala, India</span>
                 </div>
-              </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-              <div class="project-image">
-                <img
-                  src="assets/event.png"
-                  alt="Event Management"
-                  class="project-img"
-                />
-              </div>
-              <div class="project-info">
-                <h3 class="project-title">Event Management Platform</h3>
-                <p class="project-desc">
-                  Comprehensive event management with horizontal scrolling
-                  services.
-                </p>
-                <div class="project-actions">
-                  <a href="assets/event-website/index.html" class="project-btn">
-                    View Project
-                    <svg
-                      class="arrow-icon"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </a>
-                  <a href="#" class="github-btn">
-                    <i class="fab fa-github"></i>
-                  </a>
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Local Time</span>
+                    <span class="menu-info-value" id="localTime">--:-- PM</span>
                 </div>
-              </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-              <div class="project-image">
-                <img
-                  src="assets/code.png"
-                  alt="Portfolio"
-                  class="project-img"
-                />
-              </div>
-              <div class="project-info">
-                <h3 class="project-title">Code Collab</h3>
-                <p class="project-desc">
-                  Collaborative Code Editor - Made for web
-                </p>
-                <div class="project-actions">
-                  <a
-                    href="https://codecollab.pythonanywhere.com"
-                    class="project-btn"
-                  >
-                    View Project
-                    <svg
-                      class="arrow-icon"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </a>
-                  <a href="#" class="github-btn">
-                    <i class="fab fa-github"></i>
-                  </a>
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Status</span>
+                    <span class="menu-info-value">
+                        <span class="status-dot-menu"></span>
+                        Available for work
+                    </span>
                 </div>
-              </div>
             </div>
-          </div>
+            
+            <div class="menu-social">
+                <a href="https://github.com/Aathi-pr" class="menu-social-link" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" class="menu-social-link" target="_blank">LinkedIn</a>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</div>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-      <div class="about-container">
-        <h2 class="section-title">About Me</h2>
 
-        <div class="about-content">
-          <div class="about-photo-wrapper">
-            <div class="about-photo-frame">
-              <div class="about-photo">
-                <img src="assets/portfolio-image.png" />
-              </div>
-            </div>
-          </div>
+    <!-- Vertical Text -->
+    <div class="vertical-text" aria-hidden="true">Space & Aesthetics</div>
 
-          <div class="about-text">
-            <p class="about-paragraph">
-              I'm Adithyan PR, a creative frontend developer with a passion for
-              crafting minimal design websites with complex GSAP animations. I
-              specialize in building modern web experiences that blend elegant
-              aesthetics with seamless, buttery-smooth interactions at 60fps.
-            </p>
+    <!-- Main Content -->
+    <main id="main-content">
+    <div id="scroll-wrapper" data-scroll-container>
 
-            <p class="about-paragraph">
-              Beyond web development, I build Flutter mobile applications with
-              Firebase integration, bringing the same attention to detail and
-              user experience to every platform. I'm constantly exploring
-              Awwwards for design inspiration and experimenting with new
-              animation techniques.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section" data-scroll-section>
+            <div class="hero-container">
+                
+                <div class="hero-content">
+                    <div class="hero-label">Full-Stack Developer × Designer</div>
+                    
+                    <h1 class="hero-title">
+                        <span class="title-line">
+                            <span class="word">Crafting</span>
+                        </span>
+                        <span class="title-line">
+                            <span class="word">Timeless</span>
+                        </span>
+                        <span class="title-line">
+                            <span class="word">Experiences</span>
+                        </span>
+                    </h1>
 
-    <!-- Skills Section -->
-    <section class="skills-section" id="skills">
-      <div class="skills-container">
-        <div class="skills-intro">
-          <span class="skills-tagline">Technical Arsenal</span>
-          <h2 class="section-title">Skills & Technologies</h2>
-          <p class="skills-description">
-            Crafting digital experiences with modern tools and frameworks
-          </p>
-        </div>
+                    <div class="hero-subtitle"> -->
+                        <div class="hero-name-multi">
+                            <span class="hero-name-label">I'm</span>
+                            <span class="hero-name-en">Adithyan</span>
+                            <span class="hero-name-divider">•</span>
+                            <span class="hero-name-hi">अदित्यन</span>
+                            <span class="hero-name-divider">•</span>
+                            <span class="hero-name-ml">ആദിത്യൻ</span>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn-primary">
+                            <span>Start a Project</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="about.html" class="btn-secondary">About Me</a>
+                    </div>
+                </div>
 
-        <!-- Skills Grid -->
-        <div class="skills-grid">
-          <!-- Frontend -->
-          <div class="skill-item" data-category="frontend">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-html5-plain skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">HTML</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="95"></div>
-            </div>
-          </div>
+                <div class="hero-shapes">
+                    <div class="shape shape-circle" data-scroll data-scroll-speed="2"></div>
+                    <div class="shape shape-stroke" data-scroll data-scroll-speed="-1"></div>
+                    <div class="shape shape-line" data-scroll data-scroll-speed="1"></div>
+                </div>
 
-          <div class="skill-item" data-category="frontend">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-css3-plain skill-icon"></i>
-              <div class="skill-glow"></div>
             </div>
-            <span class="skill-name">CSS</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="95"></div>
-            </div>
-          </div>
+        </section>
 
-          <div class="skill-item" data-category="frontend">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-javascript-plain skill-icon"></i>
-              <div class="skill-glow"></div>
+        <!-- Stats Section (New) -->
+        <section class="stats-section" data-scroll-section>
+            <div class="section-container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="5">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="10">0</div>
+                        <div class="stat-label">Technologies Mastered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="99">0</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
             </div>
-            <span class="skill-name">JavaScript</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="90"></div>
-            </div>
-          </div>
+        </section>
 
-          <!-- Mobile Development -->
-          <div class="skill-item" data-category="mobile">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-flutter-plain skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">Flutter</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="85"></div>
-            </div>
-          </div>
+        <!-- Works Section (with filters) -->
+        <section id="works" class="works-section-fixed" data-scroll-section>
+            <div class="section-container">
+                
+                <div class="section-intro">
+                    <span class="section-num">01</span>
+                    <h2 class="section-heading">Selected Works</h2>
+                    <p class="section-desc">A collection of projects that blend aesthetics with functionality</p>
+                </div>
 
-          <div class="skill-item" data-category="mobile">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-dart-plain skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">Dart</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="85"></div>
-            </div>
-          </div>
+                <!-- Project Filters -->
+                <div class="work-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile</button>
+                </div>
 
-          <!-- Backend & Database -->
-          <div class="skill-item" data-category="backend">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-firebase-plain skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">Firebase</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="80"></div>
-            </div>
-          </div>
+                <div class="works-list">
+                    
+                    <!-- Work 1 -->
+                    <article class="work-item-fixed" data-category="web design">
+                        <div class="work-number">01</div>
+                        <div class="work-content-fixed">
+                            <div class="work-left">
+                                <div class="work-year">2025</div>
+                                <h3 class="work-title-fixed">Event Management Platform</h3>
+                                <p class="work-desc-fixed">Comprehensive event management with horizontal scrolling services. Interactive elements and GSAP animations.</p>
+                                <div class="work-stack">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JS</span>
+                                    <span>GSAP</span>
+                                </div>
+                            </div>
+                            <div class="work-right">
+                                <div class="work-image-fixed">
+                                    <div class="work-img-inner-event"></div>
+                                </div>
+                                <a href="work/event-website/index.html" class="work-arrow" aria-label="View Event project">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
 
-          <div class="skill-item" data-category="backend">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-python-plain skill-icon"></i>
-              <div class="skill-glow"></div>
+                    <!-- Work 2 -->
+                    <article class="work-item-fixed" data-category="web">
+                        <div class="work-number">02</div>
+                        <div class="work-content-fixed">
+                            <div class="work-left">
+                                <div class="work-year">2024</div>
+                                <h3 class="work-title-fixed">Wedding RSVP</h3>
+                                <p class="work-desc-fixed">Complete event management system with RSVP and elegant UI animations.</p>
+                                <div class="work-stack">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JS</span>
+                                </div>
+                            </div>
+                            <div class="work-right">
+                                <div class="work-image-fixed">
+                                    <div class="work-img-inner-wed"></div>
+                                </div>
+                                <a href="coming-soon.html" class="work-arrow" aria-label="View Wedding RSVP project">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Work 3 -->
+                    <article class="work-item-fixed" data-category="web">
+                        <div class="work-number">03</div>
+                        <div class="work-content-fixed">
+                            <div class="work-left">
+                                <div class="work-year">2024</div>
+                                <h3 class="work-title-fixed">Hot Wheels Digital Archive</h3>
+                                <p class="work-desc-fixed">Collection management platform with image galleries, advanced filtering, and social features for collectors.</p>
+                                <div class="work-stack">
+                                    <span>Django</span>
+                                    <span>HTML CSS & JS</span>
+                                    <span>SQL</span>
+                                </div>
+                            </div>
+                            <div class="work-right">
+                                <div class="work-image-fixed">
+                                    <div class="work-img-inner-hot"></div>
+                                </div>
+                                <a href="https://github.com/Aathi-pr/thehotwheelsproject.git" class="work-arrow" aria-label="View Hot Wheels project">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Work 4 -->
+                    <article class="work-item-fixed" data-category="web design">
+                        <div class="work-number">04</div>
+                        <div class="work-content-fixed">
+                            <div class="work-left">
+                                <div class="work-year">2024</div>
+                                <h3 class="work-title-fixed">Code Collab</h3>
+                                <p class="work-desc-fixed">Collaborative Code Editor - Made for web</p>
+                                <div class="work-stack">
+                                    <span>Django</span>
+                                    <span>HTML CSS & JS</span>
+                                    <span>WEBRTC</span>
+                                </div>
+                            </div>
+                            <div class="work-right">
+                                <div class="work-image-fixed">
+                                    <div class="work-img-inner-code"></div>
+                                </div>
+                                <a href="https://github.com/Aathi-pr/collaborative_code_editor.git" class="work-arrow" aria-label="Code Collab project">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Work 5 -->
+                    <article class="work-item-fixed" data-category="web">
+                        <div class="work-number">05</div>
+                        <div class="work-content-fixed">
+                            <div class="work-left">
+                                <div class="work-year">2024</div>
+                                <h3 class="work-title-fixed">Portfolio Archive 2024</h3>
+                                <p class="work-desc-fixed">Portfolio Archive 2024</p>
+                                <div class="work-stack">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JS</span>
+                                    <span>GSAP</span>
+                                    <span>LOCOMOTIVE SCROLL</span>
+                                </div>
+                            </div>
+                            <div class="work-right">
+                                <div class="work-image-fixed">
+                                    <div class="work-img-inner-por"></div>
+                                </div>
+                                <a href="https://aathi-pr.github.io/" class="work-arrow" aria-label="Portfolio project">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- mobile -->
+                    <article class="work-item-fixed" data-category="mobile">
+                        <div class="work-number">06</div>
+                        <div class="work-content-fixed">
+                            <div class="work-left">
+                                <div class="work-year">2024</div>
+                                <h3 class="work-title-fixed">Hush App</h3>
+                                <p class="work-desc-fixed">Mobile Chatting Application</p>
+                                <div class="work-stack">
+                                    <span>FLUTTER</span>
+                                    <span>FIREBASE</span>
+                                    <span>DART</span>
+                                    <span>FLUTTER WEBRTC</span>
+                                </div>
+                            </div>
+                            <div class="work-right">
+                                <div class="work-image-fixed">
+                                    <div class="work-img-inner-hush"></div>
+                                </div>
+                                <a href="#" class="work-arrow" aria-label="hush app">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
             </div>
-            <span class="skill-name">Python</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="75"></div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="expertise-minimal" data-scroll-section>
+            <div class="section-container">
+                
+                <div class="section-intro">
+                    <span class="section-num">03</span>
+                    <h2 class="section-heading">Technical Expertise</h2>
+                </div>
+
+                <div class="expertise-minimal-layout">
+                    
+                    <div class="expertise-statement">
+                        <p class="statement-text">Building digital products with modern technologies, focused on performance, accessibility, and user experience.</p>
+                        <div class="statement-large">Skills</div>
+                    </div>
+
+                    <div class="expertise-skills-minimal">
+                        
+                        <div class="skill-section-minimal">
+                            <h3 class="skill-heading-minimal">Frontend</h3>
+                            <ul class="skill-list-minimal">
+                                <li>
+                                    <span class="skill-name-minimal">HTML CSS & JS</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">GSAP & Animation</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">Three.js & WebGL</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-section-minimal">
+                            <h3 class="skill-heading-minimal">Backend</h3>
+                            <ul class="skill-list-minimal">
+                                <li>
+                                    <span class="skill-name-minimal">Python & Django</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">Firebase & Supabase</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">REST</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-section-minimal">
+                            <h3 class="skill-heading-minimal">Design & Tools</h3>
+                            <ul class="skill-list-minimal">
+                                <li>
+                                    <span class="skill-name-minimal">UI/UX Design</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">Git & GitHub</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">Flutter Mobile</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot"></span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="skill-name-minimal">Performance Optimization</span>
+                                    <span class="skill-dots">
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot filled"></span>
+                                        <span class="dot"></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
+        </section>
 
-          <div class="skill-item" data-category="backend">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-django-plain skill-icon"></i>
-              <div class="skill-glow"></div>
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section" data-scroll-section>
+            <div class="section-container">
+                
+                <div class="section-intro">
+                    <span class="section-num">04</span>
+                    <h2 class="section-heading">Let's Connect</h2>
+                </div>
+
+                <div class="contact-layout">
+                    
+                    <div class="contact-main">
+                        <h3 class="contact-headline">Ready to create something beautiful together?</h3>
+                        <p class="contact-description">I'm currently available for freelance projects and full-time opportunities. Whether you need a complete website, interactive experience, or technical consultation, let's discuss how we can bring your vision to life.</p>
+                        
+                        <a href="mailto:adithyanpr0001@gmail.com" class="contact-email">
+                            <span class="email-text">hello@adithyan.com</span>
+                            <span class="email-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <div class="contact-socials">
+                            <a href="https://github.com/Aathi-pr" target="_blank" rel="noopener" class="social-item">
+                                <span class="social-name">GitHub</span>
+                                <span class="social-arrow">→</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" target="_blank" rel="noopener" class="social-item">
+                                <span class="social-name">LinkedIn</span>
+                                <span class="social-arrow">→</span>
+                            </a>
+                            <a href="https://wa.me/9037057940?text=Hi%2C%20I%20visited%20your%20portfolio%20and%20I%20would%20like%20to%20connect.
+" target="_blank" rel="noopener" class="social-item">
+                                <span class="social-name">WhatsApp</span>
+                                <span class="social-arrow">→</span>
+                            </a>
+                        </div>
+
+                        <div class="contact-form-wrapper">
+                            <h3 class="form-title">Send a Message</h3>
+                            
+                            <form
+                                class="contact-form"
+                                action="https://formspree.io/f/xpzgdbpo"
+                                method="POST"
+                                enctype="multipart/form-data"
+                            >
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input
+                                            type="text"
+                                            name="sender-name"
+                                            id="name"
+                                            class="form-input"
+                                            placeholder="Your name"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input
+                                            type="email"
+                                            name="sender-email"
+                                            id="email"
+                                            class="form-input"
+                                            placeholder="your@email.com"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input
+                                            type="text"
+                                            name="subject"
+                                            id="subject"
+                                            class="form-input"
+                                            placeholder="Project inquiry"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            class="form-textarea"
+                                            placeholder="Tell me about your project..."
+                                            required
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="form-submit">
+                                    <span>Send Message</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-            <span class="skill-name">Django</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="70"></div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="philosophy-minimal" data-scroll-section>
+            <div class="section-container">
+                
+                <div class="philosophy-header">
+                    <span class="section-num">05</span>
+                    <h2 class="section-heading">Design Philosophy</h2>
+                </div>
+
+                <div class="philosophy-grid-minimal">
+                    
+                    <div class="philosophy-quote">
+                        <p>"Less is more. Simplicity is the ultimate sophistication."</p>
+                    </div>
+
+                    <div class="principles-minimal">
+                        
+                        <div class="principle-minimal">
+                            <div class="principle-number">01</div>
+                            <h3 class="principle-title-minimal">Space</h3>
+                            <p class="principle-desc-minimal">Negative space is not empty—it gives content room to breathe and creates visual hierarchy.</p>
+                        </div>
+
+                        <div class="principle-minimal">
+                            <div class="principle-number">02</div>
+                            <h3 class="principle-title-minimal">Simplicity</h3>
+                            <p class="principle-desc-minimal">Remove everything unnecessary. What remains should be essential and purposeful.</p>
+                        </div>
+
+                        <div class="principle-minimal">
+                            <div class="principle-number">03</div>
+                            <h3 class="principle-title-minimal">Balance</h3>
+                            <p class="principle-desc-minimal">Harmony between elements creates visual peace. Asymmetry adds natural flow.</p>
+                        </div>
+
+                        <div class="principle-minimal">
+                            <div class="principle-number">04</div>
+                            <h3 class="principle-title-minimal">Clarity</h3>
+                            <p class="principle-desc-minimal">Clear communication above all. Users should understand instantly without confusion.</p>
+                        </div>
+
+                        <div class="principle-minimal">
+                            <div class="principle-number">05</div>
+                            <h3 class="principle-title-minimal">Motion</h3>
+                            <p class="principle-desc-minimal">Transitions should feel natural and purposeful, enhancing the user experience.</p>
+                        </div>
+
+                        <div class="principle-minimal">
+                            <div class="principle-number">06</div>
+                            <h3 class="principle-title-minimal">Authenticity</h3>
+                            <p class="principle-desc-minimal">Design with honesty. Let materials and content speak for themselves.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <footer class="site-footer">
+                    <div class="footer-content">
+                        <div class="footer-left">
+                            <p class="footer-text">© 2025 Adithyan — Crafted with intention in Kerala, India</p>
+                            <p class="footer-text">Minimal design meets powerful functionality</p>
+                        </div>
+                        <div class="footer-links">
+                            <a href="privacy.html">Privacy</a>
+                            <a href="terms.html">Terms</a>
+                        </div>
+                    </div>
+                </footer>
+
             </div>
-          </div>
+        </section>
 
-          <!-- Tools & Version Control -->
-          <div class="skill-item" data-category="tools">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-git-plain skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">Git</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="85"></div>
-            </div>
-          </div>
+    </div>
+    </main>
 
-          <div class="skill-item" data-category="tools">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-github-original skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">GitHub</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="85"></div>
-            </div>
-          </div>
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
 
-          <div class="skill-item" data-category="tools">
-            <div class="skill-icon-wrapper">
-              <i class="devicon-neovim-plain skill-icon"></i>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">Neovim</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="80"></div>
-            </div>
-          </div>
+<!-- ==========================================
+     BACKGROUND MUSIC PLAYER
+========================================== -->
 
-          <!-- Animation Libraries -->
-          <div
-            class="skill-item"
-            data-category="animation"
-            data-highlight="true"
-          >
-            <div class="skill-icon-wrapper">
-              <svg class="skill-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"
-                />
-              </svg>
-              <div class="skill-glow"></div>
-            </div>
-            <span class="skill-name">GSAP</span>
-            <div class="skill-proficiency">
-              <div class="skill-bar" data-level="90"></div>
-            </div>
-          </div>
-        </div>
+<aside class="bg-music-player" id="bgMusicPlayer">
+    <button class="music-toggle" id="musicToggle" title="Toggle Background Music">
+        <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+        <span class="music-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
 
-        <!-- Skill Categories Legend -->
-        <div class="skills-legend">
-          <div class="legend-item">
-            <span class="legend-dot" data-category="frontend"></span>
-            <span class="legend-label">Frontend</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" data-category="mobile"></span>
-            <span class="legend-label">Mobile</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" data-category="backend"></span>
-            <span class="legend-label">Backend</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" data-category="tools"></span>
-            <span class="legend-label">Tools</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot" data-category="animation"></span>
-            <span class="legend-label">Animation</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <audio id="bgAudio" loop preload="metadata">
+        <source src="assets/Ólafur Arnalds - saman.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+</aside>
 
-    <!-- Collaborate Section -->
-    <section class="collaborate-section">
-      <div class="collaborate-pin-wrapper">
-        <div class="collaborate-scroll">
-          <div class="collaborate-text">
-            LET'S COLLABORATE.....
-            <div class="collaborate-text-fill">LET'S COLLABORATE.....</div>
-          </div>
-          <div class="collaborate-text">
-            LET'S COLLABORATE.....
-            <div class="collaborate-text-fill">LET'S COLLABORATE.....</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-      <div class="contact-container">
-        <h2 class="section-title">Contact</h2>
-
-        <form
-          class="contact-form"
-          action="https://formspree.io/f/xpzgdbpo"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="name" class="form-label">Name</label>
-              <input
-                type="text"
-                name="sender-name"
-                id="name"
-                class="form-input"
-                placeholder="Your name"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                name="sender-email"
-                id="email"
-                class="form-input"
-                placeholder="your@email.com"
-                required
-              />
-            </div>
-
-            <div class="form-group full-width">
-              <label for="subject" class="form-label">Subject</label>
-              <input
-                type="text"
-                name="subject"
-                id="subject"
-                class="form-input"
-                placeholder="Project inquiry"
-                required
-              />
-            </div>
-
-            <div class="form-group full-width">
-              <label for="message" class="form-label">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                class="form-textarea"
-                placeholder="Tell me about your project..."
-                required
-              ></textarea>
-            </div>
-          </div>
-
-          <button type="submit" class="form-submit">Send Message</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>Adithyan</h3>
-          <p
-            style="
-              font-family: &quot;IBM Plex Mono&quot;, monospace;
-              font-size: 0.875rem;
-              color: var(--text-gray);
-              margin-top: 1rem;
-            "
-          >
-            Creative developer crafting minimal digital experiences with complex
-            animations.
-          </p>
-        </div>
-
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h3>Connect</h3>
-          <ul class="footer-links">
-            <li>
-              <a href="https://github.com/Aathi-pr" target="_blank">GitHub</a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/adithyanpr/" target="_blank"
-                >LinkedIn</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2024 Adithyan PR. All rights reserved.</p>
-      </div>
-    </footer>
-    <!-- custom script -->
-    <script src="js/script.min.js"></script>
-  </body>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/music-player.js"></script>
+</body>
 </html>

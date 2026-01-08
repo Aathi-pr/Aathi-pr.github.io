@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Ultra-Minimal Websites - Adithyan</title>
+    <meta name="description" content="An in-depth look at my approach to minimal web design and the principles that guide my work.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="manifest" href="../manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <canvas id="noise-canvas"></canvas>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    
+    <nav class="main-nav">
+        <a href="/" class="nav-logo">
+            <span class="logo-name">
+                <span class="name-en">Adithyan</span>
+            </span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+        <a href="../blog.html" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">← Back to Blog</a>
+    </nav>
+    
+    <main id="main-content">
+    <div id="scroll-wrapper" data-scroll-container>
+        <article class="blog-post" data-scroll-section>
+            <div class="post-container" style="max-width: 800px; margin: 0 auto; padding: calc(var(--space-xxl) + var(--space-lg)) 2rem var(--space-xxl);">
+                
+                <div class="post-meta" style="justify-content: center; margin-bottom: var(--space-lg);">
+                    <span class="post-category">Featured</span>
+                    <span class="post-date">Dec 1, 2025</span>
+                    <span class="post-reading-time">8 min read</span>
+                </div>
+                
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 300; line-height: 1.2; margin-bottom: var(--space-lg); text-align: center;">Building Ultra-Minimal Websites: My Design Philosophy</h1>
+                
+                <div class="post-image" style="width: 100%; aspect-ratio: 16/9; background: var(--sand); margin-bottom: var(--space-xxl);"></div>
+                
+                <div class="post-content" style="font-size: 1.125rem; line-height: 1.9; color: var(--stone);">
+                    
+                    <p>Minimalism in web design isn't about removing features—it's about removing distractions. Every element should serve a purpose, and if it doesn't, it should be eliminated.</p>
+                    
+                    <h2 style="font-size: 2rem; font-weight: 400; margin: var(--space-xxl) 0 var(--space-lg); color: var(--black);">The Foundation</h2>
+                    
+                    <p>When I start a new project, I begin with a blank canvas and ask: "What is absolutely essential?" This constraint-based thinking forces me to prioritize functionality over decoration.</p>
+                    
+                    <blockquote style="border-left: 2px solid var(--earth); padding-left: var(--space-lg); margin: var(--space-xl) 0; font-size: 1.5rem; font-style: italic; color: var(--black);">
+                        "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."
+                        <footer style="font-size: 1rem; margin-top: var(--space-sm); font-style: normal; color: var(--stone);">— Antoine de Saint-Exupéry</footer>
+                    </blockquote>
+                    
+                    <h2 style="font-size: 2rem; font-weight: 400; margin: var(--space-xxl) 0 var(--space-lg); color: var(--black);">My Core Principles</h2>
+                    
+                    <ol style="padding-left: var(--space-lg); margin: var(--space-lg) 0;">
+                        <li style="margin-bottom: var(--space-md);"><strong>White Space is Content:</strong> Empty space isn't wasted space. It gives your content room to breathe.</li>
+                        <li style="margin-bottom: var(--space-md);"><strong>Typography First:</strong> Great typography can carry an entire design.</li>
+                        <li style="margin-bottom: var(--space-md);"><strong>Purposeful Animation:</strong> Motion should enhance understanding, not distract.</li>
+                        <li style="margin-bottom: var(--space-md);"><strong>Performance Matters:</strong> Beautiful design means nothing if it loads slowly.</li>
+                    </ol>
+                    
+                    <p>Throughout my career, I've found that clients often want to add more, but the real skill is knowing what to remove.</p>
+                    
+                    <h2 style="font-size: 2rem; font-weight: 400; margin: var(--space-xxl) 0 var(--space-lg); color: var(--black);">Tools & Techniques</h2>
+                    
+                    <p>My minimal design process relies on a focused toolkit:</p>
+                    
+                    <ul style="padding-left: var(--space-lg); margin: var(--space-lg) 0;">
+                        <li>Figma for wireframing and prototyping</li>
+                        <li>GSAP for smooth, performant animations</li>
+                        <li>Custom CSS over frameworks (when possible)</li>
+                        <li>System fonts or 1-2 carefully chosen typefaces</li>
+                    </ul>
+                    
+                    <p style="margin-top: var(--space-xxl);">Minimal design is harder than it looks. It requires discipline, restraint, and constant refinement. But when done right, it creates experiences that feel effortless and timeless.</p>
+                    
+                </div>
+                
+                <footer class="post-footer" style="margin-top: var(--space-xxl); padding-top: var(--space-xl); border-top: 1px solid var(--sand);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <a href="../blog.html" class="btn-secondary">← Back to Blog</a>
+                        <div style="display: flex; gap: var(--space-md);">
+                            <span style="color: var(--stone); font-size: 0.875rem;">Share:</span>
+                            <a href="#" style="color: var(--stone);">Twitter</a>
+                            <a href="#" style="color: var(--stone);">LinkedIn</a>
+                        </div>
+                    </div>
+                </footer>
+                
+            </div>
+        </article>
+    </div>
+    </main>
+    
+    <button class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Ultra-Minimal Websites - Adithyan</title>
+    <meta name="description" content="An in-depth look at my approach to minimal web design and the principles that guide my work.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="manifest" href="../manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <canvas id="noise-canvas"></canvas>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+    
+    <nav class="main-nav">
+        <a href="/" class="nav-logo">
+            <span class="logo-name">
+                <span class="name-en">Adithyan</span>
+            </span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+        <a href="../blog.html" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">← Back to Blog</a>
+    </nav>
+    
+    <main id="main-content">
+    <div id="scroll-wrapper" data-scroll-container>
+        <article class="blog-post" data-scroll-section>
+            <div class="post-container" style="max-width: 800px; margin: 0 auto; padding: calc(var(--space-xxl) + var(--space-lg)) 2rem var(--space-xxl);">
+                
+                <div class="post-meta" style="justify-content: center; margin-bottom: var(--space-lg);">
+                    <span class="post-category">Featured</span>
+                    <span class="post-date">Dec 1, 2025</span>
+                    <span class="post-reading-time">8 min read</span>
+                </div>
+                
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 300; line-height: 1.2; margin-bottom: var(--space-lg); text-align: center;">Building Ultra-Minimal Websites: My Design Philosophy</h1>
+                
+                <div class="post-image" style="width: 100%; aspect-ratio: 16/9; background: var(--sand); margin-bottom: var(--space-xxl);"></div>
+                
+                <div class="post-content" style="font-size: 1.125rem; line-height: 1.9; color: var(--stone);">
+                    
+                    <p>Minimalism in web design isn't about removing features—it's about removing distractions. Every element should serve a purpose, and if it doesn't, it should be eliminated.</p>
+                    
+                    <h2 style="font-size: 2rem; font-weight: 400; margin: var(--space-xxl) 0 var(--space-lg); color: var(--black);">The Foundation</h2>
+                    
+                    <p>When I start a new project, I begin with a blank canvas and ask: "What is absolutely essential?" This constraint-based thinking forces me to prioritize functionality over decoration.</p>
+                    
+                    <blockquote style="border-left: 2px solid var(--earth); padding-left: var(--space-lg); margin: var(--space-xl) 0; font-size: 1.5rem; font-style: italic; color: var(--black);">
+                        "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away."
+                        <footer style="font-size: 1rem; margin-top: var(--space-sm); font-style: normal; color: var(--stone);">— Antoine de Saint-Exupéry</footer>
+                    </blockquote>
+                    
+                    <h2 style="font-size: 2rem; font-weight: 400; margin: var(--space-xxl) 0 var(--space-lg); color: var(--black);">My Core Principles</h2>
+                    
+                    <ol style="padding-left: var(--space-lg); margin: var(--space-lg) 0;">
+                        <li style="margin-bottom: var(--space-md);"><strong>White Space is Content:</strong> Empty space isn't wasted space. It gives your content room to breathe.</li>
+                        <li style="margin-bottom: var(--space-md);"><strong>Typography First:</strong> Great typography can carry an entire design.</li>
+                        <li style="margin-bottom: var(--space-md);"><strong>Purposeful Animation:</strong> Motion should enhance understanding, not distract.</li>
+                        <li style="margin-bottom: var(--space-md);"><strong>Performance Matters:</strong> Beautiful design means nothing if it loads slowly.</li>
+                    </ol>
+                    
+                    <p>Throughout my career, I've found that clients often want to add more, but the real skill is knowing what to remove.</p>
+                    
+                    <h2 style="font-size: 2rem; font-weight: 400; margin: var(--space-xxl) 0 var(--space-lg); color: var(--black);">Tools & Techniques</h2>
+                    
+                    <p>My minimal design process relies on a focused toolkit:</p>
+                    
+                    <ul style="padding-left: var(--space-lg); margin: var(--space-lg) 0;">
+                        <li>Figma for wireframing and prototyping</li>
+                        <li>GSAP for smooth, performant animations</li>
+                        <li>Custom CSS over frameworks (when possible)</li>
+                        <li>System fonts or 1-2 carefully chosen typefaces</li>
+                    </ul>
+                    
+                    <p style="margin-top: var(--space-xxl);">Minimal design is harder than it looks. It requires discipline, restraint, and constant refinement. But when done right, it creates experiences that feel effortless and timeless.</p>
+                    
+                </div>
+                
+                <footer class="post-footer" style="margin-top: var(--space-xxl); padding-top: var(--space-xl); border-top: 1px solid var(--sand);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <a href="../blog.html" class="btn-secondary">← Back to Blog</a>
+                        <div style="display: flex; gap: var(--space-md);">
+                            <span style="color: var(--stone); font-size: 0.875rem;">Share:</span>
+                            <a href="#" style="color: var(--stone);">Twitter</a>
+                            <a href="#" style="color: var(--stone);">LinkedIn</a>
+                        </div>
+                    </div>
+                </footer>
+                
+            </div>
+        </article>
+    </div>
+    </main>
+    
+    <button class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

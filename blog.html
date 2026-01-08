@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Adithyan</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Articles and thoughts on web development, design, and technology by Adithyan.">
+    <meta name="keywords" content="web development blog, design articles, tech tutorials">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog - Adithyan">
+    <meta property="og:description" content="Articles on web development, design, and technology">
+    <meta property="og:type" content="blog">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0d0d">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@200;300;400;500&family=Noto+Sans+Malayalam:wght@200;300;400;500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Locomotive Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Organic Texture -->
+    <canvas id="noise-canvas" aria-hidden="true"></canvas>
+
+    <!-- Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-circle" aria-hidden="true"></div>
+
+        <!-- Navigation -->
+<nav class="main-nav" role="navigation">
+    <!-- Left: Logo -->
+    <a href="/" class="nav-logo">
+        <span class="logo-mark">AN</span>
+        <span class="logo-divider"></span>
+        <span class="logo-status">
+            <span class="status-dot-nav"></span>
+            <span class="status-label">Available</span>
+        </span>
+    </a>
+    
+    <!-- Right: Controls -->
+    <div class="nav-controls">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-minimal" aria-label="Toggle theme" title="Toggle dark mode">
+            <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+        
+        <!-- Menu Toggle -->
+        <button class="menu-toggle-minimal" aria-label="Toggle menu" aria-expanded="false">
+            <span class="menu-icon">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </span>
+            <span class="menu-label">Menu</span>
+        </button>
+    </div>
+</nav>
+
+<!-- Fullscreen Menu -->
+<div class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="menu-overlay"></div>
+    
+    <div class="menu-container">
+        <!-- Menu Header -->
+        <div class="menu-header">
+            <span class="menu-title">Navigation</span>
+            <button class="menu-close" aria-label="Close menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Menu Links -->
+        <nav class="menu-nav">
+            <a href="index.html#hero" class="menu-item" data-number="01">
+                <span class="menu-item-number">01</span>
+                <span class="menu-item-text">Home</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="about.html" class="menu-item" data-number="02">
+                <span class="menu-item-number">02</span>
+                <span class="menu-item-text">About</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="index.html#works" class="menu-item" data-number="03">
+                <span class="menu-item-number">03</span>
+                <span class="menu-item-text">Works</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="coming-soon.html" class="menu-item" data-number="04">
+                <span class="menu-item-number">04</span>
+                <span class="menu-item-text">Blog</span>
+                <span class="menu-item-badge">Soon</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="index.html#contact" class="menu-item" data-number="05">
+                <span class="menu-item-number">05</span>
+                <span class="menu-item-text">Contact</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+        </nav>
+        
+        <!-- Menu Footer -->
+        <div class="menu-footer-new">
+            <div class="menu-info">
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Location</span>
+                    <span class="menu-info-value">Kerala, India</span>
+                </div>
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Local Time</span>
+                    <span class="menu-info-value" id="localTime">--:-- PM</span>
+                </div>
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Status</span>
+                    <span class="menu-info-value">
+                        <span class="status-dot-menu"></span>
+                        Available for work
+                    </span>
+                </div>
+            </div>
+            
+            <div class="menu-social">
+                <a href="https://github.com/Aathi-pr" class="menu-social-link" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" class="menu-social-link" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+    <div id="scroll-wrapper" data-scroll-container>
+
+        <!-- Hero Section -->
+        <section class="blog-hero" data-scroll-section>
+            <div class="section-container">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <span>Blog</span>
+                </div>
+                
+                <h1 class="page-title">Blog & Articles</h1>
+                <p class="page-subtitle">Thoughts on web development, design, and technology</p>
+            </div>
+        </section>
+
+        <!-- Blog Filters -->
+        <section class="blog-filters-section" data-scroll-section>
+            <div class="section-container">
+                <div class="blog-filters">
+                    <button class="blog-filter-btn active" data-category="all">All</button>
+                    <button class="blog-filter-btn" data-category="development">Development</button>
+                    <button class="blog-filter-btn" data-category="design">Design</button>
+                    <button class="blog-filter-btn" data-category="tutorial">Tutorials</button>
+                    <button class="blog-filter-btn" data-category="thoughts">Thoughts</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Post -->
+        <section class="featured-post" data-scroll-section>
+            <div class="section-container">
+                <article class="post-featured">
+                    <div class="post-featured-image">
+                        <div class="featured-img-placeholder"></div>
+                    </div>
+                    <div class="post-featured-content">
+                        <div class="post-meta">
+                            <span class="post-category">Featured</span>
+                            <span class="post-date">Dec 1, 2025</span>
+                            <span class="post-reading-time">8 min read</span>
+                        </div>
+                        <h2 class="post-featured-title">Building Ultra-Minimal Websites: My Design Philosophy</h2>
+                        <p class="post-featured-excerpt">An in-depth look at how I approach minimal web design, the tools I use, and the principles that guide my creative process. Learn how less truly becomes more.</p>
+                        <a href="blog/minimal-design-philosophy.html" class="post-read-more">
+                            <span>Read Article</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Blog Grid -->
+        <section class="blog-grid-section" data-scroll-section>
+            <div class="section-container">
+                
+                <div class="blog-grid">
+                    
+                    <!-- Blog Post 1 -->
+                    <article class="blog-card" data-category="development tutorial">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Development</span>
+                                <span class="post-date">Nov 28, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Mastering GSAP ScrollTrigger for Smooth Animations</h3>
+                            <p class="blog-card-excerpt">A comprehensive guide to creating buttery-smooth scroll-based animations using GSAP and ScrollTrigger.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">6 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-card" data-category="design">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Design</span>
+                                <span class="post-date">Nov 25, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Japanese Wabi-Sabi in Web Design</h3>
+                            <p class="blog-card-excerpt">Exploring how traditional Japanese aesthetics can inspire modern web interfaces.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">5 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-card" data-category="development">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Development</span>
+                                <span class="post-date">Nov 20, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Django + React: Full-Stack Integration</h3>
+                            <p class="blog-card-excerpt">Step-by-step guide to building modern full-stack applications with Django REST Framework and React.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">12 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 4 -->
+                    <article class="blog-card" data-category="tutorial">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Tutorial</span>
+                                <span class="post-date">Nov 15, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Building a Custom Cursor with JavaScript</h3>
+                            <p class="blog-card-excerpt">Create an interactive custom cursor that follows your mouse with smooth animations.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">4 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 5 -->
+                    <article class="blog-card" data-category="thoughts">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Thoughts</span>
+                                <span class="post-date">Nov 10, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">The Art of Digital Minimalism</h3>
+                            <p class="blog-card-excerpt">Why removing elements is harder than adding them, and how minimalism improves user experience.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">7 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 6 -->
+                    <article class="blog-card" data-category="development tutorial">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Development</span>
+                                <span class="post-date">Nov 5, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Next.js 14: Server Components Deep Dive</h3>
+                            <p class="blog-card-excerpt">Understanding React Server Components and how to leverage them in your Next.js applications.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">10 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 7 -->
+                    <article class="blog-card" data-category="design">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Design</span>
+                                <span class="post-date">Oct 30, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Typography in Minimal Web Design</h3>
+                            <p class="blog-card-excerpt">How to choose and pair typefaces for clean, readable, and beautiful minimal interfaces.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">6 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 8 -->
+                    <article class="blog-card" data-category="tutorial">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Tutorial</span>
+                                <span class="post-date">Oct 25, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Locomotive Scroll: Getting Started</h3>
+                            <p class="blog-card-excerpt">Implement smooth scrolling in your website using Locomotive Scroll library.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">5 min read</span>
+                                <a href="blog/coming-soon.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 9 -->
+                    <article class="blog-card" data-category="development">
+                        <div class="blog-card-image">
+                            <div class="blog-img-placeholder"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="post-meta">
+                                <span class="post-category">Development</span>
+                                <span class="post-date">Oct 20, 2025</span>
+                            </div>
+                            <h3 class="blog-card-title">Web Performance: Core Web Vitals</h3>
+                            <p class="blog-card-excerpt">Optimize your website for Google's Core Web Vitals and improve user experience.</p>
+                            <div class="blog-card-footer">
+                                <span class="reading-time">8 min read</span>
+                                <a href="blog/core-web-vitals.html" class="read-link">Read →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Load More -->
+                <div class="load-more-wrapper">
+                    <button class="btn-secondary load-more-btn">Load More Articles</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section" data-scroll-section>
+            <div class="section-container">
+                <div class="newsletter-box">
+                    <h2>Stay Updated</h2>
+                    <p>Get notified when I publish new articles. No spam, unsubscribe anytime.</p>
+                    <form class="newsletter-form" action="https://formspree.io/f/xpzgdbpo" method="POST">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="your@email.com" 
+                            required
+                            class="newsletter-input"
+                        />
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer" data-scroll-section>
+            <div class="section-container">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <p class="footer-text">© 2025 Adithyan — Crafted with intention in Kerala, India</p>
+                        <p class="footer-text">Minimal design meets powerful functionality</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    </main>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>

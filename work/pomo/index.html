@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FAFAFA">
+    <title>TimeKeeper — Ultra Minimal Timer</title>
+    <meta name="description" content="Premium minimal timer with Pomodoro, Stopwatch, and Breathe modes">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23000' stroke-width='2'/></svg>">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg"></div>
+
+    <!-- 3D Scene Container -->
+    <div class="scene-3d">
+        <div class="time-orb"></div>
+        <div class="time-ring"></div>
+        <div class="time-ring"></div>
+        <div class="time-ring"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <button class="header-btn" id="menu-btn" aria-label="Open menu">
+            <span class="btn-line"></span>
+            <span class="btn-line"></span>
+        </button>
+        <div class="header-mode">
+            <span class="mode-label" id="mode-label">Pomodoro</span>
+        </div>
+        <button class="header-btn" id="options-btn" aria-label="Open options">
+            <span class="btn-dot"></span>
+            <span class="btn-dot"></span>
+            <span class="btn-dot"></span>
+        </button>
+    </header>
+
+    <!-- Navigation Overlay -->
+    <nav class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true">
+        <div class="nav-container">
+            <button class="nav-close" id="nav-close" aria-label="Close menu">
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+            </button>
+
+            <div class="nav-content">
+                <div class="nav-modes">
+                    <button class="mode-item" data-mode="pomodoro">
+                        <span class="mode-num">01</span>
+                        <span class="mode-name">Pomodoro</span>
+                        <span class="mode-hint">Focus sessions</span>
+                    </button>
+                    <button class="mode-item" data-mode="stopwatch">
+                        <span class="mode-num">02</span>
+                        <span class="mode-name">Stopwatch</span>
+                        <span class="mode-hint">Track elapsed time</span>
+                    </button>
+                    <button class="mode-item" data-mode="timer">
+                        <span class="mode-num">03</span>
+                        <span class="mode-name">Timer</span>
+                        <span class="mode-hint">Countdown</span>
+                    </button>
+                    <button class="mode-item" data-mode="breathe">
+                        <span class="mode-num">04</span>
+                        <span class="mode-name">Breathe</span>
+                        <span class="mode-hint">4-7-8 technique</span>
+                    </button>
+                </div>
+
+                <div class="nav-info">
+                    <div class="info-stat">
+                        <span class="stat-num" id="nav-sessions">0</span>
+                        <span class="stat-txt">Sessions Today</span>
+                    </div>
+                    <div class="info-stat">
+                        <span class="stat-num" id="nav-time">0m</span>
+                        <span class="stat-txt">Time Focused</span>
+                    </div>
+                    <div class="info-stat">
+                        <span class="stat-num" id="nav-streak">0</span>
+                        <span class="stat-txt">Day Streak</span>
+                    </div>
+                </div>
+
+                <div class="nav-shortcuts">
+                    <span class="shortcuts-title">Keyboard Shortcuts</span>
+                    <div class="shortcut-item">
+                        <kbd>Space</kbd>
+                        <span>Start / Pause</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>R</kbd>
+                        <span>Reset</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>M</kbd>
+                        <span>Toggle Menu</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>T</kbd>
+                        <span>Change Theme</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Options Panel -->
+    <aside class="options-panel" id="options-panel" role="dialog" aria-modal="true">
+        <div class="panel-header">
+            <span class="panel-title">Settings</span>
+            <button class="panel-close" id="panel-close" aria-label="Close settings">✕</button>
+        </div>
+
+        <div class="panel-content">
+            <!-- Theme -->
+            <div class="option-group">
+                <span class="group-label">Theme</span>
+                <div class="theme-swatches">
+                    <button class="swatch active" data-theme="light" style="background: #FAFAFA" aria-label="Light theme"></button>
+                    <button class="swatch" data-theme="dark" style="background: #0A0A0A" aria-label="Dark theme"></button>
+                    <button class="swatch" data-theme="warm" style="background: #FFF8F0" aria-label="Warm theme"></button>
+                    <button class="swatch" data-theme="cool" style="background: #F0F4F8" aria-label="Cool theme"></button>
+                    <button class="swatch" data-theme="forest" style="background: #F1F8F4" aria-label="Forest theme"></button>
+                </div>
+            </div>
+
+            <!-- Sound -->
+            <div class="option-group">
+                <span class="group-label">Sound</span>
+                <label class="option-toggle">
+                    <span>Completion Alert</span>
+                    <input type="checkbox" id="sound-complete" checked>
+                    <span class="toggle-ui"></span>
+                </label>
+                <label class="option-toggle">
+                    <span>Ambient Sound</span>
+                    <input type="checkbox" id="sound-ambient">
+                    <span class="toggle-ui"></span>
+                </label>
+                <label class="option-toggle">
+                    <span>Tick Sound</span>
+                    <input type="checkbox" id="sound-tick">
+                    <span class="toggle-ui"></span>
+                </label>
+                <div class="option-slider">
+                    <span>Volume</span>
+                    <input type="range" id="volume" min="0" max="100" value="60" aria-label="Volume">
+                    <span class="slider-val" id="volume-val">60</span>
+                </div>
+            </div>
+
+            <!-- Pomodoro -->
+            <div class="option-group">
+                <span class="group-label">Pomodoro</span>
+                <label class="option-toggle">
+                    <span>Auto Start Breaks</span>
+                    <input type="checkbox" id="auto-break">
+                    <span class="toggle-ui"></span>
+                </label>
+                <label class="option-toggle">
+                    <span>Long Break After</span>
+                    <input type="checkbox" id="long-break-enabled">
+                    <span class="toggle-ui"></span>
+                </label>
+                <div class="option-slider">
+                    <span>Short Break</span>
+                    <input type="range" id="break-duration" min="1" max="15" value="5" aria-label="Break duration">
+                    <span class="slider-val" id="break-val">5m</span>
+                </div>
+                <div class="option-slider">
+                    <span>Long Break</span>
+                    <input type="range" id="long-break" min="10" max="30" value="15" aria-label="Long break duration">
+                    <span class="slider-val" id="long-break-val">15m</span>
+                </div>
+                <div class="option-slider">
+                    <span>Sessions</span>
+                    <input type="range" id="sessions-till-long" min="2" max="8" value="4" aria-label="Sessions until long break">
+                    <span class="slider-val" id="sessions-val">4</span>
+                </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="option-group">
+                <span class="group-label">Notifications</span>
+                <label class="option-toggle">
+                    <span>Desktop Notifications</span>
+                    <input type="checkbox" id="desktop-notif">
+                    <span class="toggle-ui"></span>
+                </label>
+                <label class="option-toggle">
+                    <span>Show Progress in Title</span>
+                    <input type="checkbox" id="title-progress" checked>
+                    <span class="toggle-ui"></span>
+                </label>
+            </div>
+
+            <!-- Display -->
+            <div class="option-group">
+                <span class="group-label">Display</span>
+                <label class="option-toggle">
+                    <span>24-Hour Format</span>
+                    <input type="checkbox" id="time-24h">
+                    <span class="toggle-ui"></span>
+                </label>
+                <label class="option-toggle">
+                    <span>Show Milliseconds</span>
+                    <input type="checkbox" id="show-ms" checked>
+                    <span class="toggle-ui"></span>
+                </label>
+                <label class="option-toggle">
+                    <span>Dim When Inactive</span>
+                    <input type="checkbox" id="dim-inactive" checked>
+                    <span class="toggle-ui"></span>
+                </label>
+            </div>
+
+            <!-- Data -->
+            <div class="option-group">
+                <span class="group-label">Data</span>
+                <button class="option-btn" id="export-data">
+                    <span>Export Statistics</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8 1v10M4 7l4 4 4-4M2 15h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="option-btn" id="reset-stats">
+                    <span>Reset All Statistics</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 8a6 6 0 1 1 12 0M2 8V3m0 5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert">
+        <span class="toast-msg"></span>
+    </div>
+
+    <!-- Main Timer Stage -->
+    <main class="stage">
+        <!-- Pomodoro -->
+        <section class="timer-scene active" data-scene="pomodoro">
+            <div class="scene-label">
+                <span class="label-text" id="pomodoro-label">Focus</span>
+                <span class="session-count" id="session-count">Session 1</span>
+            </div>
+
+            <div class="timer-display">
+                <div class="time-unit">
+                    <span class="digit" data-digit="0">2</span>
+                    <span class="digit" data-digit="1">5</span>
+                </div>
+                <span class="time-sep">:</span>
+                <div class="time-unit">
+                    <span class="digit" data-digit="2">0</span>
+                    <span class="digit" data-digit="3">0</span>
+                </div>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="pomodoro-fill"></div>
+            </div>
+
+            <div class="quick-set">
+                <button class="quick-btn" data-min="15">15</button>
+                <button class="quick-btn active" data-min="25">25</button>
+                <button class="quick-btn" data-min="45">45</button>
+                <button class="quick-btn" data-min="custom" id="custom-time-btn">Custom</button>
+            </div>
+
+            <div class="custom-input" id="custom-input">
+                <input type="number" id="custom-minutes" min="1" max="120" placeholder="Minutes">
+                <button class="custom-set-btn" id="custom-set">Set</button>
+            </div>
+
+            <div class="controls">
+                <button class="control-main" id="pomodoro-main">
+                    <span class="control-icon">Start</span>
+                </button>
+                <button class="control-aux" id="pomodoro-skip">Skip</button>
+                <button class="control-aux" id="pomodoro-reset">Reset</button>
+            </div>
+        </section>
+
+        <!-- Stopwatch -->
+        <section class="timer-scene" data-scene="stopwatch">
+            <div class="scene-label">
+                <span class="label-text">Elapsed Time</span>
+            </div>
+
+            <div class="timer-display">
+                <div class="time-unit">
+                    <span class="digit" data-digit="0">0</span>
+                    <span class="digit" data-digit="1">0</span>
+                </div>
+                <span class="time-sep">:</span>
+                <div class="time-unit">
+                    <span class="digit" data-digit="2">0</span>
+                    <span class="digit" data-digit="3">0</span>
+                </div>
+                <span class="time-sep minor">.</span>
+                <div class="time-unit minor">
+                    <span class="digit" data-digit="4">0</span>
+                    <span class="digit" data-digit="5">0</span>
+                </div>
+            </div>
+
+            <div class="laps" id="laps">
+                <div class="laps-header">
+                    <span>Laps</span>
+                    <span id="laps-count">0</span>
+                </div>
+                <div class="laps-list" id="laps-list"></div>
+            </div>
+
+            <div class="controls">
+                <button class="control-main" id="stopwatch-main">
+                    <span class="control-icon">Start</span>
+                </button>
+                <button class="control-aux" id="stopwatch-lap">Lap</button>
+                <button class="control-aux" id="stopwatch-reset">Reset</button>
+            </div>
+        </section>
+
+        <!-- Timer -->
+        <section class="timer-scene" data-scene="timer">
+            <div class="scene-label">
+                <span class="label-text">Countdown</span>
+            </div>
+
+            <div class="timer-display">
+                <div class="time-unit">
+                    <span class="digit" data-digit="0">1</span>
+                    <span class="digit" data-digit="1">0</span>
+                </div>
+                <span class="time-sep">:</span>
+                <div class="time-unit">
+                    <span class="digit" data-digit="2">0</span>
+                    <span class="digit" data-digit="3">0</span>
+                </div>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="timer-fill"></div>
+            </div>
+
+            <div class="time-inputs">
+                <div class="input-wrap">
+                    <input type="number" class="time-input" id="timer-min" min="0" max="99" value="10">
+                    <span class="input-label">minutes</span>
+                </div>
+                <div class="input-wrap">
+                    <input type="number" class="time-input" id="timer-sec" min="0" max="59" value="0">
+                    <span class="input-label">seconds</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-main" id="timer-main">
+                    <span class="control-icon">Start</span>
+                </button>
+                <button class="control-aux" id="timer-reset">Reset</button>
+            </div>
+        </section>
+
+        <!-- Breathe -->
+        <section class="timer-scene" data-scene="breathe">
+            <div class="scene-label">
+                <span class="label-text">Box Breathing</span>
+            </div>
+
+            <div class="breath-circle" id="breath-circle">
+                <div class="breath-inner">
+                    <span class="breath-text" id="breath-text">Inhale</span>
+                    <span class="breath-countdown" id="breath-countdown">4</span>
+                </div>
+            </div>
+
+            <div class="breath-stats">
+                <div class="breath-stat">
+                    <span class="counter-num" id="breath-count">0</span>
+                    <span class="counter-label">Cycles</span>
+                </div>
+                <div class="breath-stat">
+                    <span class="counter-num" id="breath-time">0:00</span>
+                    <span class="counter-label">Duration</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-main" id="breath-main">
+                    <span class="control-icon">Start</span>
+                </button>
+                <button class="control-aux" id="breath-reset">Reset</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

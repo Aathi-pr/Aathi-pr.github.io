@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Adithyan</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Full-Stack Developer & Designer from Kerala, India. Learn about my journey, skills, and experience in web development.">
+    <meta name="keywords" content="about adithyan, web developer kerala, full-stack developer india">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="About - Adithyan">
+    <meta property="og:description" content="Full-Stack Developer & Designer from kerala, India">
+    <meta property="og:type" content="profile">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0d0d">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@200;300;400;500&family=Noto+Sans+Malayalam:wght@200;300;400;500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Locomotive Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Organic Texture -->
+    <canvas id="noise-canvas" aria-hidden="true"></canvas>
+
+    <!-- Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-circle" aria-hidden="true"></div>
+
+        <!-- Navigation -->
+<nav class="main-nav" role="navigation">
+    <!-- Left: Logo -->
+    <a href="/" class="nav-logo">
+        <span class="logo-mark">AN</span>
+        <span class="logo-divider"></span>
+        <span class="logo-status">
+            <span class="status-dot-nav"></span>
+            <span class="status-label">Available</span>
+        </span>
+    </a>
+    
+    <!-- Right: Controls -->
+    <div class="nav-controls">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-minimal" aria-label="Toggle theme" title="Toggle dark mode">
+            <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+        
+        <!-- Menu Toggle -->
+        <button class="menu-toggle-minimal" aria-label="Toggle menu" aria-expanded="false">
+            <span class="menu-icon">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </span>
+            <span class="menu-label">Menu</span>
+        </button>
+    </div>
+</nav>
+
+<!-- Fullscreen Menu -->
+<div class="fullscreen-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="menu-overlay"></div>
+    
+    <div class="menu-container">
+        <!-- Menu Header -->
+        <div class="menu-header">
+            <span class="menu-title">Navigation</span>
+            <button class="menu-close" aria-label="Close menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Menu Links -->
+        <nav class="menu-nav">
+            <a href="index.html#hero" class="menu-item" data-number="01">
+                <span class="menu-item-number">01</span>
+                <span class="menu-item-text">Home</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="about.html" class="menu-item" data-number="02">
+                <span class="menu-item-number">02</span>
+                <span class="menu-item-text">About</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="index.html#works" class="menu-item" data-number="03">
+                <span class="menu-item-number">03</span>
+                <span class="menu-item-text">Works</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="coming-soon.html" class="menu-item" data-number="04">
+                <span class="menu-item-number">04</span>
+                <span class="menu-item-text">Blog</span>
+                <span class="menu-item-badge">Soon</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+            <a href="index.html#contact" class="menu-item" data-number="05">
+                <span class="menu-item-number">05</span>
+                <span class="menu-item-text">Contact</span>
+                <span class="menu-item-icon">→</span>
+            </a>
+        </nav>
+        
+        <!-- Menu Footer -->
+        <div class="menu-footer-new">
+            <div class="menu-info">
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Location</span>
+                    <span class="menu-info-value">Kerala, India</span>
+                </div>
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Local Time</span>
+                    <span class="menu-info-value" id="localTime">--:-- PM</span>
+                </div>
+                <div class="menu-info-item">
+                    <span class="menu-info-label">Status</span>
+                    <span class="menu-info-value">
+                        <span class="status-dot-menu"></span>
+                        Available for work
+                    </span>
+                </div>
+            </div>
+            
+            <div class="menu-social">
+                <a href="https://github.com/Aathi-pr" class="menu-social-link" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" class="menu-social-link" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+    <div id="scroll-wrapper" data-scroll-container>
+
+        <!-- Hero Section -->
+        <section class="about-hero" data-scroll-section>
+            <div class="section-container">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <span>About</span>
+                </div>
+                
+                <h1 class="page-title">About Me</h1>
+                <p class="page-subtitle">Full-Stack Developer & Designer crafting digital experiences from Kerala, India</p>
+            </div>
+        </section>
+
+        <!-- Bio Section -->
+        <section class="bio-section" data-scroll-section>
+            <div class="section-container">
+                <div class="bio-grid">
+                    
+                    <!-- Left: Image Placeholder -->
+                    <div class="bio-image">
+                        <div class="image-frame">
+                            <div class="profile-placeholder"></div>
+                        </div>
+                        <div class="bio-meta">
+                            <p><strong>Location:</strong> Kerala, India</p>
+                            <p><strong>Timezone:</strong> IST (GMT+5:30)</p>
+                            <p><strong>Languages:</strong> English, Hindi, Malayalam</p>
+                            <p><strong>Status:</strong> <span style="color: #22c55e;">● Available</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Bio Text -->
+                    <div class="bio-text">
+                        <h2>Hello, I'm Adithyan</h2>
+                        <p>I'm a full-stack developer and designer passionate about creating minimal, high-performance web experiences. With over 2 years of experience.</p>
+                        
+                        <p>My approach combines clean code with thoughtful design—believing that the best interfaces are invisible, allowing users to focus on what truly matters. I specialize in HTML, CSS,JS, Django, Flutter, Firebase and modern animation libraries like GSAP etc..</p>
+                        
+                        <p>When I'm not coding, you'll find me collecting Hot Wheels cars, or exploring minimal design principles that inspire my work.</p>
+                        
+                        <div class="bio-cta">
+                            <a href="index.html#contact" class="btn-primary">
+                                <span>Let's Work Together</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </a>
+                            <a href="resume.html" class="btn-secondary">View Resume</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education-section" data-scroll-section>
+            <div class="section-container">
+                <h2 class="section-heading">Education</h2>
+                
+                <div class="education-grid">
+                    
+                    <div class="education-item">
+                        <div class="edu-degree">Master of Computer Applications</div>
+                        <div class="edu-school">SSET</div>
+                        <div class="edu-year">2025 — Present</div>
+                        <p class="edu-desc">Specialization in Advanced Software Engineering. Focused on web technologies, algorithms, and database design.</p>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="edu-degree">Bachelor of Computer Applications</div>
+                        <div class="edu-school">Kerala University</div>
+                        <div class="edu-year">2022 — 2025</div>
+                        <p class="edu-desc">Foundation in programming, data structures, and software development principles.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- CTA Section -->
+        <section class="cta-section" data-scroll-section>
+            <div class="section-container">
+                <div class="cta-content">
+                    <h2>Let's Create Something Together</h2>
+                    <p>Whether you have a project in mind or just want to chat about design and technology, I'd love to hear from you.</p>
+                    <div class="cta-buttons">
+                        <a href="index.html#contact" class="btn-primary">
+                            <span>Get in Touch</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="index.html#works" class="btn-secondary">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer" data-scroll-section>
+            <div class="section-container">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <p class="footer-text">© 2025 Adithyan — Crafted with intention in Kerala, India</p>
+                        <p class="footer-text">Minimal design meets powerful functionality</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    </main>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/about.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

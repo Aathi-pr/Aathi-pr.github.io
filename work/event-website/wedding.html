@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>Wedding Planning Services | Luxury Wedding Management Portfolio</title>
+  <meta name="title" content="Wedding Planning Services | Luxury Wedding Management Portfolio">
+  <meta name="description" content="Explore our portfolio of beautifully executed luxury weddings. Professional wedding planning services creating unforgettable moments worldwide with personalized attention to detail.">
+  <meta name="keywords" content="wedding planner, luxury wedding, wedding portfolio, destination wedding, wedding coordination, wedding management, bridal services, wedding designer, ceremony planning">
+  <meta name="author" content="Your Company Name">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.yourwebsite.com/wedding.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.yourwebsite.com/wedding.html">
+  <meta property="og:title" content="Wedding Planning Services | Luxury Wedding Management Portfolio">
+  <meta property="og:description" content="Explore our portfolio of beautifully executed luxury weddings. Creating unforgettable moments with personalized wedding planning.">
+  <meta property="og:image" content="https://www.yourwebsite.com/images/wedding-og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Your Company Name">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.yourwebsite.com/wedding.html">
+  <meta property="twitter:title" content="Wedding Planning Services | Luxury Wedding Management Portfolio">
+  <meta property="twitter:description" content="Explore our portfolio of beautifully executed luxury weddings worldwide.">
+  <meta property="twitter:image" content="https://www.yourwebsite.com/images/wedding-twitter-image.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.yourwebsite.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Wedding Portfolio",
+      "item": "https://www.yourwebsite.com/wedding.html"
+    }]
+  }
+  </script>
+  
+  <!-- Service Schema for Wedding Planning -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Wedding Planning",
+    "provider": {
+      "@type": "Organization",
+      "name": "Your Company Name",
+      "url": "https://www.yourwebsite.com"
+    },
+    "description": "Professional luxury wedding planning and coordination services creating unforgettable moments worldwide.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "priceRange": "$$$"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Worldwide"
+    }
+  }
+  </script>
+  
+  <!-- ImageGallery Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Wedding Portfolio Gallery",
+    "description": "Collection of luxury wedding photography and videography from destinations worldwide",
+    "about": {
+      "@type": "Thing",
+      "name": "Wedding Photography"
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    ::selection {
+      background: #ffffff;
+      color: #0a0a0a;
+    }
+    
+    /* Skip to content for accessibility */
+    .skip-to-content {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #0a0a0a;
+      color: #ffffff;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+    
+    .skip-to-content:focus {
+      top: 0;
+    }
+    
+    /* Visually hidden */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: transparent;
+    }
+
+    .nav-logo {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-back {
+      font-size: 11px;
+      font-weight: 400;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.3s ease;
+    }
+
+    .nav-back:hover {
+      gap: 15px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 80px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(4rem, 10vw, 10rem);
+      font-weight: 400;
+      letter-spacing: -4px;
+      line-height: 0.9;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.5px;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(50px);
+      font-weight: 300;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 150px 80px;
+      background: #0a0a0a;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      letter-spacing: -2px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .section-title p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* MASONRY GALLERY */
+    .masonry-container {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      grid-auto-flow: dense;
+    }
+
+    .masonry-item {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(60px) scale(0.9);
+      background: #1a1a1a;
+    }
+
+    /* Variable Heights for Masonry Effect */
+    .masonry-item:nth-child(4n+1) {
+      grid-row: span 2;
+    }
+
+    .masonry-item:nth-child(4n+2) {
+      grid-row: span 1;
+    }
+
+    .masonry-item:nth-child(4n+3) {
+      grid-row: span 2;
+    }
+
+    .masonry-item:nth-child(4n+4) {
+      grid-row: span 1;
+    }
+
+    /* Loading State */
+    .masonry-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.2);
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      opacity: 0;
+    }
+
+    .masonry-item img.loaded {
+      opacity: 1;
+    }
+
+    .masonry-item:hover img {
+      transform: scale(1.25);
+    }
+
+    /* Image Placeholder */
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 3;
+    }
+
+    .masonry-item:hover .masonry-overlay {
+      opacity: 1;
+    }
+
+    .masonry-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
+      font-weight: 400;
+    }
+
+    .masonry-location {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 300;
+    }
+
+    /* Video Play Icon */
+    .video-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #0a0a0a;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .masonry-item:hover .video-icon {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: #ffffff;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .lightbox-content img,
+    .lightbox-content iframe {
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-content iframe {
+      width: 90vw;
+      height: 50.625vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-prev {
+      left: 30px;
+    }
+
+    .lightbox-next {
+      right: 30px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 2px;
+      z-index: 10000;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 80px 80px 60px;
+      background: #0a0a0a;
+      color: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1600px;
+      margin: 0 auto 80px;
+    }
+
+    .footer-brand h3 {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      font-weight: 400;
+      color: #ffffff;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.8;
+      max-width: 300px;
+      font-weight: 300;
+    }
+
+    .footer-columns {
+      display: flex;
+      gap: 100px;
+    }
+
+    .footer-column h4 {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 15px;
+    }
+
+    .footer-column ul li a {
+      font-size: 14px;
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 300;
+    }
+
+    .footer-column ul li a:hover {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .footer-bottom p {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 30px;
+    }
+
+    .social-icons a {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .masonry-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 30px;
+      }
+
+      .hero {
+        padding: 0 30px;
+      }
+
+      .gallery-section {
+        padding: 100px 30px;
+      }
+
+      .masonry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .lightbox-nav,
+      .lightbox-close {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .lightbox-prev {
+        left: 15px;
+      }
+
+      .lightbox-next {
+        right: 15px;
+      }
+
+      .footer {
+        padding: 60px 30px 40px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .masonry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Company homepage">COMPANY NAME</a>
+    <a href="index.html" class="nav-back" aria-label="Back to homepage">
+      <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+    </a>
+  </nav>
+
+  <main id="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Wedding Works</h1>
+        <p>Capturing timeless moments of love, joy, and celebration through cinematic storytelling.</p>
+      </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="portfolio-heading">
+      <div class="section-title">
+        <h2 id="portfolio-heading">Portfolio</h2>
+        <p>Our favorite moments captured worldwide</p>
+      </div>
+
+      <div class="masonry-container">
+        <div class="masonry-grid" id="masonryGrid" role="list">
+          <!-- Images will be loaded by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <div class="lightbox-content" id="lightboxContent">
+      <!-- Content will be inserted here -->
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter" aria-live="polite">1 / 24</div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>COMPANY NAME</h3>
+        <p>Creating extraordinary events that inspire and captivate, one unforgettable moment at a time.</p>
+      </div>
+      
+      <div class="footer-columns">
+        <nav class="footer-column" aria-label="Services">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Weddings</a></li>
+            <li><a href="index.html#services">Corporate Events</a></li>
+            <li><a href="index.html#services">Exhibitions</a></li>
+          </ul>
+        </nav>
+        
+        <nav class="footer-column" aria-label="Company">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#approach">About</a></li>
+            <li><a href="index.html#work">Portfolio</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Company Name. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="https://instagram.com/yourcompany" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://facebook.com/yourcompany" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/yourcompany" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Gallery Items Data (24 total)
+    const galleryItems = [
+      { type: 'image', src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=1000&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=90', title: 'Tuscany Garden', location: 'Italy' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&h=1200&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1920&q=90', title: 'Santorini Sunset', location: 'Greece' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1519167758481-83f29da8a4c0?w=800&h=900&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1519167758481-83f29da8a4c0?w=1920&q=90', title: 'Modern Ballroom', location: 'Dubai' },
+      { type: 'video', src: 'https://images.unsplash.com/photo-1606800052052-f1e8f2b8c4e6?w=800&h=600&fit=crop&q=80', video: 'https://www.youtube.com/embed/iKzRIweSBLA', title: 'Summer Love', location: 'Film' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800&h=1100&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?w=1920&q=90', title: 'Mountain Vista', location: 'Colorado' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1525258437537-4191b0c9c1dd?w=800&h=950&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1525258437537-4191b0c9c1dd?w=1920&q=90', title: 'Rustic Barn', location: 'Vermont' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&h=1200&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=90', title: 'Coastal Dreams', location: 'Maldives' },
+      { type: 'video', src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&h=600&fit=crop&q=80', video: 'https://www.youtube.com/embed/wQCWvGMXQRQ', title: 'Destination Love', location: 'Film' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=1000&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=90', title: 'Vintage Paris', location: 'France' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1496024840928-4c417adf211d?w=800&h=900&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1496024840928-4c417adf211d?w=1920&q=90', title: 'Desert Romance', location: 'Arizona' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1523438097201-512ae7d59c44?w=800&h=1100&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1523438097201-512ae7d59c44?w=1920&q=90', title: 'Waterfront Elegance', location: 'Monaco' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=950&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1920&q=90', title: 'Botanical Gardens', location: 'Singapore' },
+      { type: 'video', src: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&h=600&fit=crop&q=80', video: 'https://www.youtube.com/embed/9No-FiEInLA', title: 'Behind the Scenes', location: 'Film' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=1200&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1920&q=90', title: 'Castle Celebration', location: 'Scotland' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=1000&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=90', title: 'Urban Rooftop', location: 'New York' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=900&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=1920&q=90', title: 'Tropical Paradise', location: 'Bali' },
+      { type: 'video', src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop&q=80', video: 'https://www.youtube.com/embed/X1fqiLN40kE', title: 'Love Story', location: 'Film' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&h=1100&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1920&q=90', title: 'Vineyard Ceremony', location: 'Napa Valley' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&h=950&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1920&q=90', title: 'Lake Como', location: 'Italy' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1000&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=90', title: 'Garden Romance', location: 'Tuscany' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&h=900&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=1920&q=90', title: 'Beach Ceremony', location: 'Hawaii' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1100&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=90', title: 'Golden Hour', location: 'California' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&h=1000&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1920&q=90', title: 'Aegean Love', location: 'Greece' },
+      { type: 'image', src: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800&h=950&fit=crop&q=80', full: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?w=1920&q=90', title: 'Alpine Romance', location: 'Switzerland' }
+    ];
+
+    // LAZY LOADING FUNCTION
+    function lazyLoadImage(img, src) {
+      const imageLoader = new Image();
+      imageLoader.src = src;
+      
+      imageLoader.onload = () => {
+        img.src = src;
+        img.classList.add('loaded');
+        gsap.to(img, { scale: 1.1, duration: 0.6, ease: 'power2.out' });
+      };
+    }
+
+    // Load Gallery Items
+    const masonryGrid = document.getElementById('masonryGrid');
+    galleryItems.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'masonry-item';
+      div.setAttribute('role', 'listitem');
+      
+      if (item.type === 'image') {
+        div.innerHTML = `
+          <div class="image-placeholder"></div>
+          <img data-src="${item.src}" alt="${item.title} wedding in ${item.location}" loading="lazy">
+          <div class="masonry-overlay">
+            <div class="masonry-title">${item.title}</div>
+            <div class="masonry-location">${item.location}</div>
+          </div>
+        `;
+      } else {
+        div.innerHTML = `
+          <img src="${item.src}" alt="${item.title} wedding video">
+          <div class="masonry-overlay">
+            <div class="masonry-title">${item.title}</div>
+            <div class="masonry-location">${item.location}</div>
+          </div>
+          <div class="video-icon"><i class="fas fa-play" aria-hidden="true"></i></div>
+        `;
+      }
+      
+      div.addEventListener('click', () => openLightbox(index));
+      masonryGrid.appendChild(div);
+    });
+
+    // Hero Animations
+    gsap.to('.hero h1', { y: 0, opacity: 1, duration: 1.4, delay: 0.3, ease: 'power3.out' });
+    gsap.to('.hero p', { y: 0, opacity: 1, duration: 1.2, delay: 0.5, ease: 'power3.out' });
+
+    // Section Titles
+    gsap.to('.section-title h2', {
+      y: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
+      scrollTrigger: { trigger: '.section-title', start: 'top 80%' }
+    });
+    gsap.to('.section-title p', {
+      y: 0, opacity: 1, duration: 1, delay: 0.2, ease: 'power3.out',
+      scrollTrigger: { trigger: '.section-title', start: 'top 80%' }
+    });
+
+    // Masonry Items Animation
+    gsap.utils.toArray('.masonry-item').forEach((item, i) => {
+      const img = item.querySelector('img');
+      const placeholder = item.querySelector('.image-placeholder');
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+          onEnter: () => {
+            if (img.dataset.src) {
+              lazyLoadImage(img, img.dataset.src);
+              if (placeholder) setTimeout(() => placeholder.style.display = 'none', 300);
+            }
+          }
+        }
+      });
+      tl.to(item, { y: 0, scale: 1, opacity: 1, duration: 1, ease: 'power3.out' });
+    });
+
+    // Lightbox Functionality
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightboxContent');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightboxContent();
+      lightbox.classList.add('active');
+      gsap.to(lightbox, { opacity: 1, duration: 0.3 });
+      gsap.to(lightboxContent, { opacity: 1, scale: 1, duration: 0.4, delay: 0.1, ease: 'power3.out' });
+    }
+
+    function closeLightbox() {
+      gsap.to(lightboxContent, { opacity: 0, scale: 0.9, duration: 0.3 });
+      gsap.to(lightbox, {
+        opacity: 0, duration: 0.3, delay: 0.1,
+        onComplete: () => {
+          lightbox.classList.remove('active');
+          lightboxContent.innerHTML = '';
+        }
+      });
+    }
+
+    function updateLightboxContent() {
+      const item = galleryItems[currentIndex];
+      if (item.type === 'image') {
+        lightboxContent.innerHTML = `<img src="${item.full}" alt="${item.title} in ${item.location}">`;
+      } else {
+        lightboxContent.innerHTML = `
+          <iframe width="1280" height="720" src="${item.video}?autoplay=1" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen title="${item.title}"></iframe>
+        `;
+      }
+      lightboxCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+    }
+
+    function nextItem() {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      gsap.to(lightboxContent, {
+        opacity: 0, scale: 0.95, duration: 0.2,
+        onComplete: () => {
+          updateLightboxContent();
+          gsap.to(lightboxContent, { opacity: 1, scale: 1, duration: 0.3 });
+        }
+      });
+    }
+
+    function prevItem() {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      gsap.to(lightboxContent, {
+        opacity: 0, scale: 0.95, duration: 0.2,
+        onComplete: () => {
+          updateLightboxContent();
+          gsap.to(lightboxContent, { opacity: 1, scale: 1, duration: 0.3 });
+        }
+      });
+    }
+
+    // Event Listeners
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxNext.addEventListener('click', nextItem);
+    lightboxPrev.addEventListener('click', prevItem);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextItem();
+      if (e.key === 'ArrowLeft') prevItem();
+    });
+  </script>
+</body>
+</html>

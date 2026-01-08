@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>Event Management Company | Weddings, Corporate Events & Exhibitions</title>
+    <meta name="title" content="Event Management Company | Weddings, Corporate Events & Exhibitions">
+    <meta name="description" content="Premium event management services specializing in luxury weddings, corporate events, and exhibitions. Transform your vision into unforgettable experiences with expert planning and execution.">
+    <meta name="keywords" content="event management, wedding planner, corporate events, exhibition management, luxury events, event planning services, wedding coordinator, event organizer, party planning">
+    <meta name="author" content="Your Company Name">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.yourwebsite.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourwebsite.com/">
+    <meta property="og:title" content="Event Management Company | Weddings, Corporate Events & Exhibitions">
+    <meta property="og:description" content="Premium event management services specializing in luxury weddings, corporate events, and exhibitions. Transform your vision into unforgettable experiences.">
+    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Your Company Name">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.yourwebsite.com/">
+    <meta property="twitter:title" content="Event Management Company | Weddings, Corporate Events & Exhibitions">
+    <meta property="twitter:description" content="Premium event management services specializing in luxury weddings, corporate events, and exhibitions.">
+    <meta property="twitter:image" content="https://www.yourwebsite.com/images/twitter-image.jpg">
+    <meta name="twitter:creator" content="@yourcompany">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventPlanner",
+      "name": "Your Company Name",
+      "image": "https://www.yourwebsite.com/images/logo.jpg",
+      "@id": "https://www.yourwebsite.com",
+      "url": "https://www.yourwebsite.com",
+      "telephone": "+1-555-123-4567",
+      "email": "info@yourcompany.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Event Street",
+        "addressLocality": "Your City",
+        "addressRegion": "State",
+        "postalCode": "12345",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7128,
+        "longitude": -74.0060
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/yourcompany",
+        "https://www.instagram.com/yourcompany",
+        "https://www.linkedin.com/company/yourcompany",
+        "https://twitter.com/yourcompany"
+      ],
+      "priceRange": "$$-$$$",
+      "description": "Premium event management services specializing in luxury weddings, corporate events, and exhibitions.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "150"
+      }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- GLightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <!-- Lenis Smooth Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Skip to content for accessibility -->
+    <!-- <a href="#main-content" class="skip-to-content">Skip to main content</a> -->
+    
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-text">Loading</div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <a href="#" class="nav-logo" aria-label="Company homepage">COMPANY NAME</a>
+        <ul class="nav-menu">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    
+    <!-- Fullscreen Menu -->
+    <div class="fullscreen-menu" id="fullscreenMenu" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+        <div class="menu-overlay-1"></div>
+        <div class="menu-overlay-2"></div>
+        <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
+        
+        <div class="menu-content-wrapper">
+            <div class="menu-left">
+                <nav class="menu-content" aria-label="Mobile menu">
+                    <a href="#services" class="menu-link">Services</a>
+                    <a href="#approach" class="menu-link">Approach</a>
+                    <a href="#work" class="menu-link">Our Work</a>
+                    <a href="#contact" class="menu-link">Contact</a>
+                </nav>
+            </div>
+            
+            <div class="menu-right">
+                <div class="menu-contact">
+                    <h3>Get in Touch</h3>
+                    <div class="menu-contact-item">
+                        <div class="menu-contact-label">Email</div>
+                        <div class="menu-contact-value">info@yourcompany.com</div>
+                    </div>
+                    <div class="menu-contact-item">
+                        <div class="menu-contact-label">Phone</div>
+                        <div class="menu-contact-value">+1 (555) 123-4567</div>
+                    </div>
+                    <div class="menu-contact-item">
+                        <div class="menu-contact-label">Address</div>
+                        <div class="menu-contact-value">123 Event Street, Your City</div>
+                    </div>
+                    
+                    <div class="menu-social">
+                        <a href="https://facebook.com/yourcompany" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/yourcompany" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/yourcompany" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="menu-footer">
+                    <p>&copy; 2025 Your Company Name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="assets/videos/Wallpaper F1 4K TEST EDIT AMD.f623.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 id="hero-title" class="hero-title">Company Name</h1>
+                <p class="hero-subtitle">Creating Unforgettable Moments</p>
+            </div>
+            <div class="hero-scroll" aria-hidden="true">Scroll</div>
+        </section>
+        
+        <!-- Services Section -->
+        <section class="services-section" id="services" aria-labelledby="services-heading">
+            <div class="services-wrapper">
+                <div class="services-sticky">
+                    <div class="services-inner">
+                        <div class="services-header">
+                            <h2 id="services-heading">Our Services</h2>
+                        </div>
+                        
+                        <div class="services-track" id="servicesTrack">
+                            <article class="service-card">
+                                <div class="service-image">
+                                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&fit=crop" alt="Luxury wedding ceremony" loading="lazy">
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-number">01</div>
+                                    <h3 class="service-title">Weddings</h3>
+                                    <p class="service-description">Creating unforgettable moments with personalized wedding planning and flawless execution that brings your dream day to life.</p>
+                                    <a href="wedding.html" class="service-link">Explore Weddings <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                            
+                            <article class="service-card">
+                                <div class="service-image">
+                                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&fit=crop" alt="Corporate event conference" loading="lazy">
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-number">02</div>
+                                    <h3 class="service-title">Corporate Events</h3>
+                                    <p class="service-description">Professional event management for conferences, product launches, and corporate gatherings that leave lasting impressions.</p>
+                                    <a href="events.html" class="service-link">Explore Events <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                            
+                            <article class="service-card">
+                                <div class="service-image">
+                                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&fit=crop" alt="Exhibition display" loading="lazy">
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-number">03</div>
+                                    <h3 class="service-title">Exhibitions</h3>
+                                    <p class="service-description">Designing and executing spectacular exhibition experiences that captivate audiences and showcase innovation beautifully.</p>
+                                    <a href="exhibitions.html" class="service-link">Explore Exhibitions <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <div class="scroll-indicator" aria-hidden="true">Scroll Horizontally →</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section class="stats-section" aria-labelledby="stats-heading">
+            <h2 id="stats-heading" class="visually-hidden"></h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="500">0</div>
+                    <div class="stat-label">Events Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="150">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="15">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Approach Section -->
+        <section class="approach-section" id="approach" aria-labelledby="approach-heading">
+            <div class="approach-container">
+                <header class="approach-header">
+                    <h2 id="approach-heading">Our Approach</h2>
+                    <p>We believe every event tells a unique story. Our meticulous approach ensures your vision becomes reality.</p>
+                </header>
+                
+                <div class="approach-steps">
+                    <article class="approach-step">
+                        <div class="approach-line"></div>
+                        <div class="approach-number">Step 01</div>
+                        <h3 class="approach-title">Discovery</h3>
+                        <p class="approach-description">Understanding your vision, goals, and expectations through detailed consultation.</p>
+                    </article>
+                    
+                    <article class="approach-step">
+                        <div class="approach-line"></div>
+                        <div class="approach-number">Step 02</div>
+                        <h3 class="approach-title">Design</h3>
+                        <p class="approach-description">Crafting a comprehensive plan tailored to your unique requirements and style.</p>
+                    </article>
+                    
+                    <article class="approach-step">
+                        <div class="approach-line"></div>
+                        <div class="approach-number">Step 03</div>
+                        <h3 class="approach-title">Coordination</h3>
+                        <p class="approach-description">Managing every detail with precision and ensuring seamless execution.</p>
+                    </article>
+                    
+                    <article class="approach-step">
+                        <div class="approach-line"></div>
+                        <div class="approach-number">Step 04</div>
+                        <h3 class="approach-title">Execution</h3>
+                        <p class="approach-description">Delivering an unforgettable experience that exceeds your expectations.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <div class="gallery-wrapper">
+            <section class="gallery-section" id="work" aria-labelledby="gallery-heading">
+                <div class="gallery-left">
+                    <div class="gallery-left-content">
+                        <h2 id="gallery-heading">Recent Work</h2>
+                        <p>Explore our portfolio of beautifully executed events that showcase our commitment to excellence and attention to detail.</p>
+                        <a href="#contact" class="gallery-cta">Start Your Project</a>
+                    </div>
+                </div>
+                
+                <div class="gallery-right">
+                    <div class="gallery-scroll-container">
+                        <div class="gallery-grid">
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&fit=crop" alt="Elegant wedding ceremony" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&fit=crop" alt="Corporate event setup" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&fit=crop" alt="Luxury party decoration" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&fit=crop" alt="Conference hall" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&fit=crop" alt="Exhibition booth" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&fit=crop" alt="Art gallery event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&fit=crop" alt="Product launch event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&fit=crop" alt="Business networking event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&fit=crop" alt="Wedding reception" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&fit=crop" alt="Elegant wedding ceremony" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&fit=crop" alt="Corporate event setup" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&fit=crop" alt="Luxury party decoration" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&fit=crop" alt="Conference hall" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&fit=crop" alt="Exhibition booth" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&fit=crop" alt="Art gallery event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&fit=crop" alt="Product launch event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&fit=crop" alt="Business networking event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&fit=crop" alt="Wedding reception" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&fit=crop" alt="Elegant wedding ceremony" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&fit=crop" alt="Corporate event setup" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&fit=crop" alt="Luxury party decoration" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&fit=crop" alt="Conference hall" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&fit=crop" alt="Exhibition booth" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&fit=crop" alt="Art gallery event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&fit=crop" alt="Product launch event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&fit=crop" alt="Business networking event" loading="lazy">
+                            </div>
+                            <div class="gallery-image">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&fit=crop" alt="Wedding reception" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Testimonial Section -->
+        <section class="testimonial-section" aria-labelledby="testimonial-heading">
+            <div class="testimonial-container">
+                <h2 id="testimonial-heading" class="visually-hidden"></h2>
+                <blockquote class="testimonial-quote">
+                    "They transformed our vision into reality. Every detail was perfect, creating an unforgettable experience for everyone."
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" aria-hidden="true"></div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Sarah Johnson</div>
+                        <div class="testimonial-role">CEO, Tech Innovations</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+            <div class="contact-container">
+                <div class="contact-left">
+                    <h2 id="contact-heading">Let's Create Something Extraordinary</h2>
+                    <p>Ready to bring your vision to life? Get in touch with us and let's start planning your perfect event.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <div class="contact-detail-label">Email</div>
+                            <div class="contact-detail-value">info@yourcompany.com</div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-label">Phone</div>
+                            <div class="contact-detail-value">+1 (555) 123-4567</div>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-label">Address</div>
+                            <div class="contact-detail-value">123 Event Street, Your City, ST 12345</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-right">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="form-error">Please enter your name</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="form-error">Please enter a valid email</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type" name="event-type" required>
+                                <option value="">Select event type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="exhibition">Exhibition</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-error">Please select an event type</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="form-error">Please enter your message</span>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                    
+                    <div class="form-success">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thank you! We'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>COMPANY NAME</h3>
+                <p>Creating extraordinary events that inspire and captivate, one unforgettable moment at a time.</p>
+            </div>
+            
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="wedding.html">Weddings</a></li>
+                        <li><a href="events.html">Corporate Events</a></li>
+                        <li><a href="exhibitions.html">Exhibitions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#approach">About</a></li>
+                        <li><a href="#work">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://instagram.com/yourcompany" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/yourcompany" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/yourcompany" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
