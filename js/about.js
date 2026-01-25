@@ -112,7 +112,7 @@ function initCursor() {
 // THEME TOGGLE
 // ==========================================
 function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggle = document.querySelector('.theme-toggle-minimal');
     if (!themeToggle) return;
     
     const savedTheme = localStorage.getItem('theme');
