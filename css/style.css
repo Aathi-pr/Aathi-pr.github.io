@@ -1525,6 +1525,24 @@ body.dark-mode .scroll-line::after {
     transition: transform 0.8s var(--ease-natural);
 }
 
+.work-img-inner-dsa {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/dsa.png');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s var(--ease-natural);
+}
+
+.work-img-inner-java {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/java.png');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s var(--ease-natural);
+}
+
 .work-arrow {
     width: 60px;
     height: 60px;
