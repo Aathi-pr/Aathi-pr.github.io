@@ -94,31 +94,32 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Adithyan PR",
-        "url": "https://adithyanpr.site",
-        "sameAs": [
-          "https://github.com/Aathi-pr",
-          "https://www.linkedin.com/in/adithyan-p-r-84328a238/"
-        ],
-        "jobTitle": "Full-Stack Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Freelance"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Kerala",
-          "addressCountry": "IN"
-        }
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Adithyan PR Portfolio",
-        "url": "https://adithyanpr.site/"
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Adithyan PR",
+            "url": "https://adithyanpr.site",
+            "sameAs": [
+              "https://github.com/Aathi-pr",
+              "https://www.linkedin.com/in/adithyan-p-r-84328a238/"
+            ],
+            "jobTitle": "Full-Stack Developer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Freelance"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Kerala",
+              "addressCountry": "IN"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "name": "Adithyan PR Portfolio",
+            "url": "https://adithyanpr.site/"
+          }
+        ]
       }
     </script>
   </head>
