@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul & Divya | Our Wedding Celebration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Inter:wght@200;300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+
+  <style>
+    :root {
+      --bg: #F8F6F4;
+      --alt-bg: #F0EBE6;
+      --text: #2D2C2A;
+      --sage: #A3B1A2;
+      --rose: #D1B8B3;
+      --champagne: #E4D5C7;
+
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-script: 'Alex Brush', cursive;
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      overflow-x: clip;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 8vw;
+    }
+
+    .botanical {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      background: var(--champagne);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 5vw;
+      overflow: hidden;
+    }
+
+    .loader-counter {
+      font-family: var(--font-serif);
+      font-size: clamp(6rem, 20vw, 25rem);
+      line-height: 0.75;
+      color: var(--text);
+      transform-origin: bottom left;
+    }
+
+    .loader-text-wrap {
+      position: absolute;
+      right: 8vw;
+      bottom: 5vw;
+      text-align: right;
+      overflow: hidden;
+    }
+
+    .loader-text-small {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      line-height: 1.6;
+      text-transform: uppercase;
+      color: var(--text);
+      display: block;
+    }
+
+    .char,
+    .line,
+    .word {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      padding-top: 20vh;
+    }
+
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 60%;
+    }
+
+    .hero-date {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 2vh;
+    }
+
+    .hero-title {
+      font-size: clamp(5.5rem, 11vw, 14rem);
+      line-height: 1.1;
+      margin: 0;
+      font-family: var(--font-script);
+      font-weight: 400;
+      position: relative;
+      z-index: 10;
+      padding: 2vh 0 4vh 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-title .name-1 {
+      align-self: flex-start;
+      z-index: 2;
+      position: relative;
+      padding-left: 2vw;
+    }
+
+    .hero-title .name-2 {
+      align-self: flex-start;
+      margin-left: 14vw;
+      z-index: 2;
+      position: relative;
+      padding-right: 2vw;
+    }
+
+    .hero-title .italic-amp {
+      align-self: flex-start;
+      margin-left: 8vw;
+      margin-top: -4vh;
+      margin-bottom: -5vh;
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      color: var(--sage);
+      z-index: 1;
+      opacity: 0.8;
+      position: relative;
+    }
+
+    .hero-image-wrapper {
+      position: absolute;
+      right: 6vw;
+      top: 12vh;
+      width: 36vw;
+      min-width: 320px;
+      height: 75vh;
+      overflow: hidden;
+      z-index: 1;
+      border-radius: 500px 500px 0 0;
+    }
+
+    .hero-image-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(248, 246, 244, 0.1), rgba(248, 246, 244, 0.4));
+      pointer-events: none;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.95;
+    }
+
+    .hero-botanical {
+      width: clamp(200px, 18vw, 350px);
+      top: 60vh;
+      left: -2vw;
+      color: var(--sage);
+    }
+
+    .story {
+      padding: 25vh 0;
+      position: relative;
+    }
+
+    .story-text {
+      font-size: clamp(2.5rem, 5vw, 6rem);
+      line-height: 1.2;
+      font-family: var(--font-serif);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .story-text .offset {
+      display: block;
+      text-align: right;
+      font-style: italic;
+      color: var(--rose);
+      margin-top: 1rem;
+    }
+
+    .story-botanical {
+      width: clamp(150px, 15vw, 300px);
+      bottom: -5vh;
+      right: 8vw;
+      transform: scaleX(-1);
+      color: var(--rose);
+    }
+
+    .events {
+      padding: 15vh 0;
+      background-color: var(--alt-bg);
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-style: italic;
+      margin-bottom: 10vh;
+    }
+
+    .event-row {
+      display: flex;
+      align-items: flex-start;
+      padding: 6vh 0;
+      border-top: 1px solid rgba(45, 44, 42, 0.08);
+      transition: opacity 0.3s ease;
+    }
+
+    .event-row:last-child {
+      border-bottom: 1px solid rgba(45, 44, 42, 0.08);
+    }
+
+    .event-row:hover {
+      opacity: 0.8;
+    }
+
+    .event-date {
+      width: 20%;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding-top: 10px;
+      color: var(--sage);
+      font-weight: 400;
+    }
+
+    .event-details {
+      width: 55%;
+      padding-right: 5vw;
+    }
+
+    .event-name {
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .event-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0.7;
+      max-width: 400px;
+    }
+
+    .event-location {
+      width: 25%;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      text-align: right;
+      padding-top: 10px;
+      opacity: 0.8;
+    }
+
+    .venue {
+      padding: 15vh 0;
+      background-color: var(--bg);
+    }
+
+    .venue-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .venue-info {
+      width: 40%;
+    }
+
+    .venue-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .venue-address {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      font-family: var(--font-serif);
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+
+    .venue-image-wrap {
+      width: 50%;
+      height: 65vh;
+      overflow: hidden;
+      position: relative;
+      border-radius: 4px;
+    }
+
+    .venue-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .map-btn,
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      position: relative;
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-style: italic;
+      color: var(--text);
+      padding-bottom: 5px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+
+    .map-btn::after,
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--text);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .map-btn:hover::after,
+    .submit-btn:hover::after {
+      transform: scaleX(1);
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .map-btn:hover .btn-arrow,
+    .submit-btn:hover .btn-arrow {
+      transform: translateX(6px);
+    }
+
+    .gallery {
+      padding: 15vh 0 25vh;
+      position: relative;
+    }
+
+    .gallery-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-style: italic;
+      margin-bottom: 15vh;
+      text-align: center;
+    }
+
+    .gallery-columns {
+      display: flex;
+      gap: 8vw;
+      align-items: flex-start;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .col-left {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      gap: 15vh;
+    }
+
+    .col-right {
+      width: 55%;
+      display: flex;
+      flex-direction: column;
+      gap: 12vh;
+      margin-top: 15vh;
+    }
+
+    .img-wrap {
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-1 {
+      aspect-ratio: 4/5;
+      width: 100%;
+    }
+
+    .img-2 {
+      aspect-ratio: 3/4;
+      width: 85%;
+      margin-left: auto;
+    }
+
+    .img-3 {
+      aspect-ratio: 16/9;
+      width: 120%;
+      z-index: 2;
+    }
+
+    .img-4 {
+      aspect-ratio: 4/5;
+      width: 90%;
+    }
+
+    .img-5 {
+      aspect-ratio: 1/1;
+      width: 80%;
+      margin-left: auto;
+    }
+
+    .img-6 {
+      aspect-ratio: 3/4;
+      width: 75%;
+    }
+
+    .gallery-botanical {
+      width: clamp(250px, 25vw, 400px);
+      top: 40vh;
+      left: 40%;
+      color: var(--champagne);
+      opacity: 0.4;
+    }
+
+    .rsvp {
+      padding: 20vh 0 25vh;
+      background-color: var(--champagne);
+      position: relative;
+    }
+
+    .rsvp-header {
+      margin-bottom: 10vh;
+      text-align: center;
+    }
+
+    .rsvp-title {
+      font-size: clamp(4rem, 8vw, 8rem);
+      font-style: italic;
+    }
+
+    .rsvp-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      opacity: 0.7;
+    }
+
+    .rsvp-form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 4vw;
+      margin-bottom: 4vh;
+    }
+
+    .form-group {
+      flex: 1;
+      position: relative;
+    }
+
+    .form-group.full {
+      width: 100%;
+      flex: none;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(45, 44, 42, 0.2);
+      padding: 15px 0 10px 0;
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      outline: none;
+      border-radius: 0;
+      appearance: none;
+      transition: border-color 0.4s ease, opacity 0.4s ease;
+      opacity: 0.8;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-bottom-color: var(--text);
+      opacity: 1;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(45, 44, 42, 0.35);
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+      color: rgba(45, 44, 42, 0.15);
+    }
+
+    .select-wrapper::after {
+      content: '▼';
+      font-size: 0.5rem;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    ::selection {
+      background: var(--sage);
+      color: var(--bg);
+    }
+
+    .submit-btn {
+      margin-top: 4vh;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    footer {
+      padding: 8vh 0;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      background: var(--alt-bg);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-title .text-right {
+        padding-left: 0;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .hero-content {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-title {
+        align-items: center;
+      }
+
+      .hero-title .name-1,
+      .hero-title .name-2 {
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        align-self: center;
+      }
+
+      .hero-title .italic-amp {
+        margin: -1vh 0;
+        align-self: center;
+        font-size: 3.5rem;
+      }
+
+      .hero-image-wrapper {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        height: 55vh;
+        margin-top: 5vh;
+        transform: none;
+        display: block;
+        border-radius: 300px 300px 0 0;
+      }
+
+      .hero-title .italic-amp {
+        padding-left: 0;
+      }
+
+      .event-row {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 4vh 0;
+      }
+
+      .event-date,
+      .event-details,
+      .event-location {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+      }
+
+      .venue-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .venue-info {
+        width: 100%;
+        margin-bottom: 5vh;
+      }
+
+      .venue-image-wrap {
+        width: 100%;
+        height: 45vh;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 4vh;
+      }
+
+      .gallery-columns {
+        flex-direction: column;
+        gap: 8vh;
+      }
+
+      .col-left,
+      .col-right {
+        width: 100%;
+        margin-top: 0;
+        gap: 8vh;
+      }
+
+      .img-wrap {
+        width: 100% !important;
+        margin: 0 !important;
+        aspect-ratio: auto !important;
+        height: 60vh !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader">
+    <div class="loader-counter">0</div>
+    <div class="loader-text-wrap">
+      <span class="loader-text-small">Rahul &amp; Divya <br> The Celebration</span>
+    </div>
+  </div>
+
+  <svg width="0" height="0" class="hidden" style="display: none;">
+    <symbol id="delicate-branch" viewBox="0 0 100 300">
+      <path d="M50 300 C40 200 60 100 50 0" stroke="currentColor" fill="none" stroke-width="0.8" />
+      <path d="M50 250 C30 240 20 220 50 200 C45 220 40 240 50 250 Z" stroke="currentColor" fill="none"
+        stroke-width="0.5" />
+      <path d="M51 200 C70 190 80 170 51 150 C55 170 60 190 51 200 Z" stroke="currentColor" fill="none"
+        stroke-width="0.5" />
+      <path d="M49 150 C30 140 20 120 49 100 C45 120 40 140 49 150 Z" stroke="currentColor" fill="none"
+        stroke-width="0.5" />
+      <path d="M51 100 C70 90 80 70 51 50 C55 70 60 90 51 100 Z" stroke="currentColor" fill="none" stroke-width="0.5" />
+      <path d="M49 50 C40 40 40 20 50 0 C45 20 45 40 49 50 Z" stroke="currentColor" fill="none" stroke-width="0.5" />
+    </symbol>
+  </svg>
+
+  <main id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <section class="hero">
+        <svg class="botanical hero-botanical" viewBox="0 0 100 300">
+          <use href="#delicate-branch"></use>
+        </svg>
+
+        <div class="container hero-container">
+          <div class="hero-content">
+            <p class="hero-date" data-speed="0.05">The Celebration of Love &mdash; Nov 24, 2024</p>
+            <h1 class="hero-title">
+              <span class="title-line name-1">Rahul</span>
+              <span class="italic-amp">&amp;</span>
+              <span class="title-line name-2">Divya</span>
+            </h1>
+          </div>
+
+          <div class="hero-image-wrapper" data-speed="0.05">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2000"
+              alt="Couple">
+          </div>
+        </div>
+      </section>
+
+      <section class="story">
+        <svg class="botanical story-botanical" viewBox="0 0 100 300" data-speed="-0.05">
+          <use href="#delicate-branch"></use>
+        </svg>
+        <div class="container">
+          <p class="story-text" id="story-quote">
+            "We decided on forever.<br>
+            <span class="offset">Join us as we write our next chapter."</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="events">
+        <div class="container">
+          <h2 class="section-title fade-up">The Itinerary</h2>
+
+          <div class="event-list">
+            <div class="event-row fade-up">
+              <div class="event-date">SAT, NOV 23</div>
+              <div class="event-details">
+                <h3 class="event-name">Haldi &amp; Sangeet</h3>
+                <p class="event-desc">An evening of vibrant colors, music, and dance under the open sky.</p>
+              </div>
+              <div class="event-location" data-speed="0.02">The Royal Gardens<br>4:00 PM Onwards</div>
+            </div>
+
+            <div class="event-row fade-up">
+              <div class="event-date">SUN, NOV 24</div>
+              <div class="event-details">
+                <h3 class="event-name">The Wedding Vows</h3>
+                <p class="event-desc">Witness our union as we exchange our vows and rings.</p>
+              </div>
+              <div class="event-location" data-speed="0.02">The Grand Estate<br>10:00 AM</div>
+            </div>
+
+            <div class="event-row fade-up">
+              <div class="event-date">SUN, NOV 24</div>
+              <div class="event-details">
+                <h3 class="event-name">The Reception</h3>
+                <p class="event-desc">An elegant formal evening to celebrate our marriage with dinner and toasts.</p>
+              </div>
+              <div class="event-location" data-speed="0.02">Crystal Ballroom<br>7:00 PM</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="venue">
+        <div class="container venue-container">
+          <div class="venue-info fade-up">
+            <h2 class="venue-title">The Grand Estate</h2>
+            <p class="venue-address">123 Royal Palm Boulevard<br>Udaipur, Rajasthan, 313001<br>India</p>
+            <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions <span
+                class="btn-arrow">&rarr;</span></a>
+          </div>
+          <div class="venue-image-wrap fade-up">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000"
+              alt="Wedding Venue">
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery">
+        <svg class="botanical gallery-botanical" viewBox="0 0 100 300" data-speed="0.1">
+          <use href="#delicate-branch"></use>
+        </svg>
+        <div class="container">
+          <h2 class="gallery-title fade-up">Captured Moments</h2>
+          <div class="gallery-columns">
+            <div class="col-left">
+              <div class="img-wrap img-1" data-speed="0.04">
+                <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80&w=2000"
+                  alt="Wedding Details">
+              </div>
+              <div class="img-wrap img-3" data-speed="0.06">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000"
+                  alt="Aesthetic">
+              </div>
+              <div class="img-wrap img-5" data-speed="0.03">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=2000"
+                  alt="Decor Elements">
+              </div>
+            </div>
+            <div class="col-right">
+              <div class="img-wrap img-2" data-speed="-0.03">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=2000"
+                  alt="Florals">
+              </div>
+              <div class="img-wrap img-4" data-speed="-0.05">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=2000"
+                  alt="Nature">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp">
+        <div class="container">
+          <div class="rsvp-header fade-up">
+            <h2 class="rsvp-title">RSVP</h2>
+            <p class="rsvp-subtitle">Please respond by October 15th</p>
+          </div>
+
+          <form class="rsvp-form" id="rsvp-form">
+            <div class="form-row fade-up">
+              <div class="form-group">
+                <input type="text" placeholder="First & Last Name(s)" required>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Email Address" required>
+              </div>
+            </div>
+
+            <div class="form-row fade-up">
+              <div class="form-group select-wrapper">
+                <select required>
+                  <option value="" disabled selected>Will you join us?</option>
+                  <option value="accept">Joyfully Accept</option>
+                  <option value="decline">Regretfully Decline</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="number" placeholder="Number of Guests" min="1" max="10">
+              </div>
+            </div>
+
+            <div class="form-row fade-up">
+              <div class="form-group full">
+                <input type="text" placeholder="Dietary Requirements (Optional)">
+              </div>
+            </div>
+
+            <div class="form-row fade-up">
+              <div class="form-group full">
+                <textarea placeholder="Leave a note for the couple, or request a song..."></textarea>
+              </div>
+            </div>
+
+            <div class="fade-up" style="text-align: center;">
+              <button type="submit" class="submit-btn" id="submit-btn">Send Details <span
+                  class="btn-arrow">&rarr;</span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer>
+        Rahul &amp; Divya &copy; 2024 &mdash; An invitation made with love
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+        direction: 'vertical',
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+      gsap.registerPlugin(ScrollTrigger);
+      const tlLoader = gsap.timeline();
+      let counter = { val: 0 };
+
+      tlLoader
+        .to(counter, {
+          val: 100, duration: 2.5, ease: "power4.inOut",
+          onUpdate: function () {
+            document.querySelector('.loader-counter').innerText = Math.round(counter.val);
+          }
+        })
+        .from('.loader-text-small', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' }, 0)
+        .to('.loader', { yPercent: -100, duration: 1.5, ease: "expo.inOut", delay: 0.2 })
+        .set('.loader', { display: "none" })
+
+        .from('.hero-date', { y: 20, opacity: 0, duration: 1, ease: "power2.out" }, "-=1.0");
+      const heroLines = new SplitType('.title-line', { types: 'lines' });
+      tlLoader.from(heroLines.lines, {
+        y: 100, opacity: 0,
+        duration: 1.8, stagger: 0.15,
+        ease: "power4.out"
+      }, "-=1.0")
+        .from('.italic-amp', { scale: 0.8, opacity: 0, duration: 1.5, ease: "power3.out" }, "-=1.5");
+
+      tlLoader.fromTo('.hero-image-wrapper',
+        { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" },
+        { clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)", duration: 2, ease: "power3.inOut" }
+        , "-=1.5");
+      gsap.utils.toArray('[data-speed]').forEach(el => {
+        const speed = parseFloat(el.getAttribute('data-speed'));
+        gsap.to(el, {
+          y: () => -1000 * speed,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+      const storyQuote = new SplitType('#story-quote', { types: 'lines' });
+      gsap.from(storyQuote.lines, {
+        y: 40, opacity: 0, duration: 1.5, stagger: 0.15, ease: "power3.out",
+        scrollTrigger: { trigger: '.story', start: "top 80%" }
+      });
+      gsap.utils.toArray('.fade-up').forEach(el => {
+        gsap.from(el, {
+          y: 40, opacity: 0, duration: 1.2, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%" }
+        });
+      });
+      document.getElementById("rsvp-form").addEventListener("submit", e => {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.innerText = "RSVP Sent";
+        setTimeout(() => { btn.innerText = "Send Details"; }, 4000);
+      });
+
+    });
+  </script>
+</body>
+
+</html>
