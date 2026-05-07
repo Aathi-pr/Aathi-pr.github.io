@@ -1483,7 +1483,7 @@ body.dark-mode .scroll-line::after {
 .work-img-inner-event {
     width: 100%;
     height: 100%;
-    background-image: url('../assets/event.png');
+    background-image: url('../assets/serah-event.png');
     background-size: cover;
     background-position: center;
     transition: transform 0.8s var(--ease-natural);
