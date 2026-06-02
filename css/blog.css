@@ -1,7 +1,3 @@
-/* ==========================================
-   BLOG PAGE STYLES
-========================================== */
-
 .blog-hero {
     padding: calc(var(--space-xxl) + var(--space-lg)) 0 var(--space-xl);
 }
@@ -342,11 +338,7 @@ body.dark-mode .newsletter-btn:hover {
     color: var(--white);
 }
 
-/* ==========================================
-   RESPONSIVE STYLES
-========================================== */
 
-/* Large Tablet & Small Desktop (1024px - 1200px) */
 @media (max-width: 1200px) {
     .blog-hero {
         padding: calc(var(--space-xl) + var(--space-lg)) 0 var(--space-lg);
@@ -574,6 +566,7 @@ body.dark-mode .newsletter-btn:hover {
 
 /* Mobile Portrait (480px - 600px) */
 @media (max-width: 600px) {
+
     /* Blog Grid - 1 column */
     .blog-grid {
         grid-template-columns: 1fr;
@@ -751,6 +744,7 @@ body.dark-mode .newsletter-btn:hover {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
     .blog-card,
     .featured-img-placeholder,
     .blog-img-placeholder,

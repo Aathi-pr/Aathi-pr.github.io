@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aathi-pr - GitHub Profile</title>
+  <meta name="description" content="GitHub profile style portfolio for Adithyan PR with projects, resume, skills, and contact details.">
+  <link rel="canonical" href="https://adithyanpr.site/github.html">
+  <link rel="icon" type="image/png" href="assets/portfolio-image.png">
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --panel: #fffefb;
+      --panel-2: #f5f2ec;
+      --ink: #171717;
+      --muted: #6f6b63;
+      --line: #ded8cd;
+      --line-2: #c8c0b4;
+      --github-blue: #0969da;
+      --green: #1a7f37;
+      --red: #b42318;
+      --shadow: 0 20px 50px rgba(30, 24, 16, 0.08);
+      --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --panel-2: #111820;
+      --ink: #e6edf3;
+      --muted: #8b949e;
+      --line: #30363d;
+      --line-2: #484f58;
+      --github-blue: #58a6ff;
+      --green: #3fb950;
+      --red: #ff7b72;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(23, 23, 23, 0.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(23, 23, 23, 0.018) 1px, transparent 1px),
+        var(--bg);
+      background-size: 32px 32px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.55;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 99;
+      background: var(--ink);
+      color: var(--panel);
+      padding: 8px 12px;
+      border: 1px solid var(--ink);
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .github-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--panel) 92%, transparent);
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    [data-theme="dark"] .github-topbar {
+      background: color-mix(in srgb, var(--panel) 92%, transparent);
+    }
+
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      min-height: 62px;
+      padding: 12px 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .octo {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-2);
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--panel);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink);
+      display: inline-grid;
+      place-items: center;
+    }
+
+    .top-actions .icon-button {
+      border-color: var(--line-2);
+      background: var(--panel);
+      color: var(--ink);
+    }
+
+    .shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .zen-strip {
+      min-height: 112px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 24px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .zen-strip p {
+      max-width: 760px;
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .zen-kicker {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .zen-title {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 62px);
+      line-height: 0.95;
+      font-weight: 400;
+    }
+
+    .hanko {
+      width: 78px;
+      height: 78px;
+      border: 2px solid var(--red);
+      color: var(--red);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 296px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 86px;
+    }
+
+    .avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--line-2);
+      background: var(--panel);
+      display: block;
+    }
+
+    .name {
+      margin: 18px 0 0;
+      font-size: 26px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .handle {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .bio {
+      margin: 18px 0;
+      color: var(--ink);
+    }
+
+    .github-button {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
+      background: var(--panel-2);
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .github-button.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #ffffff;
+    }
+
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0;
+      display: grid;
+      gap: 9px;
+      color: var(--muted);
+    }
+
+    .sidebar-list li,
+    .sidebar-list a {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .sidebar-list strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .profile-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 10px;
+      min-height: 64px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .mini-heading {
+      margin: 24px 0 10px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .status-card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 12px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+      margin-right: 8px;
+      box-shadow: 0 0 0 4px rgba(26, 127, 55, 0.12);
+    }
+
+    .tabs {
+      position: sticky;
+      top: 62px;
+      z-index: 10;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(14px);
+    }
+
+    .tab {
+      min-height: 52px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab[aria-selected="true"] {
+      color: var(--ink);
+      border-bottom-color: var(--red);
+    }
+
+    .content {
+      padding-top: 22px;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+      animation: rise 180ms ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .block {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      margin-bottom: 18px;
+    }
+
+    .block-head {
+      min-height: 44px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: var(--panel-2);
+    }
+
+    .block-head h2,
+    .block-head h3 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .block-body {
+      padding: 18px;
+    }
+
+    .sync-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .overview-projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .overview-project {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 12px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .overview-project h3 {
+      margin: 0;
+      color: var(--github-blue);
+      font-size: 14px;
+    }
+
+    .overview-project p {
+      margin: 8px 0 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .repo-count {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .readme h1 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .readme h2 {
+      margin: 24px 0 8px;
+      font-size: 17px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .readme p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .readme-code {
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      padding: 14px;
+      color: var(--ink);
+      overflow-x: auto;
+    }
+
+    .repo-toolbar {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) auto;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .repo-search {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 0 12px;
+      outline: none;
+    }
+
+    .repo-search:focus {
+      border-color: var(--github-blue);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--github-blue) 18%, transparent);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .filter {
+      height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--muted);
+    }
+
+    .filter.active {
+      background: var(--ink);
+      color: var(--panel);
+      border-color: var(--ink);
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .repo {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      min-height: 178px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .repo:hover {
+      border-color: var(--line-2);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .repo-preview {
+      height: 116px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel-2);
+      overflow: hidden;
+    }
+
+    .repo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.72) contrast(1.04);
+      display: block;
+    }
+
+    .repo-content {
+      padding: 14px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .repo-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .repo h3 {
+      margin: 0;
+      color: var(--github-blue);
+      font-size: 15px;
+    }
+
+    .visibility {
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      padding: 1px 7px;
+      color: var(--muted);
+      font-size: 11px;
+      flex: 0 0 auto;
+    }
+
+    .repo p {
+      color: var(--muted);
+      margin: 10px 0 14px;
+      font-size: 13px;
+    }
+
+    .repo-meta {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .lang::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .lang.js::before {
+      background: #f1e05a;
+    }
+
+    .lang.python::before {
+      background: #3572a5;
+    }
+
+    .lang.dart::before {
+      background: #00b4ab;
+    }
+
+    .lang.java::before {
+      background: #b07219;
+    }
+
+    .lang.css::before {
+      background: #563d7c;
+    }
+
+    .activity-grid {
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .days {
+      width: max-content;
+      display: grid;
+      grid-template-columns: repeat(28, 12px);
+      grid-auto-rows: 12px;
+      gap: 4px;
+      padding-top: 10px;
+    }
+
+    .day {
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+    }
+
+    .day[data-level="1"] {
+      background: color-mix(in srgb, var(--green) 22%, var(--panel-2));
+    }
+
+    .day[data-level="2"] {
+      background: color-mix(in srgb, var(--green) 45%, var(--panel-2));
+    }
+
+    .day[data-level="3"] {
+      background: color-mix(in srgb, var(--green) 68%, var(--panel-2));
+    }
+
+    .day[data-level="4"] {
+      background: var(--green);
+    }
+
+    .legend {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 16px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--line-2);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: var(--panel);
+      border: 2px solid var(--red);
+      border-radius: 50%;
+    }
+
+    .timeline-item h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .timeline-item p {
+      margin: 5px 0 0;
+      color: var(--muted);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--muted);
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .contact-card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 16px;
+      min-height: 118px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-card:hover {
+      border-color: var(--red);
+    }
+
+    .contact-card span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .contact-card strong {
+      overflow-wrap: anywhere;
+    }
+
+    .empty {
+      display: none;
+      padding: 24px;
+      border: 1px dashed var(--line-2);
+      color: var(--muted);
+      text-align: center;
+      background: var(--panel);
+    }
+
+    .empty.show {
+      display: block;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 980px) {
+      .topbar-inner {
+        grid-template-columns: 1fr auto;
+      }
+
+      .profile-layout,
+      .resume-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 18px;
+      }
+
+      .avatar {
+        width: 150px;
+      }
+
+      .sidebar-main {
+        min-width: 0;
+      }
+
+      .side-extra {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        padding: 10px 14px;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+
+      .shell {
+        padding: 14px;
+      }
+
+      .zen-strip {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .hanko {
+        width: 62px;
+        height: 62px;
+      }
+
+      .sidebar {
+        grid-template-columns: 96px 1fr;
+      }
+
+      .avatar {
+        width: 96px;
+      }
+
+      .name {
+        font-size: 21px;
+      }
+
+      .handle {
+        font-size: 16px;
+      }
+
+      .tabs {
+        top: 55px;
+      }
+
+      .repo-toolbar,
+      .repo-grid,
+      .overview-projects,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="github-topbar">
+    <div class="topbar-inner">
+      <a class="octo" href="index.html" aria-label="Portfolio home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.8A5.3 5.3 0 0 0 20 5.1 4.9 4.9 0 0 0 19.9 2s-1.1-.3-3.7 1.4a12.8 12.8 0 0 0-6.7 0C6.9 1.7 5.8 2 5.8 2a4.9 4.9 0 0 0-.1 3.1A5.3 5.3 0 0 0 4.5 8.7c0 5.3 3.1 6.5 6.1 6.8a3 3 0 0 0-.9 2.1V22"/></svg>
+      </a>
+      <div class="top-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <section class="zen-strip" aria-label="Intro">
+      <div>
+        <div class="zen-kicker">余白 / minimal profile system</div>
+        <h1 class="zen-title" id="heroLogin">Aathi-pr</h1>
+        <p id="heroBio">Live GitHub profile data, local portfolio projects, and resume details in one quiet Japanese minimal interface.</p>
+      </div>
+      <div class="hanko" aria-hidden="true">ADITHYAN<br>PR</div>
+    </section>
+
+    <div class="profile-layout">
+      <aside class="sidebar" aria-label="Profile sidebar">
+        <img class="avatar" id="avatar" src="assets/portfolio-image.png" alt="Adithyan PR profile photo">
+        <div class="sidebar-main">
+          <h2 class="name" id="profileName">Adithyan PR</h2>
+          <p class="handle" id="profileHandle">Aathi-pr</p>
+          <p class="bio" id="profileBio">Full-stack developer and designer from Kerala, India. I build clean web interfaces, Django systems, Flutter apps, and academic programming repositories.</p>
+          <a class="github-button primary" href="mailto:adithyanpr0001@gmail.com">Hire / Contact</a>
+          <div class="profile-metrics" aria-label="GitHub profile stats">
+            <div class="metric"><strong id="repoMetric">--</strong><span>repos</span></div>
+            <div class="metric"><strong id="followerMetric">--</strong><span>followers</span></div>
+            <div class="metric"><strong id="followingMetric">--</strong><span>following</span></div>
+          </div>
+          <ul class="sidebar-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span id="profileLocation">Kerala, India</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:adithyanpr0001@gmail.com">adithyanpr0001@gmail.com</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.8A5.3 5.3 0 0 0 20 5.1 4.9 4.9 0 0 0 19.9 2s-1.1-.3-3.7 1.4a12.8 12.8 0 0 0-6.7 0C6.9 1.7 5.8 2 5.8 2a4.9 4.9 0 0 0-.1 3.1A5.3 5.3 0 0 0 4.5 8.7c0 5.3 3.1 6.5 6.1 6.8a3 3 0 0 0-.9 2.1V22"/></svg><a href="https://github.com/Aathi-pr" target="_blank" rel="noopener noreferrer">github.com/Aathi-pr</a></li>
+          </ul>
+        </div>
+        <div class="side-extra">
+          <h3 class="mini-heading">Status</h3>
+          <div class="status-card"><span class="status-dot"></span>Available for internships, freelance work, and collaborative projects.</div>
+          <h3 class="mini-heading">Profile Stats</h3>
+          <ul class="sidebar-list">
+            <li><strong id="listedMetric">--</strong> public GitHub repositories</li>
+            <li><strong id="updatedMetric">syncing</strong> latest update</li>
+            <li><strong>MCA</strong> current focus</li>
+          </ul>
+        </div>
+      </aside>
+
+      <main id="content">
+        <nav class="tabs" role="tablist" aria-label="Profile sections">
+          <button class="tab" role="tab" aria-selected="true" data-panel="overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4v15.5A2.5 2.5 0 0 1 6.5 22H20V6a2 2 0 0 0-2-2H4Z"/></svg>Overview</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18 22 12l-6-6"/><path d="m8 6-6 6 6 6"/></svg>Projects <span class="repo-count" id="projectTabCount">--</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8m8 4H8m2-8H8"/></svg>Resume</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.91.33 1.8.62 2.65a2 2 0 0 1-.45 2.11L8 9.76a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.74.5 2.65.62A2 2 0 0 1 22 16.92Z"/></svg>Contact</button>
+        </nav>
+
+        <div class="content">
+          <section class="panel active" id="overview" role="tabpanel">
+            <article class="block readme">
+              <div class="block-head">
+                <h2>Aathi-pr / README.md</h2>
+                <span>main</span>
+              </div>
+              <div class="block-body">
+                <h1>こんにちは, I am Adithyan PR.</h1>
+                <p>I like interfaces that feel calm, deliberate, and useful. My work sits between full-stack development and visual design: Django backends, Flutter mobile screens, static portfolio systems, and small tools that solve real problems.</p>
+                <div class="readme-code">currently = { focus: "MCA + Flutter + Django", style: "minimal, fast, human", location: "Kerala, India" }</div>
+                <h2>What this page is</h2>
+                <p>This page fetches public data from GitHub, then blends it with selected portfolio projects and resume details. If the API is unavailable, the local project data still renders.</p>
+              </div>
+            </article>
+
+            <article class="block">
+              <div class="block-head">
+                <h3>GitHub projects</h3>
+                <span class="sync-note" id="syncNote">syncing from GitHub...</span>
+              </div>
+              <div class="block-body">
+                <div class="overview-projects" id="overviewProjects"></div>
+              </div>
+            </article>
+
+            <article class="block">
+              <div class="block-head">
+                <h3>Contribution activity</h3>
+                <span id="activityText">156 days shown</span>
+              </div>
+              <div class="block-body">
+                <div class="activity-grid">
+                  <div class="days" id="days"></div>
+                </div>
+                <div class="legend">Less <span class="day" data-level="0"></span><span class="day" data-level="1"></span><span class="day" data-level="2"></span><span class="day" data-level="3"></span><span class="day" data-level="4"></span> More</div>
+              </div>
+            </article>
+          </section>
+
+          <section class="panel" id="projects" role="tabpanel">
+            <div class="repo-toolbar">
+              <input class="repo-search" id="repoSearch" type="search" placeholder="Find a project..." aria-label="Find a project">
+              <div class="filters" aria-label="Repository filters">
+                <button class="filter active" data-filter="all" type="button">All</button>
+                <button class="filter" data-filter="github" type="button">GitHub</button>
+                <button class="filter" data-filter="portfolio" type="button">Portfolio</button>
+                <button class="filter" data-filter="academic" type="button">Academic</button>
+              </div>
+            </div>
+
+            <div class="repo-grid" id="repoGrid">
+              <article class="repo" data-kind="web" data-search="serah events event management platform html css javascript gsap">
+                <a class="repo-preview" href="https://www.serahevent.com" target="_blank" rel="noopener noreferrer"><img src="assets/serah-event.png" alt="Serah Events preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>Serah Events</h3><span class="visibility">Public</span></div><p>Event management platform for weddings, exhibitions, and corporate planning with smooth visuals.</p><div class="repo-meta"><span class="lang js">JavaScript</span><a href="https://www.serahevent.com" target="_blank" rel="noopener noreferrer">Open</a></div></div>
+              </article>
+
+              <article class="repo" data-kind="web" data-search="wedding rsvp event website html css javascript">
+                <a class="repo-preview" href="work/w/index.html"><img src="assets/wedding.png" alt="Wedding RSVP preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>Wedding RSVP</h3><span class="visibility">Demo</span></div><p>Elegant wedding RSVP and event page with form flow, timeline sections, and polished UI.</p><div class="repo-meta"><span class="lang css">HTML/CSS</span><a href="work/w/index.html">Open</a></div></div>
+              </article>
+
+              <article class="repo" data-kind="web" data-search="hot wheels digital archive django sql collection gallery filters">
+                <a class="repo-preview" href="https://github.com/Aathi-pr/thehotwheelsproject.git" target="_blank" rel="noopener noreferrer"><img src="assets/hot.png" alt="Hot Wheels Digital Archive preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>Hot Wheels Digital Archive</h3><span class="visibility">Public</span></div><p>Django collection archive with image galleries, filters, SQL data, and collector browsing.</p><div class="repo-meta"><span class="lang python">Django</span><a href="https://github.com/Aathi-pr/thehotwheelsproject.git" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
+              </article>
+
+              <article class="repo" data-kind="web" data-search="code collab collaborative code editor django webrtc html css javascript">
+                <a class="repo-preview" href="https://github.com/Aathi-pr/collaborative_code_editor.git" target="_blank" rel="noopener noreferrer"><img src="assets/code.png" alt="Code Collab preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>Code Collab</h3><span class="visibility">Public</span></div><p>Collaborative web code editor built with Django and realtime collaboration concepts.</p><div class="repo-meta"><span class="lang python">Django</span><a href="https://github.com/Aathi-pr/collaborative_code_editor.git" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
+              </article>
+
+              <article class="repo" data-kind="web" data-search="portfolio archive 2024 gsap locomotive scroll html css javascript">
+                <a class="repo-preview" href="https://aathi-pr.github.io/" target="_blank" rel="noopener noreferrer"><img src="assets/portfolio-2024.png" alt="Portfolio Archive 2024 preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>Portfolio Archive 2024</h3><span class="visibility">Live</span></div><p>Earlier portfolio focused on motion, scroll interaction, and personal visual identity.</p><div class="repo-meta"><span class="lang js">GSAP</span><a href="https://aathi-pr.github.io/" target="_blank" rel="noopener noreferrer">Open</a></div></div>
+              </article>
+
+              <article class="repo" data-kind="mobile" data-search="hush app mobile chatting application flutter dart firebase">
+                <div class="repo-preview"><img src="assets/portfolio-image.png" alt="Hush App placeholder"></div>
+                <div class="repo-content"><div class="repo-title-row"><h3>Hush App</h3><span class="visibility">Private</span></div><p>Mobile chatting application concept focused on responsive conversation flows.</p><div class="repo-meta"><span class="lang dart">Flutter</span><span>Mobile</span></div></div>
+              </article>
+
+              <article class="repo" data-kind="academic" data-search="mca data structures lab c algorithms academic programs">
+                <a class="repo-preview" href="https://github.com/Aathi-pr/mca-data-structures-lab.git" target="_blank" rel="noopener noreferrer"><img src="assets/dsa.png" alt="MCA Data Structures Lab preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>MCA Data Structures Lab</h3><span class="visibility">Academic</span></div><p>Coursework repository for core data structures, algorithm practice, and lab programs.</p><div class="repo-meta"><span class="lang">C / DSA</span><a href="https://github.com/Aathi-pr/mca-data-structures-lab.git" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
+              </article>
+
+              <article class="repo" data-kind="academic" data-search="mca java programs object oriented programming academic">
+                <a class="repo-preview" href="https://github.com/Aathi-pr/mca-java-programs.git" target="_blank" rel="noopener noreferrer"><img src="assets/java.png" alt="Java Programs preview"></a>
+                <div class="repo-content"><div class="repo-title-row"><h3>Java Programs</h3><span class="visibility">Academic</span></div><p>Object-oriented programming exercises and Java coursework from the MCA track.</p><div class="repo-meta"><span class="lang java">Java</span><a href="https://github.com/Aathi-pr/mca-java-programs.git" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
+              </article>
+            </div>
+            <p class="empty" id="emptyState">No projects matched your search.</p>
+          </section>
+
+          <section class="panel" id="resume" role="tabpanel">
+            <div class="resume-grid">
+              <article class="block">
+                <div class="block-head"><h2>Experience + Education</h2><a href="assets/adithyan-pr-resume.pdf" target="_blank" rel="noopener noreferrer">PDF</a></div>
+                <div class="block-body timeline">
+                  <div class="timeline-item"><h3>Flutter Developer Intern - Inmakes Infotech</h3><p>Working on mobile app development with Flutter, Dart, Firebase, and REST APIs.</p></div>
+                  <div class="timeline-item"><h3>Master of Computer Applications</h3><p>Current academic focus: software engineering, data structures, Java, web systems, and application development.</p></div>
+                  <div class="timeline-item"><h3>Freelance + Personal Projects</h3><p>Designed and built portfolio sites, event websites, Django tools, and polished frontend demos.</p></div>
+                </div>
+              </article>
+
+              <article class="block">
+                <div class="block-head"><h2>Skills</h2></div>
+                <div class="block-body">
+                  <div class="tag-cloud">
+                    <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span><span class="tag">Django</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">GSAP</span><span class="tag">SQL</span><span class="tag">REST APIs</span><span class="tag">UI Design</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel" id="contact" role="tabpanel">
+            <div class="contact-grid">
+              <a class="contact-card" href="mailto:adithyanpr0001@gmail.com"><span>Email</span><strong>adithyanpr0001@gmail.com</strong></a>
+              <a class="contact-card" href="https://github.com/Aathi-pr" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>github.com/Aathi-pr</strong></a>
+              <a class="contact-card" href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>adithyan-p-r</strong></a>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const USERNAME = "Aathi-pr";
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem("aathi-github-theme");
+    if (savedTheme) root.dataset.theme = savedTheme;
+
+    const $ = (selector) => document.querySelector(selector);
+    const escapeHtml = (value = "") =>
+      String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[char]);
+
+    const portfolioProjects = [
+      {
+        name: "Serah Events",
+        description: "Event management platform for weddings, exhibitions, and corporate planning with smooth visuals.",
+        language: "JavaScript",
+        html_url: "https://www.serahevent.com",
+        homepage: "https://www.serahevent.com",
+        image: "assets/serah-event.png",
+        source: "portfolio",
+        kind: "portfolio",
+        updated_at: "2025-01-01T00:00:00Z"
+      },
+      {
+        name: "Wedding RSVP",
+        description: "Elegant wedding RSVP and event page with form flow, timeline sections, and polished UI.",
+        language: "HTML/CSS",
+        html_url: "work/w/index.html",
+        homepage: "work/w/index.html",
+        image: "assets/wedding.png",
+        source: "portfolio",
+        kind: "portfolio",
+        updated_at: "2024-09-01T00:00:00Z"
+      },
+      {
+        name: "Hush App",
+        description: "Mobile chatting application concept focused on responsive conversation flows.",
+        language: "Dart",
+        html_url: "#projects",
+        image: "assets/portfolio-image.png",
+        source: "portfolio",
+        kind: "portfolio",
+        updated_at: "2024-07-01T00:00:00Z"
+      }
+    ];
+
+    const repoEnhancements = {
+      thehotwheelsproject: { image: "assets/hot.png", kind: "portfolio" },
+      collaborative_code_editor: { image: "assets/code.png", kind: "portfolio" },
+      "mca-data-structures-lab": { image: "assets/dsa.png", kind: "academic" },
+      "mca-java-programs": { image: "assets/java.png", kind: "academic" },
+      "Aathi-pr.github.io": { image: "assets/portfolio-2024.png", kind: "portfolio" }
+    };
+
+    let allProjects = [];
+    let currentFilter = "all";
+
+    const themeToggle = $("#themeToggle");
+    const themeIcon = $("#themeIcon");
+    function setIcon() {
+      themeIcon.innerHTML = root.dataset.theme === "dark"
+        ? '<path d="M12 3a6 6 0 0 0 9 7.4A9 9 0 1 1 12 3Z"/>'
+        : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+    }
+    setIcon();
+    themeToggle.addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("aathi-github-theme", root.dataset.theme);
+      setIcon();
+    });
+
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".panel");
+    function showPanel(id) {
+      tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.panel === id)));
+      panels.forEach((panel) => panel.classList.toggle("active", panel.id === id));
+      history.replaceState(null, "", "#" + id);
+    }
+    tabs.forEach((tab) => tab.addEventListener("click", () => showPanel(tab.dataset.panel)));
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const id = link.getAttribute("href").slice(1);
+        if (document.getElementById(id)?.classList.contains("panel")) {
+          event.preventDefault();
+          showPanel(id);
+        }
+      });
+    });
+    if (location.hash && document.querySelector(location.hash + ".panel")) showPanel(location.hash.slice(1));
+
+    function formatDate(value) {
+      if (!value) return "unknown";
+      return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(value));
+    }
+
+    function projectKind(repo) {
+      if (repo.kind) return repo.kind;
+      if (repoEnhancements[repo.name]?.kind) return repoEnhancements[repo.name].kind;
+      return "github";
+    }
+
+    function languageClass(language = "") {
+      const lang = language.toLowerCase();
+      if (lang.includes("javascript")) return "js";
+      if (lang.includes("python") || lang.includes("django")) return "python";
+      if (lang.includes("dart") || lang.includes("flutter")) return "dart";
+      if (lang.includes("java")) return "java";
+      if (lang.includes("css") || lang.includes("html")) return "css";
+      return "";
+    }
+
+    function normalizeRepo(repo) {
+      const enhancement = repoEnhancements[repo.name] || {};
+      return {
+        name: repo.name,
+        description: repo.description || "No description added yet.",
+        language: repo.language || "Code",
+        html_url: repo.html_url,
+        homepage: repo.homepage,
+        stargazers_count: repo.stargazers_count || 0,
+        forks_count: repo.forks_count || 0,
+        updated_at: repo.pushed_at || repo.updated_at,
+        image: enhancement.image || "assets/portfolio-image.png",
+        source: "github",
+        kind: enhancement.kind || "github",
+        private: repo.private
+      };
+    }
+
+    function repoCard(project) {
+      const link = project.homepage || project.html_url || "#projects";
+      const kind = projectKind(project);
+      return `
+        <article class="repo" data-kind="${escapeHtml(kind)}" data-search="${escapeHtml(`${project.name} ${project.description} ${project.language} ${kind}`.toLowerCase())}">
+          <a class="repo-preview" href="${escapeHtml(link)}" ${link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>
+            <img src="${escapeHtml(project.image || "assets/portfolio-image.png")}" alt="${escapeHtml(project.name)} preview">
+          </a>
+          <div class="repo-content">
+            <div class="repo-title-row">
+              <h3>${escapeHtml(project.name)}</h3>
+              <span class="visibility">${project.source === "github" ? "GitHub" : "Portfolio"}</span>
+            </div>
+            <p>${escapeHtml(project.description)}</p>
+            <div class="repo-meta">
+              <span class="lang ${languageClass(project.language)}">${escapeHtml(project.language || "Code")}</span>
+              <span>${project.stargazers_count || 0} stars · ${formatDate(project.updated_at)}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function overviewCard(project) {
+      const link = project.homepage || project.html_url || "#projects";
+      return `
+        <a class="overview-project" href="${escapeHtml(link)}" ${link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>
+          <div>
+            <h3>${escapeHtml(project.name)}</h3>
+            <p>${escapeHtml(project.description)}</p>
+          </div>
+          <span class="repo-meta"><span class="lang ${languageClass(project.language)}">${escapeHtml(project.language || "Code")}</span><span>${formatDate(project.updated_at)}</span></span>
+        </a>
+      `;
+    }
+
+    function renderProjects(projects) {
+      allProjects = projects;
+      $("#projectTabCount").textContent = projects.length;
+      $("#repoGrid").innerHTML = projects.map(repoCard).join("");
+      $("#overviewProjects").innerHTML = projects.slice(0, 6).map(overviewCard).join("");
+      filterProjects();
+    }
+
+    function renderActivity(levels, label) {
+      const days = $("#days");
+      days.innerHTML = "";
+      levels.forEach((level, index) => {
+        const day = document.createElement("span");
+        day.className = "day";
+        day.dataset.level = level;
+        day.title = `${level} activity points on day ${index + 1}`;
+        days.appendChild(day);
+      });
+      $("#activityText").textContent = label;
+    }
+
+    function activityFromEvents(events) {
+      const today = new Date();
+      const counts = new Map();
+      events.forEach((event) => {
+        const key = event.created_at.slice(0, 10);
+        counts.set(key, (counts.get(key) || 0) + 1);
+      });
+
+      return Array.from({ length: 156 }, (_, index) => {
+        const date = new Date(today);
+        date.setDate(today.getDate() - (155 - index));
+        const key = date.toISOString().slice(0, 10);
+        const count = counts.get(key) || 0;
+        return Math.min(count, 4);
+      });
+    }
+
+    function filterProjects() {
+      const query = $("#repoSearch").value.trim().toLowerCase();
+      let count = 0;
+      document.querySelectorAll(".repo").forEach((repo) => {
+        const matchesFilter = currentFilter === "all" || repo.dataset.kind === currentFilter;
+        const matchesSearch = !query || repo.dataset.search.includes(query);
+        const visible = matchesFilter && matchesSearch;
+        repo.style.display = visible ? "" : "none";
+        if (visible) count += 1;
+      });
+      $("#emptyState").classList.toggle("show", count === 0);
+    }
+
+    document.querySelectorAll(".filter").forEach((filter) => {
+      filter.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
+        filter.classList.add("active");
+        currentFilter = filter.dataset.filter;
+        filterProjects();
+      });
+    });
+    $("#repoSearch").addEventListener("input", filterProjects);
+
+    function hydrateUser(user) {
+      $("#heroLogin").textContent = user.login || USERNAME;
+      $("#heroBio").textContent = user.bio || "Live GitHub profile data, local portfolio projects, and resume details in one quiet Japanese minimal interface.";
+      $("#avatar").src = user.avatar_url || "assets/portfolio-image.png";
+      $("#profileName").textContent = user.name || "Adithyan PR";
+      $("#profileHandle").textContent = user.login || USERNAME;
+      $("#profileBio").textContent = user.bio || "Full-stack developer and designer from Kerala, India.";
+      $("#profileLocation").textContent = user.location || "Kerala, India";
+      $("#repoMetric").textContent = user.public_repos ?? "--";
+      $("#followerMetric").textContent = user.followers ?? "--";
+      $("#followingMetric").textContent = user.following ?? "--";
+      $("#listedMetric").textContent = user.public_repos ?? "--";
+    }
+
+    async function loadGitHubData() {
+      renderProjects(portfolioProjects);
+      try {
+        const [userResponse, repoResponse, eventResponse] = await Promise.all([
+          fetch(`https://api.github.com/users/${USERNAME}`),
+          fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=pushed`),
+          fetch(`https://api.github.com/users/${USERNAME}/events/public?per_page=100`)
+        ]);
+        if (!userResponse.ok || !repoResponse.ok) throw new Error("GitHub API request failed");
+        const user = await userResponse.json();
+        const repos = await repoResponse.json();
+        const events = eventResponse && eventResponse.ok ? await eventResponse.json() : [];
+        hydrateUser(user);
+        const githubProjects = repos
+          .filter((repo) => !repo.fork)
+          .map(normalizeRepo)
+          .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        const projectNames = new Set(githubProjects.map((repo) => repo.name.toLowerCase()));
+        const localOnly = portfolioProjects.filter((project) => !projectNames.has(project.name.toLowerCase()));
+        const combined = [...githubProjects, ...localOnly];
+        renderProjects(combined);
+        $("#syncNote").textContent = `synced ${combined.length} projects from GitHub + portfolio`;
+        $("#updatedMetric").textContent = githubProjects[0] ? formatDate(githubProjects[0].updated_at) : "synced";
+        if (events.length) {
+          renderActivity(activityFromEvents(events), `${events.length} public events loaded`);
+        }
+      } catch (error) {
+        $("#syncNote").textContent = "GitHub API unavailable - showing local project data";
+        $("#updatedMetric").textContent = "offline";
+      }
+    }
+
+    const levels = [0,1,0,2,3,1,0,2,4,1,0,3,2,0,1,4,3,1,0,2,1,3,0,4,2,1,0,1,3,2,4,0,1,2,0,3,4,2,1,0,2,3,1,0,4,2,3,1,0,2,1,4,3,0,1,2,4,1,0,3,2,1,0,4,3,2,0,1,2,3,1,4,0,2,1,3,4,0,1,2,3,0,4,2,1,0,3,2,4,1,0,2,3,1,4,0,2,1,3,0,4,2,1,3,0,1,2,4,3,0,1,2,3,1,0,4,2,1,3,0,2,4,1,3,0,2,1,4,3,0,1,2,3,4,0,1,2,3,1,0,4,2,3,1,0,2,4,1,3,0,2,1,4,3,0,1,2,3];
+    renderActivity(levels, "fallback activity");
+
+    loadGitHubData();
+  </script>
+</body>
+</html>

@@ -430,7 +430,6 @@ function initAnimations() {
     
     initStatsCounter();
     initWorksAnimations();
-    initProjectFilters();
     initTestimonialsSlider();
     initExpertiseMinimalAnimations();
     initContactFormAnimations();
@@ -527,84 +526,206 @@ function animateNumber(element, start, end, duration) {
 
 function initWorksAnimations() {
     const workItems = document.querySelectorAll('.work-item-fixed');
-    
-    workItems.forEach((item, i) => {
-        ScrollTrigger.create({
-            trigger: item,
-            scroller: '#scroll-wrapper',
-            start: 'top 85%',
-            onEnter: () => {
-                gsap.to(item, {
-                    opacity: 1,
-                    y: 0,
-                    duration: isMobile ? 0.6 : 1,
-                    delay: i * 0.08,
-                    ease: 'power3.out'
-                });
-            }
-        });
-    });
-}
+    const preview = document.querySelector('.work-preview');
+    const previewImg = preview ? preview.querySelector('img') : null;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function initProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const workItems = document.querySelectorAll('.work-item-fixed');
-    
-    if (filterBtns.length === 0) return;
-    
-    filterBtns.forEach(btn => {
-        // Add touch feedback
-        btn.addEventListener('touchstart', () => {
-            btn.style.transform = 'scale(0.95)';
-        });
-        
-        btn.addEventListener('touchend', () => {
-            btn.style.transform = 'scale(1)';
-        });
-        
-        btn.addEventListener('click', () => {
-            const filter = btn.getAttribute('data-filter');
-            
-            // Haptic feedback
-            if (isMobile && navigator.vibrate) {
-                navigator.vibrate(10);
+    if (workItems.length > 0) {
+        gsap.fromTo(workItems,
+            { autoAlpha: 0, y: prefersReducedMotion ? 0 : 34 },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: prefersReducedMotion ? 0.01 : (isMobile ? 0.55 : 0.85),
+                stagger: prefersReducedMotion ? 0 : 0.055,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.works-archive',
+                    scroller: '#scroll-wrapper',
+                    start: 'top 82%',
+                    once: true
+                }
             }
-            
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Filter projects
-            workItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                
-                if (filter === 'all' || category.includes(filter)) {
-                    gsap.to(item, {
+        );
+    }
+
+    if (!preview || !previewImg || workItems.length === 0) return;
+
+    let activeItem = null;
+    const previewGap = 24;
+    const previewMotion = {
+        duration: prefersReducedMotion ? 0.01 : 0.65,
+        ease: 'power3.out'
+    };
+
+    function showPreview() {
+        gsap.to(preview, {
+            autoAlpha: 1,
+            scale: 1,
+            filter: 'blur(0px)',
+            duration: prefersReducedMotion ? 0.01 : 0.45,
+            ease: 'power3.out'
+        });
+    }
+
+    function hidePreview() {
+        gsap.to(preview, {
+            autoAlpha: 0,
+            scale: 0.94,
+            filter: 'blur(12px)',
+            duration: prefersReducedMotion ? 0.01 : 0.35,
+            ease: 'power3.out'
+        });
+    }
+
+    function setPreviewImage(item) {
+        const src = item.getAttribute('data-preview');
+        if (src && previewImg.getAttribute('src') !== src) {
+            gsap.to(previewImg, {
+                opacity: 0,
+                duration: prefersReducedMotion ? 0.01 : 0.12,
+                onComplete: () => {
+                    previewImg.setAttribute('src', src);
+                    gsap.to(previewImg, {
                         opacity: 1,
-                        y: 0,
-                        duration: 0.4,
-                        display: 'block',
-                        onStart: () => {
-                            item.classList.remove('hidden');
-                        }
-                    });
-                } else {
-                    gsap.to(item, {
-                        opacity: 0,
-                        y: 20,
-                        duration: 0.3,
-                        onComplete: () => {
-                            item.classList.add('hidden');
-                        }
+                        duration: prefersReducedMotion ? 0.01 : 0.22
                     });
                 }
             });
-            
-            // Update Locomotive Scroll
-            if (locoScroll) {
-                setTimeout(() => locoScroll.update(), 500);
+        }
+    }
+
+    function positionPreviewForRow(item) {
+        preview.classList.add('is-visible');
+        item.insertAdjacentElement('beforebegin', preview);
+
+        if (locoScroll) {
+            window.setTimeout(() => locoScroll.update(), 320);
+        }
+    }
+
+    function closeMobileRows(exceptItem) {
+        workItems.forEach(row => {
+            if (row !== exceptItem) {
+                row.classList.remove('is-open');
             }
         });
+    }
+
+    if (isMobile || isTablet) {
+        workItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                if (!item.classList.contains('is-open')) {
+                    event.preventDefault();
+                    closeMobileRows(item);
+                    item.classList.add('is-open');
+                    setPreviewImage(item);
+                    positionPreviewForRow(item);
+
+                    if (navigator.vibrate) {
+                        navigator.vibrate(8);
+                    }
+                }
+            });
+        });
+
+        return;
+    }
+
+    document.body.appendChild(preview);
+
+    gsap.set(preview, {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        x: window.innerWidth * 0.66,
+        y: window.innerHeight * 0.5,
+        autoAlpha: 0,
+        scale: 0.94,
+        filter: 'blur(12px)',
+        transformOrigin: '0 0'
+    });
+
+    const movePreviewX = gsap.quickTo(preview, 'x', previewMotion);
+    const movePreviewY = gsap.quickTo(preview, 'y', previewMotion);
+
+    function getPreviewPosition(event) {
+        const previewWidth = preview.offsetWidth || 420;
+        const previewHeight = preview.offsetHeight || 320;
+        const fitsRight = event.clientX + previewGap + previewWidth <= window.innerWidth;
+        const fitsBelow = event.clientY + previewGap + previewHeight <= window.innerHeight;
+
+        const x = fitsRight
+            ? event.clientX + previewGap
+            : event.clientX - previewWidth - previewGap;
+        const y = fitsBelow
+            ? event.clientY + previewGap
+            : event.clientY - previewHeight - previewGap;
+
+        return {
+            x: Math.min(
+                Math.max(x, previewGap),
+                Math.max(previewGap, window.innerWidth - previewWidth - previewGap)
+            ),
+            y: Math.min(
+                Math.max(y, previewGap),
+                Math.max(previewGap, window.innerHeight - previewHeight - previewGap)
+            )
+        };
+    }
+
+    function movePreviewToPointer(event, instant = false) {
+        const position = getPreviewPosition(event);
+
+        if (instant || prefersReducedMotion) {
+            gsap.set(preview, {
+                x: position.x,
+                y: position.y
+            });
+            return;
+        }
+
+        movePreviewX(position.x);
+        movePreviewY(position.y);
+    }
+
+    workItems.forEach(item => {
+        item.addEventListener('mouseenter', (event) => {
+            activeItem = item;
+            setPreviewImage(item);
+            movePreviewToPointer(event, true);
+            showPreview();
+        });
+
+        item.addEventListener('mousemove', (event) => {
+            if (activeItem !== item) return;
+            movePreviewToPointer(event);
+        });
+
+        item.addEventListener('mouseleave', () => {
+            activeItem = null;
+            hidePreview();
+        });
+
+        item.addEventListener('focus', () => {
+            const rect = item.getBoundingClientRect();
+            const previewWidth = preview.offsetWidth || 420;
+            const previewHeight = preview.offsetHeight || 320;
+            const x = Math.min(
+                Math.max(previewGap, window.innerWidth - previewWidth - previewGap),
+                window.innerWidth * 0.66
+            );
+            const y = Math.min(
+                Math.max(previewGap, window.innerHeight - previewHeight - previewGap),
+                Math.max(previewGap, rect.top + rect.height * 0.5)
+            );
+
+            setPreviewImage(item);
+            gsap.set(preview, { x, y });
+            showPreview();
+        });
+
+        item.addEventListener('blur', hidePreview);
     });
 }
 
