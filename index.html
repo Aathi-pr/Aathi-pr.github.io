@@ -464,8 +464,12 @@
             </a>
           </div>
 
-          <div class="work-preview" aria-hidden="true">
-            <img src="assets/serah-event.png" alt="" />
+          <div id="work-preview" class="work-preview" aria-hidden="true">
+            <img src="assets/serah-event.png" alt="Serah Events — preview" loading="lazy" />
+            <div class="work-preview-meta" aria-hidden="true">
+              <div class="preview-title"></div>
+              <div class="preview-stack"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -692,79 +696,27 @@
           </div>
         </div>
       </section>
-
-      <!-- Philosophy Section -->
-      <section id="philosophy" class="philosophy-minimal" data-scroll-section>
-        <div class="section-container">
-          <div class="philosophy-header">
-            <span class="section-num">05</span>
-            <h2 class="section-heading">Design Philosophy</h2>
+      <!-- Minimal Footer -->
+      <footer class="site-footer" role="contentinfo" data-scroll-section>
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p class="footer-copy">© 2025 Adithyan — Crafted with intention in Kerala, India</p>
           </div>
 
-          <div class="philosophy-grid-minimal">
-            <div class="philosophy-quote">
-              <p>"Less is more. Simplicity is the ultimate sophistication."</p>
-            </div>
+          <nav class="footer-center footer-actions" aria-label="Footer links">
+            <a class="footer-link" href="mailto:adithyanpr0001@gmail.com">hello@adithyan.com</a>
+            <a class="footer-link" href="privacy.html">Privacy</a>
+            <a class="footer-link" href="terms.html">Terms</a>
+          </nav>
 
-            <div class="principles-minimal">
-              <div class="principle-minimal">
-                <div class="principle-number">01</div>
-                <h3 class="principle-title-minimal">Space</h3>
-                <p class="principle-desc-minimal">Negative space is not empty—it gives content room to breathe and
-                  creates visual hierarchy.</p>
-              </div>
-
-              <div class="principle-minimal">
-                <div class="principle-number">02</div>
-                <h3 class="principle-title-minimal">Simplicity</h3>
-                <p class="principle-desc-minimal">Remove everything unnecessary. What remains should be essential and
-                  purposeful.</p>
-              </div>
-
-              <div class="principle-minimal">
-                <div class="principle-number">03</div>
-                <h3 class="principle-title-minimal">Balance</h3>
-                <p class="principle-desc-minimal">Harmony between elements creates visual peace. Asymmetry adds natural
-                  flow.</p>
-              </div>
-
-              <div class="principle-minimal">
-                <div class="principle-number">04</div>
-                <h3 class="principle-title-minimal">Clarity</h3>
-                <p class="principle-desc-minimal">Clear communication above all. Users should understand instantly
-                  without confusion.</p>
-              </div>
-
-              <div class="principle-minimal">
-                <div class="principle-number">05</div>
-                <h3 class="principle-title-minimal">Motion</h3>
-                <p class="principle-desc-minimal">Transitions should feel natural and purposeful, enhancing the user
-                  experience.</p>
-              </div>
-
-              <div class="principle-minimal">
-                <div class="principle-number">06</div>
-                <h3 class="principle-title-minimal">Authenticity</h3>
-                <p class="principle-desc-minimal">Design with honesty. Let materials and content speak for themselves.
-                </p>
-              </div>
-            </div>
+          <div class="footer-right" aria-label="Social links">
+            <a class="footer-link" href="https://github.com/Aathi-pr" target="_blank"
+              rel="noopener noreferrer">GitHub</a>
+            <a class="footer-link" href="https://www.linkedin.com/in/adithyan-p-r-84328a238/" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
           </div>
-
-          <footer class="site-footer">
-            <div class="footer-content">
-              <div class="footer-left">
-                <p class="footer-text">© 2025 Adithyan — Crafted with intention in Kerala, India</p>
-                <p class="footer-text">Minimal design meets powerful functionality</p>
-              </div>
-              <div class="footer-links">
-                <a href="privacy.html">Privacy</a>
-                <a href="terms.html">Terms</a>
-              </div>
-            </div>
-          </footer>
         </div>
-      </section>
+      </footer>
     </div>
   </main>
 
@@ -775,10 +727,6 @@
       <polyline points="5 12 12 5 19 12" />
     </svg>
   </button>
-
-  <!--  ==========================================
-     BACKGROUND MUSIC PLAYER
-==========================================  -->
 
   <aside class="bg-music-player" id="bgMusicPlayer">
     <button class="music-toggle" id="musicToggle" title="Toggle Background Music">

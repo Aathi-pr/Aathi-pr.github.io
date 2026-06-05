@@ -4,13 +4,11 @@ let locoScroll;
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Initialize basic features immediately
     initNoiseTexture();
     initCursor();
     initThemeToggle();
     initNavigation();
 
-    // Initialize Locomotive Scroll after a short delay
     setTimeout(() => {
         initLocomotiveScroll();
     }, 100);
