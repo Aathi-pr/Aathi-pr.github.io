@@ -641,7 +641,8 @@ function initWorksAnimations() {
 
     function positionPreviewForRow(item) {
         preview.classList.add('is-visible');
-        item.insertAdjacentElement('beforebegin', preview);
+        // Insert the preview after the clicked row so it appears inline on mobile
+        item.insertAdjacentElement('afterend', preview);
 
         if (locoScroll) {
             window.setTimeout(() => locoScroll.update(), 320);
@@ -672,6 +673,21 @@ function initWorksAnimations() {
                 }
             });
         });
+
+        // Allow tapping the preview to close it on mobile
+        if (preview) {
+            preview.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeMobileRows();
+                workItems.forEach(row => row.classList.remove('is-open'));
+                preview.classList.remove('is-visible');
+                hidePreview();
+                activeItem = null;
+                if (locoScroll) {
+                    window.setTimeout(() => locoScroll.update(), 120);
+                }
+            });
+        }
 
         return;
     }
