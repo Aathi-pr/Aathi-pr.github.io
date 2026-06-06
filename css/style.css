@@ -3004,13 +3004,24 @@ body.dark-mode.bg-music-player.playing .music-toggle {
         margin: var(--space-md) 0;
         opacity: 0;
         transform: translateY(8px) scale(0.98);
+        transition: opacity 0.36s var(--ease-soft), transform 0.36s var(--ease-soft), filter 0.36s var(--ease-soft);
         pointer-events: auto;
         border-radius: 10px;
         overflow: hidden;
     }
 
     .work-preview.is-visible {
-        transform: translateY(0) scale(1);
+        opacity: 1 !important;
+        transform: translateY(0) scale(1) !important;
+        filter: none !important;
+        visibility: visible !important;
+        display: block !important;
+        z-index: 1001 !important;
+        pointer-events: auto !important;
+    }
+
+    .work-preview.is-visible img {
+        opacity: 1 !important;
     }
 
     .work-preview img {

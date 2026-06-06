@@ -577,9 +577,10 @@ function initWorksAnimations() {
     function showPreview() {
         gsap.to(preview, {
             autoAlpha: 1,
+            y: 0,
             scale: 1,
             filter: 'blur(0px)',
-            duration: prefersReducedMotion ? 0.01 : 0.45,
+            duration: prefersReducedMotion ? 0.01 : (isMobile ? 0.42 : 0.45),
             ease: 'power3.out'
         });
 
@@ -590,20 +591,25 @@ function initWorksAnimations() {
         }
     }
 
-    function hidePreview() {
+    // hidePreview accepts an optional callback which runs after the hide animation finishes
+    function hidePreview(callback) {
         gsap.to(preview, {
             autoAlpha: 0,
-            scale: 0.94,
+            y: 8,
+            scale: 0.98,
             filter: 'blur(12px)',
             duration: prefersReducedMotion ? 0.01 : 0.35,
-            ease: 'power3.out'
-        });
+            ease: 'power3.out',
+            onComplete: function () {
+                if (preview) {
+                    preview.setAttribute('aria-hidden', 'true');
+                    const meta = preview.querySelector('.work-preview-meta');
+                    if (meta) meta.setAttribute('aria-hidden', 'true');
+                }
 
-        if (preview) {
-            preview.setAttribute('aria-hidden', 'true');
-            const meta = preview.querySelector('.work-preview-meta');
-            if (meta) meta.setAttribute('aria-hidden', 'true');
-        }
+                if (typeof callback === 'function') callback();
+            }
+        });
     }
 
     function setPreviewImage(item) {
@@ -639,14 +645,37 @@ function initWorksAnimations() {
         }
     }
 
+    // remember original placement so we can restore later
+    let _originalPreviewParent = preview ? preview.parentElement : null;
+    let _originalPreviewNext = preview ? preview.nextElementSibling : null;
+
     function positionPreviewForRow(item) {
-        preview.classList.add('is-visible');
+        // prepare starting state for a smooth reveal
+        gsap.set(preview, { autoAlpha: 0, y: 8, scale: 0.98, filter: 'blur(6px)' });
+
         // Insert the preview after the clicked row so it appears inline on mobile
         item.insertAdjacentElement('afterend', preview);
 
+        // make it interactive and animate in
+        preview.classList.add('is-visible');
+
         if (locoScroll) {
-            window.setTimeout(() => locoScroll.update(), 320);
+            // update locomotive and scroll to the preview so it's centered
+            window.setTimeout(() => {
+                locoScroll.update();
+                try {
+                    locoScroll.scrollTo(preview, { duration: 350, offset: -60 });
+                } catch (e) {
+                    // fallback to native smooth scroll
+                    preview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 240);
+        } else {
+            preview.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+
+        // animate visible state
+        showPreview();
     }
 
     function closeMobileRows(exceptItem) {
@@ -680,12 +709,26 @@ function initWorksAnimations() {
                 e.preventDefault();
                 closeMobileRows();
                 workItems.forEach(row => row.classList.remove('is-open'));
-                preview.classList.remove('is-visible');
-                hidePreview();
-                activeItem = null;
-                if (locoScroll) {
-                    window.setTimeout(() => locoScroll.update(), 120);
-                }
+
+                // Hide with animation, then restore original placement and update scroll
+                hidePreview(() => {
+                    preview.classList.remove('is-visible');
+                    activeItem = null;
+
+                    if (typeof _originalPreviewParent !== 'undefined' && _originalPreviewParent) {
+                        try {
+                            if (_originalPreviewNext && _originalPreviewNext.parentElement === _originalPreviewParent) {
+                                _originalPreviewParent.insertBefore(preview, _originalPreviewNext);
+                            } else {
+                                _originalPreviewParent.appendChild(preview);
+                            }
+                        } catch (e) { }
+                    }
+
+                    if (locoScroll) {
+                        window.setTimeout(() => locoScroll.update(), 120);
+                    }
+                });
             });
         }
 
