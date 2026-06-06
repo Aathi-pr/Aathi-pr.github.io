@@ -529,8 +529,41 @@ function animateNumber(element, start, end, duration) {
 function initWorksAnimations() {
     const workItems = document.querySelectorAll('.work-item-fixed');
     const preview = document.querySelector('.work-preview');
-    const previewImg = preview ? preview.querySelector('img') : null;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Ensure we have two layered images for smooth crossfades
+    let layerA = null;
+    let layerB = null;
+    let activeLayer = 0; // 0 => A visible, 1 => B visible
+
+    if (preview) {
+        const imgs = preview.querySelectorAll('img');
+        if (imgs.length === 0) {
+            layerA = document.createElement('img');
+            layerB = document.createElement('img');
+            layerA.className = 'preview-layer';
+            layerB.className = 'preview-layer';
+            preview.appendChild(layerA);
+            preview.appendChild(layerB);
+        } else if (imgs.length === 1) {
+            layerA = imgs[0];
+            layerA.classList.add('preview-layer');
+            layerB = document.createElement('img');
+            layerB.className = 'preview-layer';
+            preview.appendChild(layerB);
+        } else {
+            layerA = imgs[0];
+            layerB = imgs[1];
+            layerA.classList.add('preview-layer');
+            layerB.classList.add('preview-layer');
+        }
+
+        // initial opacity: A visible, B hidden
+        try {
+            layerA.style.opacity = 1;
+            layerB.style.opacity = 0;
+        } catch (e) { }
+    }
 
     if (workItems.length > 0) {
         gsap.fromTo(workItems,
@@ -605,6 +638,9 @@ function initWorksAnimations() {
                     preview.setAttribute('aria-hidden', 'true');
                     const meta = preview.querySelector('.work-preview-meta');
                     if (meta) meta.setAttribute('aria-hidden', 'true');
+                    // always remove image-only mode when hiding
+                    preview.classList.remove('image-only');
+                    preview.classList.remove('is-visible');
                 }
 
                 if (typeof callback === 'function') callback();
@@ -626,52 +662,87 @@ function initWorksAnimations() {
             if (metaTitle) metaTitle.textContent = titleText;
             if (metaStack) metaStack.textContent = stackText;
         }
+        // If no src provided, nothing to do
+        if (!src) return;
 
-        if (src && previewImg.getAttribute('src') !== src) {
-            gsap.to(previewImg, {
-                opacity: 0,
-                duration: prefersReducedMotion ? 0.01 : 0.12,
-                onComplete: () => {
-                    previewImg.setAttribute('src', src);
-                    previewImg.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
-                    gsap.to(previewImg, {
-                        opacity: 1,
-                        duration: prefersReducedMotion ? 0.01 : 0.22
-                    });
-                }
-            });
-        } else {
+        // Avoid races when users tap multiple items quickly
+        if (typeof window.__previewRequestId === 'undefined') window.__previewRequestId = 0;
+        const requestId = ++window.__previewRequestId;
+
+        // If already showing same src, just update alt
+        if (previewImg.getAttribute('src') === src) {
             if (titleText) previewImg.setAttribute('alt', titleText + ' — preview');
+            // ensure image is visible
+            gsap.to(previewImg, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.18 });
+            return;
         }
-    }
 
-    // remember original placement so we can restore later
-    let _originalPreviewParent = preview ? preview.parentElement : null;
-    let _originalPreviewNext = preview ? preview.nextElementSibling : null;
+        // fade out current image
+        function setPreviewImage(item) {
+            const src = item.getAttribute('data-preview');
+            const titleEl = item.querySelector('.work-title-fixed');
+            const stackEl = item.querySelector('.work-stack');
+            const titleText = titleEl ? titleEl.textContent.trim() : '';
+            const stackText = stackEl ? stackEl.textContent.trim() : '';
 
-    function positionPreviewForRow(item) {
-        // prepare starting state for a smooth reveal
-        gsap.set(preview, { autoAlpha: 0, y: 8, scale: 0.98, filter: 'blur(6px)' });
+            if (preview) {
+                preview.setAttribute('data-title', titleText || '');
+                const metaTitle = preview.querySelector('.preview-title');
+                const metaStack = preview.querySelector('.preview-stack');
+                if (metaTitle) metaTitle.textContent = titleText;
+                if (metaStack) metaStack.textContent = stackText;
+            }
 
-        // Insert the preview after the clicked row so it appears inline on mobile
-        item.insertAdjacentElement('afterend', preview);
+            if (!src) return;
 
-        // make it interactive and animate in
-        preview.classList.add('is-visible');
+            if (typeof window.__previewRequestId === 'undefined') window.__previewRequestId = 0;
+            const requestId = ++window.__previewRequestId;
 
-        if (locoScroll) {
-            // update locomotive and scroll to the preview so it's centered
-            window.setTimeout(() => {
-                locoScroll.update();
-                try {
-                    locoScroll.scrollTo(preview, { duration: 350, offset: -60 });
-                } catch (e) {
-                    // fallback to native smooth scroll
-                    preview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Determine target (hidden) and visible layers
+            const visible = activeLayer === 0 ? layerA : layerB;
+            const hidden = activeLayer === 0 ? layerB : layerA;
+
+            // If visible already shows same src, just ensure alt and visible
+            try {
+                if (visible && visible.getAttribute('src') === src) {
+                    if (titleText) visible.setAttribute('alt', titleText + ' — preview');
+                    gsap.to(visible, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.12 });
+                    gsap.to(hidden, { opacity: 0, duration: prefersReducedMotion ? 0.01 : 0.12 });
+                    return;
                 }
-            }, 240);
-        } else {
-            preview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } catch (e) { }
+
+            // Fade-in the new image only after it loads into the hidden layer
+            const loader = new Image();
+            loader.src = src;
+            loader.onload = function () {
+                if (requestId !== window.__previewRequestId) return; // stale
+
+                try {
+                    hidden.setAttribute('src', src);
+                    hidden.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
+                    // crossfade
+                    gsap.to(hidden, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.22, ease: 'power3.out' });
+                    gsap.to(visible, { opacity: 0, duration: prefersReducedMotion ? 0.01 : 0.18, ease: 'power3.out' });
+
+                    // switch active layer
+                    activeLayer = 1 - activeLayer;
+                } catch (e) {
+                    // fallback: set src on visible
+                    if (visible) visible.setAttribute('src', src);
+                }
+            };
+
+            loader.onerror = function () {
+                if (requestId !== window.__previewRequestId) return; // stale
+                try {
+                    hidden.setAttribute('src', src);
+                    hidden.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
+                    gsap.to(hidden, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.22 });
+                    gsap.to(visible, { opacity: 0, duration: prefersReducedMotion ? 0.01 : 0.18 });
+                    activeLayer = 1 - activeLayer;
+                } catch (e) { }
+            };
         }
 
         // animate visible state
@@ -689,16 +760,37 @@ function initWorksAnimations() {
     if (isMobile || isTablet) {
         workItems.forEach(item => {
             item.addEventListener('click', (event) => {
-                if (!item.classList.contains('is-open')) {
-                    event.preventDefault();
-                    closeMobileRows(item);
-                    item.classList.add('is-open');
-                    setPreviewImage(item);
-                    positionPreviewForRow(item);
+                event.preventDefault();
+                const alreadyOpen = item.classList.contains('is-open');
 
-                    if (navigator.vibrate) {
-                        navigator.vibrate(8);
-                    }
+                if (alreadyOpen) {
+                    // tapping the open item closes it
+                    item.classList.remove('is-open');
+                    closeMobileRows();
+                    hidePreview(() => {
+                        activeItem = null;
+                        if (locoScroll) {
+                            window.setTimeout(() => locoScroll.update(), 120);
+                        }
+                    });
+                    return;
+                }
+
+                // open tapped item
+                closeMobileRows(item);
+                item.classList.add('is-open');
+                setPreviewImage(item);
+
+                // If preview already visible, only swap image (smooth crossfade). Otherwise insert and show.
+                if (!preview.classList.contains('is-visible')) {
+                    positionPreviewForRow(item);
+                } else {
+                    // ensure locomotive updates for layout stability
+                    if (locoScroll) window.setTimeout(() => locoScroll.update(), 120);
+                }
+
+                if (navigator.vibrate) {
+                    navigator.vibrate(8);
                 }
             });
         });

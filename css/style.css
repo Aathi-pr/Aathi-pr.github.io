@@ -2999,7 +2999,9 @@ body.dark-mode.bg-music-player.playing .music-toggle {
         left: auto !important;
         width: 100%;
         max-width: 820px;
-        aspect-ratio: auto;
+        /* Reserve space (prevents layout shifts while image loads) */
+        aspect-ratio: 1.28;
+        max-height: 60vh;
         height: auto;
         margin: var(--space-md) 0;
         opacity: 0;
@@ -3008,6 +3010,8 @@ body.dark-mode.bg-music-player.playing .music-toggle {
         pointer-events: auto;
         border-radius: 10px;
         overflow: hidden;
+        background: var(--paper);
+        min-height: 120px;
     }
 
     .work-preview.is-visible {
@@ -3029,6 +3033,29 @@ body.dark-mode.bg-music-player.playing .music-toggle {
         height: auto;
         display: block;
         object-fit: cover;
+        transition: opacity 0.28s var(--ease-soft), transform 0.36s var(--ease-soft);
+        opacity: 0;
+    }
+
+    /* Image-only mode: remove all meta and chrome so only the image remains */
+    .work-preview.image-only {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        border-radius: 6px !important;
+        padding: 0 !important;
+    }
+
+    .work-preview.image-only .work-preview-meta {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .work-preview.image-only img {
+        object-fit: contain !important;
+        height: auto !important;
+        opacity: 1 !important;
     }
 
     /* Testimonials */
