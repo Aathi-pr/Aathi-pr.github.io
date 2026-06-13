@@ -436,7 +436,6 @@ function initAnimations() {
     initTestimonialsSlider();
     initExpertiseMinimalAnimations();
     initContactFormAnimations();
-    initPhilosophyMinimalAnimations();
 
     ScrollTrigger.create({
         trigger: '.contact-headline',
@@ -529,245 +528,78 @@ function animateNumber(element, start, end, duration) {
 function initWorksAnimations() {
     const workItems = document.querySelectorAll('.work-item-fixed');
     const preview = document.querySelector('.work-preview');
+    if (!preview || workItems.length === 0) return;
+
+    const previewImg = preview.querySelector('img');
+    const previewTitle = preview.querySelector('.preview-title');
+    const previewStack = preview.querySelector('.preview-stack');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Ensure we have two layered images for smooth crossfades
-    let layerA = null;
-    let layerB = null;
-    let activeLayer = 0; // 0 => A visible, 1 => B visible
+    const _originalPreviewParent = preview.parentNode;
+    const _originalPreviewNext = preview.nextSibling;
 
-    if (preview) {
-        const imgs = preview.querySelectorAll('img');
-        if (imgs.length === 0) {
-            layerA = document.createElement('img');
-            layerB = document.createElement('img');
-            layerA.className = 'preview-layer';
-            layerB.className = 'preview-layer';
-            preview.appendChild(layerA);
-            preview.appendChild(layerB);
-        } else if (imgs.length === 1) {
-            layerA = imgs[0];
-            layerA.classList.add('preview-layer');
-            layerB = document.createElement('img');
-            layerB.className = 'preview-layer';
-            preview.appendChild(layerB);
-        } else {
-            layerA = imgs[0];
-            layerB = imgs[1];
-            layerA.classList.add('preview-layer');
-            layerB.classList.add('preview-layer');
-        }
-
-        // initial opacity: A visible, B hidden
-        try {
-            layerA.style.opacity = 1;
-            layerB.style.opacity = 0;
-        } catch (e) { }
-    }
-
-    if (workItems.length > 0) {
-        gsap.fromTo(workItems,
-            { autoAlpha: 0, y: prefersReducedMotion ? 0 : 34 },
-            {
-                autoAlpha: 1,
-                y: 0,
-                duration: prefersReducedMotion ? 0.01 : (isMobile ? 0.55 : 0.85),
-                stagger: prefersReducedMotion ? 0 : 0.055,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.works-archive',
-                    scroller: '#scroll-wrapper',
-                    start: 'top 82%',
-                    once: true
-                }
-            }
-        );
-    }
-
-    if (!preview || !previewImg || workItems.length === 0) return;
-
-    let activeItem = null;
-    const previewGap = 24;
-    const previewMotion = {
-        duration: prefersReducedMotion ? 0.01 : 0.65,
-        ease: 'power3.out'
-    };
-
-    workItems.forEach(item => {
-        try {
-            item.setAttribute('aria-controls', 'work-preview');
-        } catch (e) { }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            activeItem = null;
-            hidePreview();
-            workItems.forEach(row => row.classList.remove('is-open'));
-        }
-    });
-
-    function showPreview() {
-        gsap.to(preview, {
+    // Entry animation
+    gsap.fromTo(workItems,
+        { autoAlpha: 0, y: prefersReducedMotion ? 0 : 34 },
+        {
             autoAlpha: 1,
             y: 0,
-            scale: 1,
-            filter: 'blur(0px)',
-            duration: prefersReducedMotion ? 0.01 : (isMobile ? 0.42 : 0.45),
-            ease: 'power3.out'
-        });
-
-        if (preview) {
-            preview.removeAttribute('aria-hidden');
-            const meta = preview.querySelector('.work-preview-meta');
-            if (meta) meta.removeAttribute('aria-hidden');
-        }
-    }
-
-    // hidePreview accepts an optional callback which runs after the hide animation finishes
-    function hidePreview(callback) {
-        gsap.to(preview, {
-            autoAlpha: 0,
-            y: 8,
-            scale: 0.98,
-            filter: 'blur(12px)',
-            duration: prefersReducedMotion ? 0.01 : 0.35,
+            duration: prefersReducedMotion ? 0.01 : (isMobile ? 0.55 : 0.85),
+            stagger: prefersReducedMotion ? 0 : 0.055,
             ease: 'power3.out',
-            onComplete: function () {
-                if (preview) {
-                    preview.setAttribute('aria-hidden', 'true');
-                    const meta = preview.querySelector('.work-preview-meta');
-                    if (meta) meta.setAttribute('aria-hidden', 'true');
-                    // always remove image-only mode when hiding
-                    preview.classList.remove('image-only');
-                    preview.classList.remove('is-visible');
-                }
-
-                if (typeof callback === 'function') callback();
+            scrollTrigger: {
+                trigger: '.works-archive',
+                scroller: '#scroll-wrapper',
+                start: 'top 82%',
+                once: true
             }
-        });
-    }
-
-    function setPreviewImage(item) {
-        const src = item.getAttribute('data-preview');
-        const titleEl = item.querySelector('.work-title-fixed');
-        const stackEl = item.querySelector('.work-stack');
-        const titleText = titleEl ? titleEl.textContent.trim() : '';
-        const stackText = stackEl ? stackEl.textContent.trim() : '';
-
-        if (preview) {
-            preview.setAttribute('data-title', titleText || '');
-            const metaTitle = preview.querySelector('.preview-title');
-            const metaStack = preview.querySelector('.preview-stack');
-            if (metaTitle) metaTitle.textContent = titleText;
-            if (metaStack) metaStack.textContent = stackText;
         }
-        // If no src provided, nothing to do
-        if (!src) return;
-
-        // Avoid races when users tap multiple items quickly
-        if (typeof window.__previewRequestId === 'undefined') window.__previewRequestId = 0;
-        const requestId = ++window.__previewRequestId;
-
-        // If already showing same src, just update alt
-        if (previewImg.getAttribute('src') === src) {
-            if (titleText) previewImg.setAttribute('alt', titleText + ' — preview');
-            // ensure image is visible
-            gsap.to(previewImg, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.18 });
-            return;
-        }
-
-        // fade out current image
-        function setPreviewImage(item) {
-            const src = item.getAttribute('data-preview');
-            const titleEl = item.querySelector('.work-title-fixed');
-            const stackEl = item.querySelector('.work-stack');
-            const titleText = titleEl ? titleEl.textContent.trim() : '';
-            const stackText = stackEl ? stackEl.textContent.trim() : '';
-
-            if (preview) {
-                preview.setAttribute('data-title', titleText || '');
-                const metaTitle = preview.querySelector('.preview-title');
-                const metaStack = preview.querySelector('.preview-stack');
-                if (metaTitle) metaTitle.textContent = titleText;
-                if (metaStack) metaStack.textContent = stackText;
-            }
-
-            if (!src) return;
-
-            if (typeof window.__previewRequestId === 'undefined') window.__previewRequestId = 0;
-            const requestId = ++window.__previewRequestId;
-
-            // Determine target (hidden) and visible layers
-            const visible = activeLayer === 0 ? layerA : layerB;
-            const hidden = activeLayer === 0 ? layerB : layerA;
-
-            // If visible already shows same src, just ensure alt and visible
-            try {
-                if (visible && visible.getAttribute('src') === src) {
-                    if (titleText) visible.setAttribute('alt', titleText + ' — preview');
-                    gsap.to(visible, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.12 });
-                    gsap.to(hidden, { opacity: 0, duration: prefersReducedMotion ? 0.01 : 0.12 });
-                    return;
-                }
-            } catch (e) { }
-
-            // Fade-in the new image only after it loads into the hidden layer
-            const loader = new Image();
-            loader.src = src;
-            loader.onload = function () {
-                if (requestId !== window.__previewRequestId) return; // stale
-
-                try {
-                    hidden.setAttribute('src', src);
-                    hidden.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
-                    // crossfade
-                    gsap.to(hidden, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.22, ease: 'power3.out' });
-                    gsap.to(visible, { opacity: 0, duration: prefersReducedMotion ? 0.01 : 0.18, ease: 'power3.out' });
-
-                    // switch active layer
-                    activeLayer = 1 - activeLayer;
-                } catch (e) {
-                    // fallback: set src on visible
-                    if (visible) visible.setAttribute('src', src);
-                }
-            };
-
-            loader.onerror = function () {
-                if (requestId !== window.__previewRequestId) return; // stale
-                try {
-                    hidden.setAttribute('src', src);
-                    hidden.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
-                    gsap.to(hidden, { opacity: 1, duration: prefersReducedMotion ? 0.01 : 0.22 });
-                    gsap.to(visible, { opacity: 0, duration: prefersReducedMotion ? 0.01 : 0.18 });
-                    activeLayer = 1 - activeLayer;
-                } catch (e) { }
-            };
-        }
-
-        // animate visible state
-        showPreview();
-    }
-
-    function closeMobileRows(exceptItem) {
-        workItems.forEach(row => {
-            if (row !== exceptItem) {
-                row.classList.remove('is-open');
-            }
-        });
-    }
+    );
 
     if (isMobile || isTablet) {
+        let activeItem = null;
+
+        function closeMobileRows(exceptItem) {
+            workItems.forEach(row => {
+                if (row !== exceptItem) {
+                    row.classList.remove('is-open');
+                }
+            });
+        }
+
+        function hideMobilePreview(callback) {
+            gsap.to(preview, {
+                opacity: 0,
+                scale: 0.98,
+                y: 8,
+                duration: prefersReducedMotion ? 0.01 : 0.3,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                    preview.classList.remove('is-visible');
+                    preview.setAttribute('aria-hidden', 'true');
+                    if (preview.parentNode !== _originalPreviewParent) {
+                        try {
+                            if (_originalPreviewNext && _originalPreviewNext.parentNode === _originalPreviewParent) {
+                                _originalPreviewParent.insertBefore(preview, _originalPreviewNext);
+                            } else {
+                                _originalPreviewParent.appendChild(preview);
+                            }
+                        } catch (e) {}
+                    }
+                    if (typeof callback === 'function') callback();
+                }
+            });
+        }
+
         workItems.forEach(item => {
             item.addEventListener('click', (event) => {
                 event.preventDefault();
                 const alreadyOpen = item.classList.contains('is-open');
 
                 if (alreadyOpen) {
-                    // tapping the open item closes it
                     item.classList.remove('is-open');
                     closeMobileRows();
-                    hidePreview(() => {
+                    hideMobilePreview(() => {
                         activeItem = null;
                         if (locoScroll) {
                             window.setTimeout(() => locoScroll.update(), 120);
@@ -776,18 +608,42 @@ function initWorksAnimations() {
                     return;
                 }
 
-                // open tapped item
                 closeMobileRows(item);
                 item.classList.add('is-open');
-                setPreviewImage(item);
+                activeItem = item;
 
-                // If preview already visible, only swap image (smooth crossfade). Otherwise insert and show.
-                if (!preview.classList.contains('is-visible')) {
-                    positionPreviewForRow(item);
-                } else {
-                    // ensure locomotive updates for layout stability
-                    if (locoScroll) window.setTimeout(() => locoScroll.update(), 120);
+                const src = item.getAttribute('data-preview');
+                const titleEl = item.querySelector('.work-title-fixed');
+                const stackEl = item.querySelector('.work-stack');
+                const titleText = titleEl ? titleEl.textContent.trim() : '';
+                const stackText = stackEl ? stackEl.textContent.trim() : '';
+
+                if (previewImg && src) {
+                    previewImg.setAttribute('src', src);
+                    previewImg.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
                 }
+                if (previewTitle) previewTitle.textContent = titleText;
+                if (previewStack) previewStack.textContent = stackText;
+
+                item.parentNode.insertBefore(preview, item.nextSibling);
+                preview.classList.add('is-visible');
+                preview.removeAttribute('aria-hidden');
+
+                gsap.fromTo(preview,
+                    { opacity: 0, scale: 0.98, y: 8 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        duration: prefersReducedMotion ? 0.01 : 0.4,
+                        ease: 'power3.out',
+                        onComplete: () => {
+                            if (locoScroll) {
+                                window.setTimeout(() => locoScroll.update(), 120);
+                            }
+                        }
+                    }
+                );
 
                 if (navigator.vibrate) {
                     navigator.vibrate(8);
@@ -795,38 +651,21 @@ function initWorksAnimations() {
             });
         });
 
-        // Allow tapping the preview to close it on mobile
-        if (preview) {
-            preview.addEventListener('click', (e) => {
-                e.preventDefault();
-                closeMobileRows();
-                workItems.forEach(row => row.classList.remove('is-open'));
-
-                // Hide with animation, then restore original placement and update scroll
-                hidePreview(() => {
-                    preview.classList.remove('is-visible');
-                    activeItem = null;
-
-                    if (typeof _originalPreviewParent !== 'undefined' && _originalPreviewParent) {
-                        try {
-                            if (_originalPreviewNext && _originalPreviewNext.parentElement === _originalPreviewParent) {
-                                _originalPreviewParent.insertBefore(preview, _originalPreviewNext);
-                            } else {
-                                _originalPreviewParent.appendChild(preview);
-                            }
-                        } catch (e) { }
-                    }
-
-                    if (locoScroll) {
-                        window.setTimeout(() => locoScroll.update(), 120);
-                    }
-                });
+        preview.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMobileRows();
+            hideMobilePreview(() => {
+                activeItem = null;
+                if (locoScroll) {
+                    window.setTimeout(() => locoScroll.update(), 120);
+                }
             });
-        }
+        });
 
         return;
     }
 
+    // Desktop GSAP Pointer tracking
     document.body.appendChild(preview);
 
     gsap.set(preview, {
@@ -840,6 +679,12 @@ function initWorksAnimations() {
         filter: 'blur(12px)',
         transformOrigin: '0 0'
     });
+
+    const previewGap = 24;
+    const previewMotion = {
+        duration: prefersReducedMotion ? 0.01 : 0.45,
+        ease: 'power2.out'
+    };
 
     const movePreviewX = gsap.quickTo(preview, 'x', previewMotion);
     const movePreviewY = gsap.quickTo(preview, 'y', previewMotion);
@@ -884,6 +729,68 @@ function initWorksAnimations() {
         movePreviewY(position.y);
     }
 
+    function showPreview() {
+        gsap.to(preview, {
+            autoAlpha: 1,
+            scale: 1,
+            filter: 'blur(0px)',
+            duration: prefersReducedMotion ? 0.01 : 0.45,
+            ease: 'power3.out'
+        });
+        preview.removeAttribute('aria-hidden');
+    }
+
+    function hidePreview() {
+        gsap.to(preview, {
+            autoAlpha: 0,
+            scale: 0.94,
+            filter: 'blur(12px)',
+            duration: prefersReducedMotion ? 0.01 : 0.35,
+            ease: 'power3.out',
+            onComplete: () => {
+                preview.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
+
+    let activeItem = null;
+
+    function setPreviewImage(item) {
+        const src = item.getAttribute('data-preview');
+        const titleEl = item.querySelector('.work-title-fixed');
+        const stackEl = item.querySelector('.work-stack');
+        const titleText = titleEl ? titleEl.textContent.trim() : '';
+        const stackText = stackEl ? stackEl.textContent.trim() : '';
+
+        if (previewTitle) previewTitle.textContent = titleText;
+        if (previewStack) previewStack.textContent = stackText;
+
+        if (!src || !previewImg) return;
+
+        if (previewImg.getAttribute('src') === src) {
+            previewImg.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
+            return;
+        }
+
+        gsap.to(previewImg, {
+            opacity: 0.15,
+            scale: 0.98,
+            duration: 0.15,
+            onComplete: () => {
+                previewImg.setAttribute('src', src);
+                previewImg.setAttribute('alt', titleText ? (titleText + ' — preview') : 'work preview');
+                previewImg.onload = () => {
+                    gsap.to(previewImg, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.25,
+                        ease: 'power2.out'
+                    });
+                };
+            }
+        });
+    }
+
     workItems.forEach(item => {
         item.addEventListener('mouseenter', (event) => {
             activeItem = item;
@@ -902,25 +809,14 @@ function initWorksAnimations() {
             hidePreview();
         });
 
-        item.addEventListener('focus', () => {
-            const rect = item.getBoundingClientRect();
-            const previewWidth = preview.offsetWidth || 420;
-            const previewHeight = preview.offsetHeight || 320;
-            const x = Math.min(
-                Math.max(previewGap, window.innerWidth - previewWidth - previewGap),
-                window.innerWidth * 0.66
-            );
-            const y = Math.min(
-                Math.max(previewGap, window.innerHeight - previewHeight - previewGap),
-                Math.max(previewGap, rect.top + rect.height * 0.5)
-            );
+        item.setAttribute('aria-controls', 'work-preview');
+    });
 
-            setPreviewImage(item);
-            gsap.set(preview, { x, y });
-            showPreview();
-        });
-
-        item.addEventListener('blur', hidePreview);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            activeItem = null;
+            hidePreview();
+        }
     });
 }
 
@@ -1085,39 +981,7 @@ function initContactFormAnimations() {
     });
 }
 
-function initPhilosophyMinimalAnimations() {
-    ScrollTrigger.create({
-        trigger: '.philosophy-quote',
-        scroller: '#scroll-wrapper',
-        start: 'top 75%',
-        onEnter: () => {
-            gsap.to('.philosophy-quote', {
-                opacity: 1,
-                x: 0,
-                duration: isMobile ? 0.6 : 1,
-                ease: 'power3.out'
-            });
-        }
-    });
 
-    const principles = document.querySelectorAll('.principle-minimal');
-    principles.forEach((principle, i) => {
-        ScrollTrigger.create({
-            trigger: principle,
-            scroller: '#scroll-wrapper',
-            start: 'top 80%',
-            onEnter: () => {
-                gsap.to(principle, {
-                    opacity: 1,
-                    y: 0,
-                    duration: isMobile ? 0.4 : 0.6,
-                    delay: i * 0.06,
-                    ease: 'power3.out'
-                });
-            }
-        });
-    });
-}
 
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
