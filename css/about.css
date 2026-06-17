@@ -1,3 +1,8 @@
+/* Prevent horizontal overflow on all viewports */
+#main-content {
+    overflow-x: hidden;
+}
+
 /* Breadcrumb */
 .breadcrumb {
     display: flex;
@@ -35,6 +40,8 @@
     margin-bottom: var(--space-md);
     opacity: 0;
     animation: fadeInUp 0.8s 0.5s forwards;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .page-subtitle {
@@ -48,6 +55,14 @@
 /* About Hero */
 .about-hero {
     padding: calc(var(--space-xxl) + var(--space-lg)) 0 var(--space-xl);
+}
+
+/* Hero CTA row */
+.about-hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 /* Bio Section */
@@ -397,6 +412,28 @@
     flex-wrap: wrap;
 }
 
+/* ===== JS-Failure Fallback =====
+   If JS doesn't load or animations don't fire,
+   elements should still be visible */
+.education-item,
+.experience-item,
+.cert-item,
+.interest-card,
+.skill-category {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When Locomotive Scroll has initialized (adds class to body),
+   keep initial hidden state for animation. Otherwise show them. */
+body:not(.has-scroll-init) .education-item,
+body:not(.has-scroll-init) .experience-item,
+body:not(.has-scroll-init) .cert-item,
+body:not(.has-scroll-init) .interest-card,
+body:not(.has-scroll-init) .skill-category {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 /* Dark Mode */
 body.dark-mode .experience-section,
 body.dark-mode .certifications-section,
@@ -601,7 +638,8 @@ body.dark-mode .cta-content h2 {
 /* Mobile Landscape & Small Tablet (600px - 768px) */
 @media (max-width: 768px) {
     .about-hero {
-        padding: calc(var(--space-lg) + var(--space-md)) 0 var(--space-md);
+        /* Account for fixed nav height (~60px) */
+        padding: calc(var(--space-lg) + 60px) 0 var(--space-md);
     }
 
     .page-title {
@@ -616,6 +654,19 @@ body.dark-mode .cta-content h2 {
     .breadcrumb {
         font-size: 0.75rem;
         gap: var(--space-xs);
+    }
+
+    /* Stack hero CTA buttons on mobile */
+    .about-hero-actions {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .about-hero-actions .btn-primary,
+    .about-hero-actions .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 
     /* Bio Section */
@@ -814,7 +865,8 @@ body.dark-mode .cta-content h2 {
 /* Small Mobile (max 480px) */
 @media (max-width: 480px) {
     .about-hero {
-        padding: var(--space-lg) 0 var(--space-sm);
+        /* Ensure enough top padding for fixed nav on small screens */
+        padding: calc(var(--space-md) + 60px) 0 var(--space-sm);
     }
 
     .page-title {
@@ -1034,6 +1086,8 @@ body.dark-mode .cta-content h2 {
     .skill-category {
         animation: none !important;
         transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 
     .education-item:hover,

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
   <!-- Primary Meta Tags -->
   <title>Wedding Planning Services | Luxury Wedding Management Portfolio</title>
   <meta name="title" content="Wedding Planning Services | Luxury Wedding Management Portfolio">
@@ -13,10 +13,10 @@
   <meta name="author" content="Your Company Name">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://www.yourwebsite.com/wedding.html">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.yourwebsite.com/wedding.html">
@@ -26,21 +26,30 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Your Company Name">
-  
+
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.yourwebsite.com/wedding.html">
   <meta property="twitter:title" content="Wedding Planning Services | Luxury Wedding Management Portfolio">
   <meta property="twitter:description" content="Explore our portfolio of beautifully executed luxury weddings worldwide.">
   <meta property="twitter:image" content="https://www.yourwebsite.com/images/wedding-twitter-image.jpg">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <script>
+    (function() {
+      if (location.protocol === 'http:' || location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        var l = document.createElement('link');
+        l.rel = 'manifest';
+        l.href = '/site.webmanifest';
+        document.head.appendChild(l);
+      }
+    })();
+  </script>
   <meta name="theme-color" content="#0a0a0a">
-  
+
   <!-- Breadcrumb Schema -->
   <script type="application/ld+json">
   {
@@ -59,7 +68,7 @@
     }]
   }
   </script>
-  
+
   <!-- Service Schema for Wedding Planning -->
   <script type="application/ld+json">
   {
@@ -83,7 +92,7 @@
     }
   }
   </script>
-  
+
   <!-- ImageGallery Schema -->
   <script type="application/ld+json">
   {
@@ -130,7 +139,7 @@
       background: #ffffff;
       color: #0a0a0a;
     }
-    
+
     /* Skip to content for accessibility */
     .skip-to-content {
       position: absolute;
@@ -142,11 +151,11 @@
       text-decoration: none;
       z-index: 100;
     }
-    
+
     .skip-to-content:focus {
       top: 0;
     }
-    
+
     /* Visually hidden */
     .visually-hidden {
       position: absolute;
@@ -724,7 +733,7 @@
         <h3>COMPANY NAME</h3>
         <p>Creating extraordinary events that inspire and captivate, one unforgettable moment at a time.</p>
       </div>
-      
+
       <div class="footer-columns">
         <nav class="footer-column" aria-label="Services">
           <h4>Services</h4>
@@ -734,7 +743,7 @@
             <li><a href="index.html#services">Exhibitions</a></li>
           </ul>
         </nav>
-        
+
         <nav class="footer-column" aria-label="Company">
           <h4>Company</h4>
           <ul>
@@ -745,7 +754,7 @@
         </nav>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <p>&copy; 2025 Company Name. All rights reserved.</p>
       <div class="social-icons">
@@ -796,7 +805,7 @@
     function lazyLoadImage(img, src) {
       const imageLoader = new Image();
       imageLoader.src = src;
-      
+
       imageLoader.onload = () => {
         img.src = src;
         img.classList.add('loaded');
@@ -810,7 +819,7 @@
       const div = document.createElement('div');
       div.className = 'masonry-item';
       div.setAttribute('role', 'listitem');
-      
+
       if (item.type === 'image') {
         div.innerHTML = `
           <div class="image-placeholder"></div>
@@ -830,7 +839,7 @@
           <div class="video-icon"><i class="fas fa-play" aria-hidden="true"></i></div>
         `;
       }
-      
+
       div.addEventListener('click', () => openLightbox(index));
       masonryGrid.appendChild(div);
     });
@@ -853,7 +862,7 @@
     gsap.utils.toArray('.masonry-item').forEach((item, i) => {
       const img = item.querySelector('img');
       const placeholder = item.querySelector('.image-placeholder');
-      
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
@@ -904,8 +913,8 @@
         lightboxContent.innerHTML = `<img src="${item.full}" alt="${item.title} in ${item.location}">`;
       } else {
         lightboxContent.innerHTML = `
-          <iframe width="1280" height="720" src="${item.video}?autoplay=1" 
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          <iframe width="1280" height="720" src="${item.video}?autoplay=1"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen title="${item.title}"></iframe>
         `;
       }
@@ -939,7 +948,7 @@
     lightboxNext.addEventListener('click', nextItem);
     lightboxPrev.addEventListener('click', prevItem);
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    
+
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();

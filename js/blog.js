@@ -6,7 +6,6 @@ window.addEventListener('load', () => {
     console.log('Window loaded, initializing...');
 
     initNoiseTexture();
-    initCursor();
     initThemeToggle();
     initNavigation();
 
@@ -37,41 +36,7 @@ function initNoiseTexture() {
     ctx.putImageData(imageData, 0, 0);
 }
 
-function initCursor() {
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorCircle = document.querySelector('.cursor-circle');
 
-    if (!cursorDot || !cursorCircle) return;
-
-    let mouseX = 0, mouseY = 0;
-    let dotX = 0, dotY = 0;
-    let circleX = 0, circleY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    function animateCursor() {
-        dotX += (mouseX - dotX) * 0.3;
-        dotY += (mouseY - dotY) * 0.3;
-        circleX += (mouseX - circleX) * 0.15;
-        circleY += (mouseY - circleY) * 0.15;
-
-        cursorDot.style.transform = `translate(${dotX - 4}px, ${dotY - 4}px)`;
-        cursorCircle.style.transform = `translate(${circleX - 20}px, ${circleY - 20}px)`;
-
-        requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
-
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-grow'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-grow'));
-    });
-}
 
 function initThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle-minimal');

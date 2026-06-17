@@ -37,10 +37,19 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/assets/portfolio-image.png" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/portfolio-image.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <!-- PWA: only attach manifest on http(s) or localhost to avoid file:// CORS errors -->
+  <script>
+    (function() {
+      if (location.protocol === 'http:' || location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        var l = document.createElement('link');
+        l.rel = 'manifest';
+        l.href = 'manifest.json';
+        document.head.appendChild(l);
+      }
+    })();
+  </script>
   <meta name="theme-color" content="#0d0d0d" />
 
   <!-- Fonts -->
@@ -105,10 +114,6 @@
 
   <!-- Organic Texture -->
   <canvas id="noise-canvas" aria-hidden="true"></canvas>
-
-  <!-- Cursor -->
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-circle" aria-hidden="true"></div>
 
   <!-- Loader -->
   <div class="loader" role="status" aria-label="Loading">
@@ -466,7 +471,7 @@
           </div>
 
           <div id="work-preview" class="work-preview" aria-hidden="true">
-            <img src="assets/serah-event.png" alt="Serah Events — preview" loading="lazy" />
+            <img data-src="assets/serah-event.png" alt="Serah Events — preview" loading="lazy" />
             <div class="work-preview-meta" aria-hidden="true">
               <div class="preview-title"></div>
               <div class="preview-stack"></div>
@@ -488,34 +493,13 @@
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-text">"Adithyan's ability to translate complex logic into beautifully simple, fluid interfaces is rare. He delivered our event platform on time, with animations that exceeded our expectations."</p>
               <div class="testimonial-author">
-                <strong>Sarah Mitchell</strong>
-                <span>CEO, Serah Events</span>
+                <strong>Prasanth</strong>
+                <span>Serah Events</span>
               </div>
             </div>
-
-            <div class="testimonial-item">
-              <div class="testimonial-stars">★★★★★</div>
-              <p class="testimonial-text">"Working with Adithyan was a game-changer for our digital magazine. He built a high-performance, robust Django backend combined with a pixel-perfect, clean responsive frontend."</p>
-              <div class="testimonial-author">
-                <strong>Rajesh Kumar</strong>
-                <span>Director, Indian Thozhilaly</span>
-              </div>
-            </div>
-
-            <div class="testimonial-item">
-              <div class="testimonial-stars">★★★★★</div>
-              <p class="testimonial-text">"A brilliant designer and developer. The collaborative code editor he built for our team is fast, intuitive, and extremely stable. Highly recommended for any complex frontend/backend projects."</p>
-              <div class="testimonial-author">
-                <strong>Liam Harrison</strong>
-                <span>Product Head, UniBridge</span>
-              </div>
-            </div>
-          </div>
 
           <div class="testimonial-dots">
             <button class="dot" aria-label="Go to slide 1"></button>
-            <button class="dot" aria-label="Go to slide 2"></button>
-            <button class="dot" aria-label="Go to slide 3"></button>
           </div>
         </div>
       </section> -->

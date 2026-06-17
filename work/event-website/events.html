@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Primary Meta Tags -->
     <title>Event Management Company | Weddings, Corporate Events & Exhibitions</title>
     <meta name="title" content="Event Management Company | Weddings, Corporate Events & Exhibitions">
@@ -14,10 +14,10 @@
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="revisit-after" content="7 days">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.yourwebsite.com/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.yourwebsite.com/">
@@ -28,7 +28,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Your Company Name">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.yourwebsite.com/">
@@ -36,14 +36,23 @@
     <meta property="twitter:description" content="Premium event management services specializing in luxury weddings, corporate events, and exhibitions.">
     <meta property="twitter:image" content="https://www.yourwebsite.com/images/twitter-image.jpg">
     <meta name="twitter:creator" content="@yourcompany">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+        <script>
+            (function() {
+                if (location.protocol === 'http:' || location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                    var l = document.createElement('link');
+                    l.rel = 'manifest';
+                    l.href = '/site.webmanifest';
+                    document.head.appendChild(l);
+                }
+            })();
+        </script>
     <meta name="theme-color" content="#0a0a0a">
-    
+
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -89,21 +98,21 @@
       }
     }
     </script>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- GLightbox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-    
+
     <!-- Lenis Smooth Scroll -->
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -111,12 +120,12 @@
     <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
-    
+
     <!-- Loader -->
     <div class="loader">
         <div class="loader-text">Loading</div>
     </div>
-    
+
     <!-- Navigation -->
     <nav class="navbar">
         <a href="#" class="nav-logo">COMPANY NAME</a>
@@ -132,13 +141,13 @@
             <span></span>
         </button>
     </nav>
-    
+
     <!-- Minimalist Fullscreen Menu -->
     <div class="fullscreen-menu" id="fullscreenMenu">
         <div class="menu-overlay-1"></div>
         <div class="menu-overlay-2"></div>
         <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
-        
+
         <div class="menu-content-wrapper">
             <div class="menu-left">
                 <div class="menu-content">
@@ -148,7 +157,7 @@
                     <a href="#contact" class="menu-link">Contact</a>
                 </div>
             </div>
-            
+
             <div class="menu-right">
                 <div class="menu-contact">
                     <h3>Get in Touch</h3>
@@ -164,7 +173,7 @@
                         <div class="menu-contact-label">Address</div>
                         <div class="menu-contact-value">123 Event Street, City, ST 12345</div>
                     </div>
-                    
+
                     <div class="menu-social">
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -172,14 +181,14 @@
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="menu-footer">
                     <p>&copy; 2025 Company Name. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <video class="hero-video" autoplay muted loop playsinline>
@@ -192,7 +201,7 @@
         </div>
         <div class="hero-scroll">Scroll</div>
     </section>
-    
+
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="services-wrapper">
@@ -201,7 +210,7 @@
                     <div class="services-header">
                         <h2>Our Services</h2>
                     </div>
-                    
+
                     <div class="services-track" id="servicesTrack">
                         <div class="service-card">
                             <div class="service-image">
@@ -217,7 +226,7 @@
                             </div>
                         </div>
                         </a>
-                        
+
                         <div class="service-card" >
                             <div class="service-image">
                                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Corporate conference" loading="lazy">
@@ -231,7 +240,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="service-card">
                             <div class="service-image">
                                 <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80" alt="Exhibition hall" loading="lazy">
@@ -246,13 +255,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="scroll-indicator">Scroll down to explore →</div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Stats Section -->
     <section class="stats-section">
         <div class="stats-grid">
@@ -270,7 +279,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Approach Section -->
     <section id="approach" class="approach-section">
         <div class="approach-container">
@@ -278,7 +287,7 @@
                 <h2>Our Approach</h2>
                 <p>A refined process built on collaboration, creativity, and meticulous attention to detail—ensuring every moment is crafted to perfection.</p>
             </div>
-            
+
             <div class="approach-steps">
                 <div class="approach-step">
                     <div class="approach-line"></div>
@@ -286,21 +295,21 @@
                     <h3 class="approach-title">Listen & Understand</h3>
                     <p class="approach-description">We begin by understanding your vision, goals, and the story you want to tell.</p>
                 </div>
-                
+
                 <div class="approach-step">
                     <div class="approach-line"></div>
                     <div class="approach-number">Step 02</div>
                     <h3 class="approach-title">Design & Conceptualize</h3>
                     <p class="approach-description">Creative concepts are developed, blending innovation with your brand identity.</p>
                 </div>
-                
+
                 <div class="approach-step">
                     <div class="approach-line"></div>
                     <div class="approach-number">Step 03</div>
                     <h3 class="approach-title">Execute Flawlessly</h3>
                     <p class="approach-description">Precision planning meets seamless execution, ensuring every detail is perfect.</p>
                 </div>
-                
+
                 <div class="approach-step">
                     <div class="approach-line"></div>
                     <div class="approach-number">Step 04</div>
@@ -310,7 +319,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Gallery Section -->
     <div class="gallery-wrapper" id="work">
         <div class="gallery-section">
@@ -321,7 +330,7 @@
                     <a href="#contact" class="gallery-cta">Start Your Project</a>
                 </div>
             </div>
-            
+
             <div class="gallery-right">
                 <div class="gallery-scroll-container">
                     <div class="gallery-grid">
@@ -438,7 +447,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Testimonial Section -->
     <section class="testimonial-section">
         <div class="testimonial-container">
@@ -452,14 +461,14 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="contact-container">
             <div class="contact-left">
                 <h2>Let's Create<br>Something<br>Extraordinary</h2>
                 <p>Ready to bring your vision to life? Get in touch with us today.</p>
-                
+
                 <div class="contact-details">
                     <div class="contact-detail">
                         <span class="contact-detail-label">Email</span>
@@ -475,7 +484,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="contact-right">
                 <form id="contactForm">
                     <div class="form-group">
@@ -483,13 +492,13 @@
                         <input type="text" id="name" name="name" required>
                         <span class="form-error">Please enter your name</span>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Email *</label>
                         <input type="email" id="email" name="email" required>
                         <span class="form-error">Please enter a valid email</span>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-type">Event Type</label>
                         <select id="event-type" name="event-type">
@@ -500,25 +509,25 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="message">Message *</label>
                         <textarea id="message" name="message" required></textarea>
                         <span class="form-error">Please enter your message</span>
                     </div>
-                    
+
                     <button type="submit" class="submit-btn">
                         <span>Send Message</span>
                     </button>
                 </form>
-                
+
                 <div class="form-success">
                     Thank you for your message! We'll get back to you soon.
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -526,7 +535,7 @@
                 <h3>COMPANY NAME</h3>
                 <p>Creating extraordinary events that inspire and captivate, one unforgettable moment at a time.</p>
             </div>
-            
+
             <div class="footer-columns">
                 <div class="footer-column">
                     <h4>Services</h4>
@@ -536,7 +545,7 @@
                         <li><a href="#services">Exhibitions</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-column">
                     <h4>Company</h4>
                     <ul>
@@ -547,7 +556,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 Company Name. All rights reserved.</p>
             <div class="social-icons">
@@ -558,17 +567,17 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- GSAP Core + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
+
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    
+
     <!-- GLightbox -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-    
+
     <script>
 // ==================== GSAP REGISTRATION ====================
 gsap.registerPlugin(ScrollTrigger);
@@ -600,31 +609,31 @@ if (!isTouchDevice) {
 if (!isTouchDevice) {
     const cursor = document.querySelector('.cursor');
     const cursorFollower = document.querySelector('.cursor-follower');
-    
+
     let mouseX = 0, mouseY = 0;
     let followerX = 0, followerY = 0;
-    
+
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
+
         gsap.to(cursor, {
             x: mouseX,
             y: mouseY,
             duration: 0
         });
     });
-    
+
     gsap.ticker.add(() => {
         followerX += (mouseX - followerX) * 0.15;
         followerY += (mouseY - followerY) * 0.15;
-        
+
         gsap.set(cursorFollower, {
             x: followerX,
             y: followerY
         });
     });
-    
+
     document.querySelectorAll('a, button, .service-card, .gallery-image').forEach(el => {
         el.addEventListener('mouseenter', () => cursorFollower.classList.add('expand'));
         el.addEventListener('mouseleave', () => cursorFollower.classList.remove('expand'));
@@ -634,7 +643,7 @@ if (!isTouchDevice) {
 // ==================== LOADER ====================
 window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
-    
+
     gsap.to(loader, {
         opacity: 0,
         duration: 0.8,
@@ -652,7 +661,7 @@ document.querySelectorAll('.service-card').forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
         if (e.target.closest('.service-link')) return;
-        
+
         const link = card.querySelector('.service-link');
         if (link) {
             window.location.href = link.href;
@@ -663,34 +672,34 @@ document.querySelectorAll('.service-card').forEach(card => {
 // ==================== GALLERY LIGHTBOX - COMPLETE FIX FOR FULL IMAGE ====================
 function initGalleryLightbox() {
     const galleryImages = document.querySelectorAll('.gallery-image');
-    
+
     console.log('Found', galleryImages.length, 'gallery images');
-    
+
     if (galleryImages.length === 0) {
         console.error('No gallery images found!');
         return;
     }
-    
+
     // Create array of lightbox elements
     const lightboxElements = [];
-    
+
     galleryImages.forEach((item, index) => {
         const img = item.querySelector('img');
-        
+
         if (!img) {
             console.warn('No img found in gallery-image', index);
             return;
         }
-        
+
         let imageSrc = img.getAttribute('src') || img.src;
-        
+
         // Get original full-size image URL
         let fullSizeUrl = imageSrc;
         if (imageSrc.includes('unsplash.com')) {
             // Use original size without any parameters
             fullSizeUrl = imageSrc.split('?')[0];
         }
-        
+
         // Add to lightbox elements with proper sizing
         lightboxElements.push({
             href: fullSizeUrl,
@@ -698,14 +707,14 @@ function initGalleryLightbox() {
             width: 'auto',
             height: 'auto'
         });
-        
+
         // Store index for click handling
         item.dataset.index = index;
         item.style.cursor = 'pointer';
-        
+
         console.log('Added image', index, fullSizeUrl);
     });
-    
+
     // Initialize GLightbox with proper configuration
     const lightbox = GLightbox({
         elements: lightboxElements,
@@ -727,7 +736,7 @@ function initGalleryLightbox() {
             prev: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>'
         }
     });
-    
+
     // Add click handlers to gallery images
     galleryImages.forEach((item) => {
         item.addEventListener('click', function(e) {
@@ -737,29 +746,29 @@ function initGalleryLightbox() {
             lightbox.openAt(index);
         });
     });
-    
+
     // Back button support
     let isLightboxOpen = false;
-    
+
     lightbox.on('open', () => {
         isLightboxOpen = true;
         history.pushState({ lightboxOpen: true }, '');
         document.body.style.overflow = 'hidden';
         console.log('Lightbox opened');
     });
-    
+
     lightbox.on('close', () => {
         isLightboxOpen = false;
         document.body.style.overflow = '';
         console.log('Lightbox closed');
     });
-    
+
     window.addEventListener('popstate', () => {
         if (isLightboxOpen) {
             lightbox.close();
         }
     });
-    
+
     console.log('GLightbox initialized with', lightboxElements.length, 'images');
 }
 
@@ -781,12 +790,12 @@ function openMenu() {
     fullscreenMenu.classList.add('active');
     document.body.classList.add('menu-open');
     menuToggle.classList.add('active');
-    
+
     document.body.style.overflow = 'hidden';
     if (lenis) lenis.stop();
-    
+
     const tl = gsap.timeline();
-    
+
     tl.to(menuOverlay1, { y: '0%', duration: 0.6, ease: 'power4.inOut' })
       .to(menuOverlay2, { y: '0%', duration: 0.6, ease: 'power4.inOut' }, '-=0.4')
       .to(menuClose, { opacity: 1, duration: 0.3 }, '-=0.2')
@@ -796,26 +805,26 @@ function openMenu() {
 
 function closeMenu(callback) {
     if (!isMenuOpen) return;
-    
+
     isMenuOpen = false;
-    
+
     const tl = gsap.timeline({
         onComplete: () => {
             fullscreenMenu.classList.remove('active');
             document.body.classList.remove('menu-open');
             menuToggle.classList.remove('active');
-            
+
             document.body.style.overflow = '';
             if (lenis) lenis.start();
-            
+
             gsap.set([menuLinks, menuContact, menuSocial, menuFooter], { y: 50, opacity: 0 });
             gsap.set(menuClose, { opacity: 0 });
             gsap.set([menuOverlay1, menuOverlay2], { y: '-100%' });
-            
+
             if (callback) callback();
         }
     });
-    
+
     tl.to([menuContact, menuSocial, menuFooter], { y: 30, opacity: 0, duration: 0.3, stagger: 0.05 })
       .to(menuLinks, { y: -50, opacity: 0, duration: 0.4, stagger: 0.05 }, '-=0.2')
       .to(menuClose, { opacity: 0, duration: 0.2 }, '-=0.3')
@@ -839,23 +848,23 @@ menuLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        
+
         const href = this.getAttribute('href');
-        
+
         console.log('Clicked href:', href);
-        
+
         closeMenu(() => {
             if (href && href.startsWith('#') && href !== '#') {
                 const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
-                
+
                 console.log('Target element:', targetElement);
-                
+
                 if (targetElement) {
                     setTimeout(() => {
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset;
-                        
+
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: 'smooth'
@@ -891,7 +900,7 @@ function initScrollAnimations() {
         delay: 0.3,
         ease: 'power3.out'
     });
-    
+
     gsap.to('.hero-subtitle', {
         y: 0,
         opacity: 1,
@@ -899,14 +908,14 @@ function initScrollAnimations() {
         delay: 0.6,
         ease: 'power3.out'
     });
-    
+
     gsap.to('.hero-scroll', {
         opacity: 0.8,
         duration: 1,
         delay: 1,
         ease: 'power2.out'
     });
-    
+
     // Services
     gsap.to('.services-header h2', {
     x: 0,
@@ -939,7 +948,7 @@ if (servicesWrapper && servicesTrack) {
             invalidateOnRefresh: true
         }
     });
-    
+
     // Card animations
     serviceCards.forEach((card, index) => {
         if (window.innerWidth > 768) {
@@ -956,7 +965,7 @@ if (servicesWrapper && servicesTrack) {
             });
         } else {
             // Simpler animation for mobile
-            gsap.fromTo(card, 
+            gsap.fromTo(card,
                 {  scale: 0.95 },
                 {
                     opacity: 1,
@@ -973,7 +982,7 @@ if (servicesWrapper && servicesTrack) {
         }
     });
 }
-    
+
     // Stats
     const statItems = document.querySelectorAll('.stat-item');
     statItems.forEach((item, index) => {
@@ -988,12 +997,12 @@ if (servicesWrapper && servicesTrack) {
             }
         });
     });
-    
+
     // Counter animation
     const counters = document.querySelectorAll('.counter');
     counters.forEach(counter => {
         const target = parseInt(counter.dataset.target);
-        
+
         ScrollTrigger.create({
             trigger: counter,
             start: 'top 80%',
@@ -1011,7 +1020,7 @@ if (servicesWrapper && servicesTrack) {
             once: true
         });
     });
-    
+
     // Approach
     gsap.to('.approach-header h2', {
         y: 0,
@@ -1022,7 +1031,7 @@ if (servicesWrapper && servicesTrack) {
             start: 'top 70%'
         }
     });
-    
+
     gsap.to('.approach-header p', {
         y: 0,
         opacity: 1,
@@ -1033,7 +1042,7 @@ if (servicesWrapper && servicesTrack) {
             start: 'top 70%'
         }
     });
-    
+
     const approachSteps = document.querySelectorAll('.approach-step');
     approachSteps.forEach((step, index) => {
         gsap.to(step, {
@@ -1047,18 +1056,18 @@ if (servicesWrapper && servicesTrack) {
             }
         });
     });
-    
+
     // Gallery
     if (window.innerWidth > 1024) {
         const galleryWrapper = document.querySelector('.gallery-wrapper');
         const galleryScrollContainer = document.querySelector('.gallery-scroll-container');
         const galleryGrid = document.querySelector('.gallery-grid');
         const galleryRight = document.querySelector('.gallery-right');
-        
+
         if (galleryWrapper && galleryScrollContainer && galleryGrid && galleryRight) {
             const scrollDistance = galleryGrid.scrollHeight - galleryRight.offsetHeight;
             galleryWrapper.style.height = `${scrollDistance + window.innerHeight}px`;
-            
+
             gsap.to(galleryScrollContainer, {
                 y: -scrollDistance,
                 ease: 'none',
@@ -1073,7 +1082,7 @@ if (servicesWrapper && servicesTrack) {
                 }
             });
         }
-        
+
         gsap.to('.gallery-left-content h2', {
             x: 0,
             opacity: 1,
@@ -1083,7 +1092,7 @@ if (servicesWrapper && servicesTrack) {
                 start: 'top 70%'
             }
         });
-        
+
         gsap.to('.gallery-left-content p', {
             x: 0,
             opacity: 1,
@@ -1094,7 +1103,7 @@ if (servicesWrapper && servicesTrack) {
                 start: 'top 70%'
             }
         });
-        
+
         gsap.to('.gallery-cta', {
             x: 0,
             opacity: 1,
@@ -1115,7 +1124,7 @@ if (servicesWrapper && servicesTrack) {
                 start: 'top 70%'
             }
         });
-        
+
         gsap.to('.gallery-left-content p', {
             x: 0,
             opacity: 1,
@@ -1126,7 +1135,7 @@ if (servicesWrapper && servicesTrack) {
                 start: 'top 70%'
             }
         });
-        
+
         gsap.to('.gallery-cta', {
             x: 0,
             opacity: 1,
@@ -1137,10 +1146,10 @@ if (servicesWrapper && servicesTrack) {
                 start: 'top 70%'
             }
         });
-        
+
         const galleryImages = document.querySelectorAll('.gallery-image');
         galleryImages.forEach((img) => {
-            gsap.fromTo(img, 
+            gsap.fromTo(img,
                 { opacity: 0, y: 50 },
                 {
                     opacity: 1,
@@ -1155,7 +1164,7 @@ if (servicesWrapper && servicesTrack) {
             );
         });
     }
-    
+
     // Testimonial
     gsap.to('.testimonial-quote', {
         y: 0,
@@ -1166,7 +1175,7 @@ if (servicesWrapper && servicesTrack) {
             start: 'top 70%'
         }
     });
-    
+
     gsap.to('.testimonial-author', {
         y: 0,
         opacity: 1,
@@ -1177,7 +1186,7 @@ if (servicesWrapper && servicesTrack) {
             start: 'top 70%'
         }
     });
-    
+
     // Contact
     gsap.to('.contact-left h2', {
         x: 0,
@@ -1188,7 +1197,7 @@ if (servicesWrapper && servicesTrack) {
             start: 'top 70%'
         }
     });
-    
+
     gsap.to('.contact-left p', {
         x: 0,
         opacity: 1,
@@ -1199,7 +1208,7 @@ if (servicesWrapper && servicesTrack) {
             start: 'top 70%'
         }
     });
-    
+
     const contactDetails = document.querySelectorAll('.contact-detail');
     contactDetails.forEach((detail, index) => {
         gsap.to(detail, {
@@ -1213,7 +1222,7 @@ if (servicesWrapper && servicesTrack) {
             }
         });
     });
-    
+
     const formGroups = document.querySelectorAll('.form-group');
     formGroups.forEach((group, index) => {
         gsap.to(group, {
@@ -1236,13 +1245,13 @@ const formSuccess = document.querySelector('.form-success');
 if (contactForm && formSuccess) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const name = document.getElementById('name');
         const email = document.getElementById('email');
         const message = document.getElementById('message');
-        
+
         let isValid = true;
-        
+
         [name, email, message].forEach(field => {
             if (field) {
                 const formGroup = field.closest('.form-group');
@@ -1254,16 +1263,16 @@ if (contactForm && formSuccess) {
                 }
             }
         });
-        
+
         if (email && email.value && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
             email.closest('.form-group').classList.add('error');
             isValid = false;
         }
-        
+
         if (isValid) {
             contactForm.style.display = 'none';
             formSuccess.classList.add('visible');
-            
+
             gsap.from(formSuccess, {
                 opacity: 0,
                 y: 20,
@@ -1277,17 +1286,17 @@ if (contactForm && formSuccess) {
 document.querySelectorAll('a[href^="#"]:not(.menu-link)').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        
+
         if (href && href !== '#') {
             e.preventDefault();
-            
+
             const targetId = href.substring(1);
             const targetElement = document.getElementById(targetId);
-            
+
             if (targetElement) {
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset;
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
