@@ -41,7 +41,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <!-- PWA: only attach manifest on http(s) or localhost to avoid file:// CORS errors -->
   <script>
-    (function() {
+    (function () {
       if (location.protocol === 'http:' || location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
         var l = document.createElement('link');
         l.rel = 'manifest';
@@ -256,55 +256,50 @@
   <main id="main-content">
     <div id="scroll-wrapper" data-scroll-container>
       <!-- Hero Section -->
-      <section id="hero" class="hero-section" data-scroll-section>
-        <div class="hero-container">
-          <div class="hero-content">
-            <div class="hero-label">Full-Stack Developer × Designer</div>
-
+      <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-top">
+            <p class="hero-kicker">
+              Independent Designer & Developer
+            </p>
+            <p class="hero-location">
+              India · Available Worldwide
+            </p>
+          </div>
+          <div class="hero-main">
             <h1 class="hero-title">
-              <span class="title-line">
-                <span class="word">Crafting</span>
-              </span>
-              <span class="title-line">
-                <span class="word">Timeless</span>
-              </span>
-              <span class="title-line">
-                <span class="word">Experiences</span>
-              </span>
+              <span>ADI</span>
+              <span>THYAN</span>
             </h1>
-
-            <div class="hero-subtitle">
-              -->
-              <div class="hero-name-multi">
-                <span class="hero-name-label">I'm</span>
-                <span class="hero-name-en">Adithyan</span>
-                <span class="hero-name-divider">•</span>
-                <span class="hero-name-hi">अदित्यन</span>
-                <span class="hero-name-divider">•</span>
-                <span class="hero-name-ml">ആദിത്യൻ</span>
+            <div class="hero-side">
+              <p class="hero-description">
+                I design and build digital experiences that feel
+                simple, intentional and distinctly human.
+              </p>
+              <div class="hero-actions">
+                <a href="#work" class="hero-button hero-button-primary">
+                  <span>View selected work</span>
+                  <span class="hero-button-arrow">↗</span>
+                </a>
+                <a href="#contact" class="hero-button hero-button-secondary">
+                  <span>Start a conversation</span>
+                  <span class="hero-button-arrow">↗</span>
+                </a>
               </div>
             </div>
-
-            <!-- CTA Buttons -->
-            <div class="hero-cta">
-              <a href="#contact" class="btn-primary">
-                <span>Start a Project</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" />
-                </svg>
-              </a>
-              <a href="about.html" class="btn-secondary">About Me</a>
-            </div>
           </div>
-
-          <div class="hero-shapes">
-            <div class="shape shape-circle" data-scroll data-scroll-speed="2"></div>
-            <div class="shape shape-stroke" data-scroll data-scroll-speed="-1"></div>
-            <div class="shape shape-line" data-scroll data-scroll-speed="1"></div>
+          <div class="hero-bottom">
+            <span>Scroll to explore</span>
+            <div class="hero-scroll-line">
+              <span></span>
+            </div>
           </div>
         </div>
       </section>
-
 
       <!-- Stats Section (New) -->
       <section class="stats-section" data-scroll-section>
@@ -481,28 +476,64 @@
       </section>
 
       <!-- Testimonials Section -->
-      <!-- <section id="testimonials" class="testimonials-section" data-scroll-section>
+      <section id="testimonials" class="testimonials-section" data-scroll-section>
         <div class="section-container">
-          <div class="section-intro">
-            <span class="section-num">02</span>
-            <h2 class="section-heading">Client Feedback</h2>
-          </div>
-
-          <div class="testimonials-slider">
-            <div class="testimonial-item">
-              <div class="testimonial-stars">★★★★★</div>
-              <p class="testimonial-text">"Adithyan's ability to translate complex logic into beautifully simple, fluid interfaces is rare. He delivered our event platform on time, with animations that exceeded our expectations."</p>
-              <div class="testimonial-author">
-                <strong>Prasanth</strong>
-                <span>Serah Events</span>
-              </div>
+          <div class="testimonial-header">
+            <div class="section-intro">
+              <span class="section-num">02</span>
+              <h2 class="section-heading">Client Feedback</h2>
             </div>
+            <p class="testimonial-intro">
+              A few words from people I've had the opportunity
+              to work with.
+            </p>
+          </div>
+          <div class="testimonial-slider">
+            <article class="testimonial-slide active">
+              <div class="testimonial-mark">“</div>
+              <div class="testimonial-content">
+                <blockquote class="testimonial-text">
+                  Working with Adhityan was a great experience. He has excellent knowledge of
+                  website creation, modern design, and digital strategy.
 
-          <div class="testimonial-dots">
-            <button class="dot" aria-label="Go to slide 1"></button>
+                  He doesn't just build websites—he shares creative ideas that help businesses grow online.
+                  His professionalism, problem-solving skills, and attention to detail make him a reliable person to
+                  work with.
+
+                  If you're looking for someone with strong technical expertise and innovative ideas, I highly recommend
+                  Adhityan for website
+                  development and digital solutions.
+                </blockquote>
+                <div class="testimonial-meta">
+                  <div class="testimonial-author">
+                    <span class="author-name">
+                      Prasanth
+                    </span>
+                    <span class="author-company">
+                      Sera Events
+                    </span>
+                  </div>
+                  <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                    <span class="rating-number">5.0</span>
+                    <span class="stars"> ★★★★★ </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="testimonial-controls">
+            <div class="testimonial-counter">
+              <span class="current-slide">01</span>
+              <span class="counter-line"></span>
+              <span class="total-slides">01</span>
+            </div>
+            <div class="testimonial-navigation">
+              <button type="button" class="testimonial-prev" aria-label="Previous testimonial"> ← </button>
+              <button type="button" class="testimonial-next" aria-label="Next testimonial"> → </button>
+            </div>
           </div>
         </div>
-      </section> -->
+      </section>
 
       <!-- Expertise Section -->
       <section id="expertise" class="expertise-minimal" data-scroll-section>

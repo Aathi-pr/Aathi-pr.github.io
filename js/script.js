@@ -854,118 +854,497 @@ function initWorksAnimations() {
 }
 
 function initTestimonialsSlider() {
-    const testimonials = document.querySelectorAll('.testimonial-item');
-    const dots = document.querySelectorAll('.testimonial-dots .dot');
+    const testimonials = document.querySelectorAll(
+        '.testimonial-slide'
+    );
+
+    const slider = document.querySelector(
+        '.testimonial-slider'
+    );
+
+    const prevButton = document.querySelector(
+        '.testimonial-prev'
+    );
+
+    const nextButton = document.querySelector(
+        '.testimonial-next'
+    );
+
+    const currentCounter = document.querySelector(
+        '.current-slide'
+    );
+
+    const totalCounter = document.querySelector(
+        '.total-slides'
+    );
 
     if (testimonials.length === 0) return;
 
+
+    /* =========================================
+       STATE
+       ========================================= */
+
     let currentIndex = 0;
+
+    let isAnimating = false;
+
+    let autoRotate;
+
+
+    /* =========================================
+       INITIAL SETUP
+       ========================================= */
+
+    if (totalCounter) {
+        totalCounter.textContent =
+            String(testimonials.length).padStart(2, '0');
+    }
+
+
+    testimonials.forEach((testimonial, index) => {
+
+        if (index === 0) {
+
+            testimonial.classList.add('active');
+
+            gsap.set(testimonial, {
+                opacity: 1,
+                x: 0
+            });
+
+        } else {
+
+            testimonial.classList.remove('active');
+
+            gsap.set(testimonial, {
+                opacity: 0,
+                x: 40
+            });
+
+        }
+
+    });
+
+
+    /* =========================================
+       COUNTER
+       ========================================= */
+
+    function updateCounter() {
+
+        if (!currentCounter) return;
+
+        currentCounter.textContent =
+            String(currentIndex + 1).padStart(2, '0');
+
+    }
+
+
+    /* =========================================
+       SHOW TESTIMONIAL
+       ========================================= */
+
+    function showTestimonial(
+        newIndex,
+        direction = 1
+    ) {
+
+        if (isAnimating) return;
+
+        if (newIndex === currentIndex) return;
+
+        const current =
+            testimonials[currentIndex];
+
+        const next =
+            testimonials[newIndex];
+
+
+        isAnimating = true;
+
+
+        /* Prepare next slide */
+
+        next.classList.add('active');
+
+        gsap.set(next, {
+            opacity: 0,
+            x: direction * 50
+        });
+
+
+        /* Animate current out */
+
+        gsap.to(current, {
+            opacity: 0,
+
+            x: -direction * 50,
+
+            duration: 0.45,
+
+            ease: 'power2.inOut'
+        });
+
+
+        /* Animate next in */
+
+        gsap.to(next, {
+            opacity: 1,
+
+            x: 0,
+
+            duration: 0.6,
+
+            ease: 'power3.out',
+
+            onComplete: () => {
+
+                current.classList.remove(
+                    'active'
+                );
+
+                gsap.set(current, {
+                    opacity: 0,
+                    x: direction * 50
+                });
+
+
+                currentIndex = newIndex;
+
+                updateCounter();
+
+                isAnimating = false;
+
+            }
+        });
+
+    }
+
+
+    /* =========================================
+       NEXT
+       ========================================= */
+
+    function nextTestimonial() {
+
+        const nextIndex =
+            (currentIndex + 1) %
+            testimonials.length;
+
+        showTestimonial(
+            nextIndex,
+            1
+        );
+
+    }
+
+
+    /* =========================================
+       PREVIOUS
+       ========================================= */
+
+    function previousTestimonial() {
+
+        const previousIndex =
+            (
+                currentIndex -
+                1 +
+                testimonials.length
+            ) %
+            testimonials.length;
+
+        showTestimonial(
+            previousIndex,
+            -1
+        );
+
+    }
+
+
+    /* =========================================
+       BUTTON EVENTS
+       ========================================= */
+
+    if (nextButton) {
+
+        nextButton.addEventListener(
+            'click',
+            () => {
+
+                nextTestimonial();
+
+                restartAutoRotate();
+
+            }
+        );
+
+    }
+
+
+    if (prevButton) {
+
+        prevButton.addEventListener(
+            'click',
+            () => {
+
+                previousTestimonial();
+
+                restartAutoRotate();
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       SWIPE SUPPORT
+       ========================================= */
+
     let touchStartX = 0;
+
     let touchEndX = 0;
 
-    // Set initial position states
-    testimonials.forEach((item, i) => {
-        if (i === 0) {
-            item.style.position = 'relative';
-            item.style.top = 'auto';
-            item.style.left = 'auto';
-            item.classList.add('active');
-            gsap.set(item, { opacity: 1, x: 0 });
-        } else {
-            item.style.position = 'absolute';
-            item.style.top = '0';
-            item.style.left = '0';
-            item.classList.remove('active');
-            gsap.set(item, { opacity: 0, x: 50 });
-        }
-    });
 
-    function showTestimonial(index, direction = 1) {
-        testimonials.forEach((item, i) => {
-            if (i === index) {
-                item.style.position = 'relative';
-                item.style.top = 'auto';
-                item.style.left = 'auto';
-                item.classList.add('active');
+    if (slider) {
 
-                gsap.fromTo(item,
-                    { opacity: 0, x: direction * 50 },
-                    { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', overwrite: 'auto' }
-                );
-            } else if (item.classList.contains('active')) {
-                item.style.position = 'absolute';
-                item.style.top = '0';
-                item.style.left = '0';
-                item.classList.remove('active');
+        slider.addEventListener(
+            'touchstart',
+            (event) => {
 
-                gsap.to(item, {
-                    opacity: 0,
-                    x: -direction * 50,
-                    duration: 0.5,
-                    ease: 'power2.in',
-                    overwrite: 'auto'
-                });
-            } else {
-                item.classList.remove('active');
-                item.style.position = 'absolute';
-                item.style.top = '0';
-                item.style.left = '0';
-                gsap.set(item, { opacity: 0, x: direction * 50 });
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+            },
+            {
+                passive: true
             }
-        });
+        );
 
-        dots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
+
+        slider.addEventListener(
+            'touchend',
+            (event) => {
+
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+
+                const distance =
+                    touchEndX - touchStartX;
+
+
+                /* Ignore small movements */
+
+                if (Math.abs(distance) < 50) {
+                    return;
+                }
+
+
+                if (distance < 0) {
+
+                    nextTestimonial();
+
+                } else {
+
+                    previousTestimonial();
+
+                }
+
+
+                restartAutoRotate();
+
+            },
+            {
+                passive: true
             }
-        });
+        );
+
     }
 
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            if (i === currentIndex) return;
-            const direction = i > currentIndex ? 1 : -1;
-            currentIndex = i;
-            showTestimonial(currentIndex, direction);
-        });
-    });
 
-    if (isMobile) {
-        const container = document.querySelector('.testimonials-slider');
-        if (container) {
-            container.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
+    /* =========================================
+       AUTO ROTATION
+       ========================================= */
 
-            container.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            });
+    function startAutoRotate() {
+
+        if (testimonials.length <= 1) {
+            return;
         }
 
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                const prevIndex = currentIndex;
-                currentIndex = (currentIndex + 1) % testimonials.length;
-                showTestimonial(currentIndex, 1);
-            }
-            if (touchEndX > touchStartX + 50) {
-                const prevIndex = currentIndex;
-                currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-                showTestimonial(currentIndex, -1);
-            }
-        }
+
+        autoRotate = setInterval(
+            () => {
+
+                nextTestimonial();
+
+            },
+            6000
+        );
+
     }
 
-    const rotateInterval = isMobile ? 7000 : 5000;
-    setInterval(() => {
-        const nextIndex = (currentIndex + 1) % testimonials.length;
-        currentIndex = nextIndex;
-        showTestimonial(currentIndex, 1);
-    }, rotateInterval);
+
+    function restartAutoRotate() {
+
+        if (!autoRotate) return;
+
+        clearInterval(autoRotate);
+
+        startAutoRotate();
+
+    }
+
+
+    /* =========================================
+       SINGLE TESTIMONIAL
+       ========================================= */
+
+    if (testimonials.length === 1) {
+
+        if (prevButton) {
+            prevButton.style.display = 'none';
+        }
+
+        if (nextButton) {
+            nextButton.style.display = 'none';
+        }
+
+        if (currentCounter) {
+            currentCounter.textContent = '01';
+        }
+
+        if (totalCounter) {
+            totalCounter.textContent = '01';
+        }
+
+    }
+
+
+    /* =========================================
+       INITIALIZE
+       ========================================= */
+
+    updateCounter();
+
+    startAutoRotate();
 }
+
+// function initTestimonialsSlider() {
+//     const testimonials = document.querySelectorAll('.testimonial-item');
+//     const dots = document.querySelectorAll('.testimonial-dots .dot');
+
+//     if (testimonials.length === 0) return;
+
+//     let currentIndex = 0;
+//     let touchStartX = 0;
+//     let touchEndX = 0;
+
+//     // Set initial position states
+//     testimonials.forEach((item, i) => {
+//         if (i === 0) {
+//             item.style.position = 'relative';
+//             item.style.top = 'auto';
+//             item.style.left = 'auto';
+//             item.classList.add('active');
+//             gsap.set(item, { opacity: 1, x: 0 });
+//         } else {
+//             item.style.position = 'absolute';
+//             item.style.top = '0';
+//             item.style.left = '0';
+//             item.classList.remove('active');
+//             gsap.set(item, { opacity: 0, x: 50 });
+//         }
+//     });
+
+//     function showTestimonial(index, direction = 1) {
+//         testimonials.forEach((item, i) => {
+//             if (i === index) {
+//                 item.style.position = 'relative';
+//                 item.style.top = 'auto';
+//                 item.style.left = 'auto';
+//                 item.classList.add('active');
+
+//                 gsap.fromTo(item,
+//                     { opacity: 0, x: direction * 50 },
+//                     { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', overwrite: 'auto' }
+//                 );
+//             } else if (item.classList.contains('active')) {
+//                 item.style.position = 'absolute';
+//                 item.style.top = '0';
+//                 item.style.left = '0';
+//                 item.classList.remove('active');
+
+//                 gsap.to(item, {
+//                     opacity: 0,
+//                     x: -direction * 50,
+//                     duration: 0.5,
+//                     ease: 'power2.in',
+//                     overwrite: 'auto'
+//                 });
+//             } else {
+//                 item.classList.remove('active');
+//                 item.style.position = 'absolute';
+//                 item.style.top = '0';
+//                 item.style.left = '0';
+//                 gsap.set(item, { opacity: 0, x: direction * 50 });
+//             }
+//         });
+
+//         dots.forEach((dot, i) => {
+//             if (i === index) {
+//                 dot.classList.add('active');
+//             } else {
+//                 dot.classList.remove('active');
+//             }
+//         });
+//     }
+
+//     dots.forEach((dot, i) => {
+//         dot.addEventListener('click', () => {
+//             if (i === currentIndex) return;
+//             const direction = i > currentIndex ? 1 : -1;
+//             currentIndex = i;
+//             showTestimonial(currentIndex, direction);
+//         });
+//     });
+
+//     if (isMobile) {
+//         const container = document.querySelector('.testimonials-slider');
+//         if (container) {
+//             container.addEventListener('touchstart', (e) => {
+//                 touchStartX = e.changedTouches[0].screenX;
+//             });
+
+//             container.addEventListener('touchend', (e) => {
+//                 touchEndX = e.changedTouches[0].screenX;
+//                 handleSwipe();
+//             });
+//         }
+
+//         function handleSwipe() {
+//             if (touchEndX < touchStartX - 50) {
+//                 const prevIndex = currentIndex;
+//                 currentIndex = (currentIndex + 1) % testimonials.length;
+//                 showTestimonial(currentIndex, 1);
+//             }
+//             if (touchEndX > touchStartX + 50) {
+//                 const prevIndex = currentIndex;
+//                 currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+//                 showTestimonial(currentIndex, -1);
+//             }
+//         }
+//     }
+
+//     const rotateInterval = isMobile ? 7000 : 5000;
+//     setInterval(() => {
+//         const nextIndex = (currentIndex + 1) % testimonials.length;
+//         currentIndex = nextIndex;
+//         showTestimonial(currentIndex, 1);
+//     }, rotateInterval);
+// }
 
 function initExpertiseMinimalAnimations() {
     ScrollTrigger.create({
