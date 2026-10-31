@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f3f3ef">
+  <title>OpenTrail Project Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="loader" id="loader">
+    <div class="load-inner"><b>OPENTRAIL<span>.</span></b>
+      <div class="load-track"><i id="loadProgress"></i></div><small id="loadStatus">PREPARING DOCUMENT · 0%</small>
+    </div>
+  </div>
+  <header class="topbar"><a class="brand" href="#">OPENTRAIL<span>.</span></a>
+    <div class="head-title">PROJECT DOCUMENTATION <small>DIGITAL EDITION</small></div><a class="download-link"
+      href="assets/open-trail-documentation-e-pdf.pdf" download>DOWNLOAD PDF ↓</a>
+  </header>
+  <main class="reader" id="reader">
+    <section class="viewer" id="viewer" aria-label="OpenTrail Project Documentation flipbook">
+      <div class="viewer-meta"><span>DOCUMENT READER</span><span id="pageTotal">LOADING PAGES</span></div>
+      <div class="book-stage"><button class="turn" id="prevPage" aria-label="Previous page" disabled>←</button>
+        <div class="book-viewport" id="bookViewport">
+          <div class="book-scale" id="bookScale">
+            <div id="flipbook"></div>
+          </div>
+        </div><button class="turn" id="nextPage" aria-label="Next page" disabled>→</button>
+      </div>
+      <div class="control-panel">
+        <div class="nav-controls"><button id="firstPage" class="control" title="First page" disabled>|←</button><button
+            id="prevText" class="control" disabled>PREVIOUS</button><label class="page-jump">PAGE <input id="pageInput"
+              type="number" min="1" value="1" aria-label="Page number" inputmode="numeric"><span id="pageCount">/
+              —</span></label><button id="nextText" class="control" disabled>NEXT</button><button id="lastPage"
+            class="control" title="Last page" disabled>→|</button></div>
+        <div class="view-controls"><button id="zoomOut" class="control zoom" aria-label="Zoom out">−</button><span
+            id="zoomValue">100%</span><button id="zoomIn" class="control zoom" aria-label="Zoom in">+</button><button
+            id="fitView" class="control">FIT</button><button id="fullscreen" class="control">FULLSCREEN ↗</button></div>
+      </div>
+      <div class="progress"><i id="progressFill"></i></div>
+      <div class="viewer-footer"><span>USE ARROW KEYS OR SWIPE TO TURN PAGES</span><a
+          href="assets/open-trail-documentation-e-pdf.pdf" target="_blank" rel="noopener">OPEN ORIGINAL PDF ↗</a></div>
+      <p id="errorMessage" class="error" role="alert" hidden></p>
+    </section>
+  </main>
+  <footer class="footer"><span>OPENTRAIL PROJECT DOCUMENTATION</span><span>DIGITAL EDITION</span></footer>
+</body>
+
+</html>
